@@ -12,3 +12,4 @@ Web Programming
 * Collecting user input using forms
 * Storing data locally using cookies
 * Using sessions
+* Configuring a web server
