@@ -1,4 +1,4 @@
-PHPIntermediate
-===============
+Intermediate PHP & MySQL
+========================
 
-PHP Intermediate Syllabus 2015
+Week1 - [PHP Basics](syllabus/01 PHP Basics.md)
