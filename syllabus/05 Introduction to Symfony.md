@@ -30,6 +30,3 @@ Introduction to Symfony
 * Fetching related data using JOIN
 * Limiting the number of results returned 
 * Creating a custom database helper class
-
-###
-* @todo: what is the application going to do? what fun
