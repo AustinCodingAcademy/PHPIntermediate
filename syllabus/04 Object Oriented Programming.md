@@ -1,6 +1,6 @@
 Object Oriented Programming
 ===============
->PHP5 is an enterprise class object oriented programming language. This week, we will be looking at how to build classes
+>PHP5 is an enterprise grade object oriented programming language. This week, we will be looking at how to build classes
 that we will later use, at runtime, to instantiate objects. Instantiated objects can take on different forms, depending
 on the context in which they were created.
 >In writing some OO code we will briefly delve into some design patterns.
