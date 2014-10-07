@@ -1,5 +1,6 @@
 Intermediate PHP & MySQL
 ========================
+![Linux Apache PHP MySQL](https://spinspire.com/sites/spinspire.com/files/field/image/lamp.png "LAMP")
 
 Week 1 - [PHP Basics](syllabus/01 PHP Basics.md)
 
