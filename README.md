@@ -1,6 +1,6 @@
 Intermediate PHP & MySQL
 ========================
-![PHP](http://thedeveloperworldisyours.com/wp-content/uploads/php.png, "PHP")
+![PHP](http://thedeveloperworldisyours.com/wp-content/uploads/php.png "PHP")
 
 Week 1 - [PHP Basics](syllabus/01 PHP Basics.md)
 
