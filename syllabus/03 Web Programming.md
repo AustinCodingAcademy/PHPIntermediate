@@ -1,4 +1,4 @@
-Web Programming
+03 - Web Programming
 ===============
 >Now that we are comfortable with strings, functions and arrays we will dive right into understanding how PHP can be used to build web applications. 
 >Although now PHP has evolved into a language that can do more than just build the web, it was originally designed as a web development language. 

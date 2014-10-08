@@ -17,4 +17,6 @@ Week 3 - [Web Programming](syllabus/03 Web Programming.md)
 
 Week 4 - [Object Oriented Programming](syllabus/04 Object Oriented Programming.md)
 
-Week 5 - [Introduction to Symfony](syllabus/05 Introduction to Symfony.md)
+Week 5 - [Design Patterns](syllabus/05 Design Patterns.md)
+
+Week 6 - [Introduction to Symfony](syllabus/06 Introduction to Symfony.md)

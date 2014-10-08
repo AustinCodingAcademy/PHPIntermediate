@@ -1,4 +1,4 @@
-Object Oriented Programming
+04 - Object Oriented Programming
 ===============
 >PHP5 is an enterprise grade object oriented programming language. This week, we will be looking at how to build classes
 that we will later use, at runtime, to instantiate objects. Instantiated objects can take on different forms, depending
@@ -33,9 +33,3 @@ on the context in which they were created.
 * Overriding Exception by extending
 * Why would we want to override the base Exception class?
 * How to throw your own Exceptions and why it matters
-
-### Design Patterns
-* Factory
-* Singleton
-* Front Controller
-* Model View Controller

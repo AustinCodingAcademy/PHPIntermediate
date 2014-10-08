@@ -1,4 +1,4 @@
-Functions, Arrays & Strings
+02 - Functions, Arrays & Strings
 ----------------------------
 >Now that we have the basics out of the way, we will be looking at functions in greater detail.
 >Encapsulating our procedural style code, into reusable units, is arguably one of the most important concepts in programming.
