@@ -12,7 +12,8 @@
 A factory is a class that creates objects for the wider application to consume. The output of the method is an object, with all its dependencies met.
 Think of this pattern as an actual factory that makes cars. Lots of inputs are required to make a vehicle, but the output, is just a car.
 The whole point of a factory is to provide it with the minimum amount of knowledge it needs to create a complicating object.
-```
+
+```php
 // Create a car by calling a static method on CarFactory called getCar.
 // This method takes two arguments, the make and model of the car you want the factory to build.
 $ToyotaCorolla = CarFactory::getCar($make='toyota', $model='corolla');
