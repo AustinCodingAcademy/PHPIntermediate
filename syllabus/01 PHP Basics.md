@@ -58,9 +58,14 @@ PHP Basics
 
 [Sample Code](homework/01_count_types.md)
 
-We will be creating a simple program, that can be executed in the CLI or in the browser.
+We will be creating a simple program, that can be executed in the [CLI](http://en.wikipedia.org/wiki/Command-line_interface) or in the browser.
+
 Create a function that will count the number of int, float, bool and string data types in a given input string.
+
 The input string contains formatted numbers, and numbers with other formatting characters like exclamation marks.
+
 Words like "true" and "false" are considered to be boolean. The sample code lays out the foundation for you to start work.
+
 If you are not happy with the layout of the sample code, feel free to extract the parts you are happy with and do it your way.
+
 Know that there are multiple ways to solve any given problem, and no two people will solve a problem in exactly the same way.
