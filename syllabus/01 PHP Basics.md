@@ -3,13 +3,15 @@ PHP Basics
 > This week covers the basics of the PHP programming language and some of its most important features. 
 > Most of the material presented here should be learned as acutely as possible. 
 > Memorizing syntax, keywords and control structures is crucial to student success.
+> Since this is an advanced course, we will not be spending too much time on language basics. 
 
 ***
 
 * Syntax
-    * C and Perl influences
     * PHP tags, define blocks of PHP code
     * The use of comments
+    * Print stuff to screen
+    * Debug using die; an alias to exit
 
 * Data types and loose typing
     * int, bool, float, string, NULL, resource
