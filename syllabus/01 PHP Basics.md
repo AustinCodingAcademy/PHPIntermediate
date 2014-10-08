@@ -56,7 +56,7 @@ PHP Basics
 
 #### Homework 01 - Count Types
 
-[01 Count Types](homework/01_count_types.md)
+[Sample Code](homework/01_count_types.md)
 
 We will be creating a simple program, that can be executed in the CLI or in the browser.
 Create a function that will count the number of int, float, bool and string data types in a given input string.
