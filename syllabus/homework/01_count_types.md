@@ -1,3 +1,4 @@
+```php
 <?php
 /**
  * For a given input string, create a function that will return an array indicating the number of words, integers and floats.
@@ -50,3 +51,4 @@ function countDataTypes($inputString)
 $returnedCountArray = countDataTypes($inputString);
 echo 'Here are your results:'.PHP_EOL;
 print_r($returnedCountArray);
+```
