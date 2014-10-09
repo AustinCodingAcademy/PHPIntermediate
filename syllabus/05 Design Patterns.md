@@ -72,10 +72,9 @@ $DB = new DBCommon();
 $DB->query('select * from order');
 ```
 As you can see, we will have to instantiate the DBCommon class every single time we need to run a query.
-Every time we do that, the mysqli() object that we are assigning to the local protected property $db, makes a socket connection to the MySQL database server.
+Every time we do that, the ```mysqli()``` class that we are assigning to the local protected property ```$db```, makes a socket connection to the MySQL database server.
 This can quickly become resource intensive and is a very inefficient way to design an application.
-A superior approach would be to make one connection to MySQL and reuse that connection for all queries we issue during one request cycle.
-Singleton to the rescue!
+A superior approach would be to make one connection to MySQL and reuse that connection for all queries we issue during the lifecycle of the request.
 
 Let's take a look at how we can use Singleton to solve this particular problem.
 ```php
@@ -120,14 +119,14 @@ class DBCommon
     }
 }
 ```
-We have a new private static variable called instance.
+We have a new ```private static``` variable called ```$instance```.
 We made the constructor private, i.e. nobody should be able to instantiate this class directly.
 If client code tries to instantiate the class directly, they would get an error that looks like this
 ```php
 PHP Fatal error:  Call to private DBCommon::__construct() from invalid context in /DBCommon.php on line xxx
 ```
-The only way to instantiate the class, is via a public static method called ```getInstance()```
-When getInstance is called, we check if the local static property $instance has been set before.
+The only way to instantiate the class, is via a ```public static``` method called ```getInstance()```
+When ```getInstance()``` is called, we check if the local static property ```$instance``` has been set before.
 If the instance property has not been set, then we instantiate the class into an object, set the static property and return it.
 
 * Front Controller
