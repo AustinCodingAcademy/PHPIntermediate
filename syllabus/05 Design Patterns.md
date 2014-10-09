@@ -192,5 +192,19 @@ switch ($url) {
 }
 ```
 
+### Model View Controller
+MVC is one of the most widely accepted ways of separating our application.
+* M - Model
+* V - View
+* C - Controller
 
-* Model View Controller
+A request comes in from the web, probably using front controller and hits a PHP class called a controller.
+
+The controller's sole responsibility is to acquire data from the request via ```$_GET``` or ```$_POST``` parameters
+and to instantiate any classes that are responsible for responding to that request.
+The controller also calls upon models to get the data handler objects will need to fulfill the request.
+Finally, the controller will hand off or assign the data returned from handler classes to a view class for rendering.
+
+View classes simply take data from the controller, figure out which template to render, assign the data to the template and generate some HTML.
+
+Model classes are responsible for modelling your database and all the relationships contained therein.
