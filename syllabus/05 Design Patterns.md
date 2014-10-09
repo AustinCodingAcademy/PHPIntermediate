@@ -6,8 +6,6 @@
 
 ***
 
-### Widely Used Design Patterns
-
 #### Factory
 A factory is a class that creates objects for the wider application to consume. The output of the method is an object, with all its dependencies met.
 Think of this pattern as an actual factory that makes cars. Lots of inputs are required to make a vehicle, but the output, is just a car.
@@ -144,5 +142,55 @@ $DB2 = DBCommon::getInstance();
 $DB2->query('select foo from bar');
 ```
 
-* Front Controller
+### Front Controller
+A front controller is a pattern that enables your application to have a single point of entry.
+All the URLs and their associated parameters are rewritten by the webserver and handed off to one .php file for processing.
+For example:
+```
+Url with no rewriting: http://foo.com/bar.php
+Url with rewriting: http://foo.com/bar
+```
+Notice in the second example, we have no .php because /bar is an alias we generated.
+Apache has a module called mod_rewrite that allows you to perform this neat trick.
+
+This is an example of an apache configuration snippet that redirects all URL patterns on your domain to ```index.php```
+```bash
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+    RewriteRule    (.*) index.php    [L]
+</IfModule>
+```
+
+The purpose of a front controller is to reduce the number of PHP files we create and to route all requests through one script.
+Here is how we would implement a rudimentary front controller.
+```php
+<?php
+
+// Ternary expression enables us to set a default value for $url if PATH_INFO is not set
+$url = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : 'homepage';
+
+//Trim out leading slash from the path
+$url = ltrim($url, '/');
+
+//Evaluate known patterns
+switch ($url) {
+
+    case 'homepage':
+        echo 'Show Homepage';
+        break;
+
+    case 'products':
+        echo 'Show products';
+        break;
+
+    case 'blog':
+        echo 'Show Blog';
+        break;
+
+    default:
+        echo '404 Page not found!';
+}
+```
+
+
 * Model View Controller

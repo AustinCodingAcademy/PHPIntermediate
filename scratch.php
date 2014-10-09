@@ -1,27 +1,24 @@
 <?php
+// Lets say our example URL is: http://foo.com/products
+$url = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : 'homepage';
 
-/**
- * Class DBCommon without a singleton pattern applied
- */
-class DBCommon
-{
-    /**
-     * Database connection
-     *
-     * @var resource
-     */
-    protected $db;
+//Trim out leading slash
+$url = ltrim($url, '/');
 
-    public function __construct()
-    {
-        $this->db = new mysqli(
-            $host = 'localhost', $username = 'user', $password = 'pass123',
-            $databaseName = 'acadb', $port = 3306
-        );
-    }
+switch ($url) {
 
-    public function query($sql)
-    {
-        // Run the actual query and return results...
-    }
+    case 'homepage':
+        echo 'Show Homepage';
+        break;
+
+    case 'products':
+        echo 'Show products';
+        break;
+
+    case 'blog':
+        echo 'Show Blog';
+        break;
+
+    default:
+        echo '404 Page not found!';
 }
