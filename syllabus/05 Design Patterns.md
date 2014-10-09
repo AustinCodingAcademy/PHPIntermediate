@@ -151,7 +151,7 @@ Url with no rewriting: http://foo.com/bar.php
 Url with rewriting: http://foo.com/bar
 ```
 Notice in the second example, we have no .php because /bar is an alias we generated.
-Apache has a module called mod_rewrite that allows you to perform this neat trick.
+[Apache](http://httpd.apache.org/) has a module called [mod_rewrite](http://httpd.apache.org/docs/current/mod/mod_rewrite.html) that allows you to perform this neat trick.
 
 This is an example of an apache configuration snippet that redirects all URL patterns on your domain to ```index.php```
 ```bash
