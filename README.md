@@ -1,7 +1,7 @@
 Intermediate PHP & MySQL
 ========================
-![PHP](http://thedeveloperworldisyours.com/wp-content/uploads/php.png "PHP")
-![MySQL](http://www.internetnews.com/imagesvr_ce/6151/mysql.png "MySQL")
+![PHP](images/php.png "PHP")
+![MySQL](images/mysql.png "MySQL")
 
 
 > This course is designed for students with a fundamental understanding of programming. 
