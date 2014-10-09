@@ -19,8 +19,9 @@ on the context in which they were created.
 * Class constants
 * Static methods
 * Static properties
-* The $this keyword
 * How to access object properties
+* The $this keyword
+* The self keyword
 
 ### Abstract Classes & Interfaces
 * What is an abstract class?

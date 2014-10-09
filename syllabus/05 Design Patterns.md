@@ -29,13 +29,10 @@ $ToyotaCorolla->setSpeed(65)->setDestination->('Austin')->setDriver('autopilot')
 
 #### Singleton
 A Singleton is a pattern that we should use when we want to ensure that there is only one instance of our class instantiated during the entire request cycle.
-A typical data driven application will connect to a database. Its common practice to create a database class that establishes a connection,
-and may also provide functionality to perform [CRUD](http://en.wikipedia.org/wiki/Create,_read,_update_and_delete) operations.
+A great example of singleton in action is a DB class that connects a database and contains functionality to perform [CRUD](http://en.wikipedia.org/wiki/Create,_read,_update_and_delete) operations.
 
 Lets create such a class.
 ```php
-<?php
-
 /**
  * Class DBCommon without a singleton pattern applied
  */
@@ -50,14 +47,20 @@ class DBCommon
 
     public function __construct()
     {
-        $this->db = new mysqli($host = 'localhost', $username = 'user', $password = 'pass123', $dbname = 'acadb', $port = 3306);
+        $this->db = new mysqli(
+            $host = 'localhost', $username = 'user', $password = 'pass123',
+            $databaseName = 'acadb', $port = 3306
+        );
     }
 
-    public function query($sql){ // Run the actual query and return results... }
+    public function query($sql)
+    {
+        // Run the actual query and return results...
+    }
 }
 ```
 
-Here is how a controller or model would use our class.
+Here is how client code will use our class
 ```php
 <?php
 
@@ -92,7 +95,10 @@ class DBCommon
 
     private function __construct()
     {
-        $this->db = new mysqli($host = 'localhost', $username = 'user', $password = 'pass123', $dbname = 'acadb', $port = 3306);
+        $this->db = new mysqli(
+            $host = 'localhost', $username = 'user', $password = 'pass123',
+            $databaseName = 'acadb', $port = 3306
+        );
     }
 
     /**
@@ -106,6 +112,11 @@ class DBCommon
             self::$instance = new self();
         }
         return self::$instance;
+    }
+
+    public function query($sql)
+    {
+        // Run the actual query and return results...
     }
 }
 ```
