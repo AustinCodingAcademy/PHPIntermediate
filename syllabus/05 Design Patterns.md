@@ -27,6 +27,97 @@ $ToyotaCorolla->rollUpWindows();
 $ToyotaCorolla->setSpeed(65)->setDestination->('Austin')->setDriver('autopilot')->drive();
 ```
 
-* Singleton
+#### Singleton
+A Singleton is a pattern that we should use when we want to ensure that there is only one instance of our class instantiated during the entire request cycle.
+A typical data driven application will connect to a database. Its common practice to create a database class that establishes a connection,
+and may also provide functionality to perform [CRUD](http://en.wikipedia.org/wiki/Create,_read,_update_and_delete) operations.
+
+Lets create such a class.
+```php
+<?php
+
+/**
+ * Class DBCommon without a singleton pattern applied
+ */
+class DBCommon
+{
+    /**
+     * Database connection
+     *
+     * @var resource
+     */
+    protected $db;
+
+    public function __construct()
+    {
+        $this->db = new mysqli($host = 'localhost', $username = 'user', $password = 'pass123', $dbname = 'acadb', $port = 3306);
+    }
+
+    public function query($sql){ // Run the actual query and return results... }
+}
+```
+
+Here is how a controller or model would use our class.
+```php
+<?php
+
+$DB = new DBCommon();
+$DB->query('select * from user');
+
+// If I wanted to run another query in some other method, I would have to instantiate the class again
+$DB = new DBCommon();
+$DB->query('select * from order');
+```
+As you can see, we will have to instantiate the DBCommon class every single time we need to run a query.
+Every time we do that, the mysqli() object that we are assigning to the local protected property $db, makes a socket connection to the MySQL database server.
+This can quickly become resource intensive and is a very inefficient way to design an application.
+A superior approach would be to make one connection to MySQL and reuse that connection for all queries we issue during one request cycle.
+Singleton to the rescue!
+
+Let's take a look at how we can use Singleton to solve this particular problem.
+```php
+<?php
+
+/**
+ * Class DBCommon with private constructor and singleton pattern applied
+ */
+class DBCommon
+{
+    /**
+     * Static instance of the instantiated object
+     *
+     * @var DBCommon
+     */
+    private static $instance;
+
+    private function __construct()
+    {
+        $this->db = new mysqli($host = 'localhost', $username = 'user', $password = 'pass123', $dbname = 'acadb', $port = 3306);
+    }
+
+    /**
+     * Get a singleton instance of DBCommon
+     *
+     * @return DBCommon
+     */
+    public static function getInstance()
+    {
+        if(!isset(self::$instance)){
+            self::$instance = new self();
+        }
+        return self::$instance;
+    }
+}
+```
+We have a new private static variable called instance.
+We made the constructor private, i.e. nobody should be able to instantiate this class directly.
+If client code tries to instantiate the class directly, they would get an error that looks like this
+```php
+PHP Fatal error:  Call to private DBCommon::__construct() from invalid context in /DBCommon.php on line xxx
+```
+The only way to instantiate the class, is via a public static method called ```getInstance()```
+When getInstance is called, we check if the local static property $instance has been set before.
+If the instance property has not been set, then we instantiate the class into an object, set the static property and return it.
+
 * Front Controller
 * Model View Controller
