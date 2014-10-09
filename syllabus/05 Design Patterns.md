@@ -125,9 +125,11 @@ If client code tries to instantiate the class directly, they would get an error 
 ```php
 PHP Fatal error:  Call to private DBCommon::__construct() from invalid context in /DBCommon.php on line xxx
 ```
-The only way to instantiate the class, is via a ```public static``` method called ```getInstance()```
-When ```getInstance()``` is called, we check if the local static property ```$instance``` has been set before.
-If the instance property has not been set, then we instantiate the class into an object, set the static property and return it.
+The only way to instantiate the class, is via a ```public static``` method called ```getInstance()```.
+When ```getInstance()``` is called, we check if the local static property ```$instance``` has been previously set.
+If the instance property has not been set, then we instantiate the class, set the static property and return it.
+Note that we can instantiate a class from within ```getInstance()``` even though the constructor is private
+because we are calling it from inside the class and not from the outside.
 
 Here is how client code will use our redesigned class.
 ```php
