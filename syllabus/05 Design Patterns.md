@@ -129,5 +129,18 @@ The only way to instantiate the class, is via a ```public static``` method calle
 When ```getInstance()``` is called, we check if the local static property ```$instance``` has been set before.
 If the instance property has not been set, then we instantiate the class into an object, set the static property and return it.
 
+Here is how client code will use our redesigned class.
+```php
+<?php
+
+// Instantiate via getInstance using Singleton pattern
+$DB = DBCommon::getInstance();
+$DB->query('select * from user');
+
+// Same object returned, mysqli() is not called twice!
+$DB2 = DBCommon::getInstance();
+$DB2->query('select foo from bar');
+```
+
 * Front Controller
 * Model View Controller
