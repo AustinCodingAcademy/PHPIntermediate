@@ -202,9 +202,10 @@ A request comes in from the web, probably using front controller and hits a PHP 
 
 The controller's sole responsibility is to acquire data from the request via ```$_GET``` or ```$_POST``` parameters
 and to instantiate any classes that are responsible for responding to that request.
-The controller also calls upon models to get the data handler objects will need to fulfill the request.
+The controller also calls methods on model classes to get data, that handler objects will need to fulfill the request.
 Finally, the controller will hand off or assign the data returned from handler classes to a view class for rendering.
 
 View classes simply take data from the controller, figure out which template to render, assign the data to the template and generate some HTML.
 
 Model classes are responsible for modelling your database and all the relationships contained therein.
+Models should not contain any kind of business logic, and should only retrieve and persist data from and to the database respectively.
