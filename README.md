@@ -19,4 +19,6 @@ Week 4 - [Object Oriented Programming](syllabus/04 Object Oriented Programming.m
 
 Week 5 - [Design Patterns](syllabus/05 Design Patterns.md)
 
-Week 6 - [Introduction to Symfony](syllabus/06 Introduction to Symfony.md)
+Week 6 - [MySQL Fundamentals](syllabus/06 MySQL Fundamentals.md)
+
+Week 7 - [Introduction to Symfony](syllabus/07 Introduction to Symfony.md)
