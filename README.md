@@ -30,10 +30,10 @@ Week 10 - Continue in class coding for ACAShop, Student Q&A, the state of PHP an
 
 ***
 
-Instructor: [Samir Patel](http://samirpatel.me)
+`Instructor`: [Samir Patel](http://samirpatel.me)
 
-Phone: (512) 745-7846
+`Phone`: (512) 745-7846
 
-Email: samir at austincodingacademy dot com
+`Email`: samir at austincodingacademy dot com
 
-Office Hours: 30 minutes after class
+`Office Hours`: 30 minutes after class
