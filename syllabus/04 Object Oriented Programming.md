@@ -91,7 +91,7 @@ $InstructorPerson = new Person(5, 'Samir Patel', '5000 Memory Lane');
 print_r($InstructorPerson);
 ```
 
-The output we get will look something like this. Notice that it tells us that the kind of obeject we are looking at is ```Person```
+The output we get will look something like this. Notice that it tells us that the kind of object we are looking at is ```Person```
 The person we are looking at here is really an instructor.
 ```
 Person Object
@@ -162,6 +162,8 @@ Create a student, and pile on a heavy course load.
 <?php
 
 $IndustriousStudent = new Student(123, 'Albert Einstein', 'Munich, Germany');
+
+// You can chain methods like this because you returned ```$this``` in your ```addTakenCourse()``` method, which is a reference to the same object you are working with.
 $IndustriousStudent->addTakenCourse('Advanced Python')->addTakenCourse('Advanced PHP')->addTakenCourse('Particle Physics');
 print_r($IndustriousStudent);
 ```
@@ -196,7 +198,7 @@ $ACAInstructor->addTaughtCourse('Golfing like a boss');
 print_r($ACAInstructor);
 ```
 
-Notice how the object is of type ```Instructor``` and has the ```$taughtCourses``` property instead of ```$takenCourses```
+Notice how the object is of type ```Instructor``` and has the ```$coursesTaught``` property instead of ```$coursesTaken```
 ```
 Instructor Object
 (
@@ -213,9 +215,57 @@ Instructor Object
 )
 ```
 
-### Classes explained
-* Constructors, arguments and overloading
-* Public, private and protected methods
+Classes explained
+-----------------
+
+#### Constructors, arguments and overloading
+A constructor looks like this ```___construct()```. A constructor is a way for you to define the arguments the class
+will take when you instantiate it. When we say ```$Obj = new MyCoolClass();``` we are *instantiating* the class into an object.
+
+Lets create a simple class called ```Weather```.
+Notice that this class has two constructor arguments, ```$temperature``` and ```$location```. The ```$location``` argument is overridden.
+In other words, you don't need to specify the location when you instantiate the class, as its optional.
+
+```php
+<?php
+
+class Weather
+{
+    /**
+     * @param float $temperature Temperature in fahrenheit
+     * @param string $location City name
+     */
+    public function __construct($temperature, $location = 'Austin')
+    {
+        if ($temperature > 80) {
+            echo "It is super hot in $location";
+        } else {
+            echo "Its really cold in $location";
+        }
+    }
+}
+```
+Let's instantiate this class in a few different ways, and examine the output.
+```php
+<?php
+
+$East = new Weather(88.50, 'Bombay'); // It is super hot in Bombay
+
+$North = new Weather(60.34, 'Alaska'); // Its really cold in Alaska
+```
+
+#### Public, private and protected methods and properties
+A method is simply a function inside of a class. A property is a variable inside a class.
+PHP has three levels of visibility that apply to methods and properties.
+
+* ```public``` - Anything prefixed with the public keyword can be accessed and mutated from anywhere.
+* ```protected``` - This prefix only allows the current class and any child class visibility and mutability.
+* ```private``` - Private methods and properties can only be accessed from within the class that they were defined.
+
+The reason why we have the ability to control visibility so when other developers read our code, it becomes clear to them
+what we want them to be able to modify and what is off limits. Lets take a look at an example of how visibility is useful.
+
+*
 * Class constants
 * Static methods
 * Static properties
