@@ -53,9 +53,9 @@ This is not PHP code, just plain old text.
 
 Variables
 ---------
-
-#### What is a variable? what are constants?
-Variables are containers for values. Values are assigned to variables at run-time. Values that don't change are known as constants.
+Variables are containers for values.
+Values are assigned to variables at run-time.
+Values that don't change are known as constants.
 ```php
 <?php
 //Define some variables, and assign values to them
