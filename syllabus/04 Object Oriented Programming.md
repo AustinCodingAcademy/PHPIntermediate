@@ -266,11 +266,154 @@ PHP has three levels of visibility that apply to methods and properties.
 * ```protected``` - This prefix only allows the current class and any child class visibility and mutability.
 * ```private``` - Private methods and properties can only be accessed from within the class that they were defined.
 
-The reason why we have the ability to control visibility so when other developers read our code, it becomes clear to them
+The reason why we have the ability to control visibility is so when other developers read our code, it becomes clear to them
 what we want them to be able to modify and what is off limits. Lets take a look at an example of how visibility is useful.
+Note that if we print out an object, using ```print_r()``` or ```var_dump()``` you will still see the value of the variable.
+
+```php
+<?php
+
+class Employee
+{
+    /**
+     * @var string
+     */
+    protected $name;
+
+    /**
+     * Any medical condition this employee has
+     *
+     * @var string
+     */
+    private $medicalCondition;
+
+    /**
+     * @param string $medicalCondition
+     */
+    public function setMedicalCondition($medicalCondition)
+    {
+        $this->medicalCondition = $medicalCondition;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMedicalCondition()
+    {
+        return $this->medicalCondition;
+    }
+
+    /**
+     * @param string $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+}
+```
+Now that we have created one private property in this class, lets instantiate it and print_r the object.
+
+```php
+$Adult = new Employee();
+$Adult->setMedicalCondition('The Shakes');
+$Adult->setName('John Doe');
+print_r($Adult);
+```
+
+As you can see, even though the property is private, we can still see the data it contains when we print the object.
+Lets create another child class, and call it ```ChildEmployee```, and try to access the parent's private property.
+
+```php
+<?php
+
+class ChildEmployee extends Employee
+{
+    /**
+     * I can access the parent's medical condition property,
+     * because I am calling it via a getter, whose visibility is public.
+     */
+    public function readMedicalCondition()
+    {
+        echo 'Medical Condition: ' . $this->getMedicalCondition();
+    }
+
+    /**
+     * I cannot access a private property from a child class
+     */
+    public function accessMedicalConditionProperty()
+    {
+        echo $this->medicalCondition;
+    }
+}
+```
+
+Our new class contains two new methods called ```readMedicalCondition()``` and ```accessMedicalConditionProperty()```.
+Lets instantiate the class into an object and call those methods.
+```php
+<?php
+
+$Child = new ChildEmployee();
+$Child->setName('Bonobo');
+$Child->setMedicalCondition('Shivers');
+
+// This works
+echo 'Read using public getter: '. $Child->getMedicalCondition();
+
+// This does not work
+$Child->accessMedicalConditionProperty(); // Notice: Undefined property: ChildEmployee::$medicalCondition
+```
+
+The reason why we can read the medical condition with this method is because it is using the parent's ```getMedicalCondition()``` method.
+
+Since the ```getMedicalCondition()``` method in the ```Employee``` class is public, is defined in the parent class and accesses
+a private property defined in the same class, we can read the value for medical condition.
+
+When we try to call the ```accessMedicalConditionProperty()``` method it fails because the method is trying to directly access
+the private property ```$medicalCondition``` that is defined in the parent ```Employee``` class.
+
+### Class constants
+Class constants are defined using the ```const``` keyword, are not prefixed with a ```$``` symbol and are uppercase by convention.
+Constants can only contain primitive values like integers, floats and strings.
+```php
+<?php
+
+class Foo
+{
+    const BAR = 'fubar';
+
+    const NUM_COUNTRIES_ON_EARTH = 193;
+
+    public function displayConstant()
+    {
+        echo self::BAR;
+    }
+}
+```
+
+Here is how you would access the constants
+
+```php
+$F = new Foo();
+
+// How to access the constant internally
+$F->displayConstant();
+
+// How to access the constant from the outside the class
+echo 'There are ' . Foo::NUM_COUNTRIES_ON_EARTH .' countries on earth';
+```
+
 
 *
-* Class constants
+*
 * Static methods
 * Static properties
 * How to access object properties
