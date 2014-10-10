@@ -163,13 +163,15 @@ Create a student, and pile on a heavy course load.
 
 $IndustriousStudent = new Student(123, 'Albert Einstein', 'Munich, Germany');
 
-// You can chain methods like this because you returned ```$this``` in your ```addTakenCourse()``` method, which is a reference to the same object you are working with.
-$IndustriousStudent->addTakenCourse('Advanced Python')->addTakenCourse('Advanced PHP')->addTakenCourse('Particle Physics');
+// You can chain methods like this because you returned $this in your addTakenCourse() method
+// $this is pseudo variable that is an internal reference to the current object you are accessing or mutating
+$IndustriousStudent->addTakenCourse('Advanced Python')->addTakenCourse('Advanced PHP');
+$IndustriousStudent->addTakenCourse('Particle Physics');
 print_r($IndustriousStudent);
 ```
 
-Notice how the object is now of type ```Student``` not ```Person```. Also notice how the ```id```, ```name``` and ```address```
-properties are inherited from the parent class ```Person```
+Notice how the object is now of type ```Student``` not ```Person```.
+Also notice how the ```id```, ```name``` and ```address``` properties are inherited from the parent class ```Person```
 
 ```
 Student Object
@@ -223,7 +225,8 @@ A constructor looks like this ```___construct()```. A constructor is a way for y
 will take when you instantiate it. When we say ```$Obj = new MyCoolClass();``` we are *instantiating* the class into an object.
 
 Lets create a simple class called ```Weather```.
-Notice that this class has two constructor arguments, ```$temperature``` and ```$location```. The ```$location``` argument is overridden.
+Notice that this class has two constructor arguments, ```$temperature``` and ```$location```.
+The ```$location``` argument is overridden.
 In other words, you don't need to specify the location when you instantiate the class, as its optional.
 
 ```php
@@ -249,10 +252,11 @@ Let's instantiate this class in a few different ways, and examine the output.
 ```php
 <?php
 
-$East = new Weather(88.50, 'Bombay'); // It is super hot in Bombay
-
-$North = new Weather(60.34, 'Alaska'); // Its really cold in Alaska
+$EastWeather = new Weather(88.50, 'Bombay'); // Outputs: It is super hot in Bombay
+$NorthWeather = new Weather(60.34, 'Alaska'); // Outputs: Its really cold in Alaska
 ```
+Notice that when we instantiate a class into an object,
+the first thing that runs is all the code you have defined in the constructor.
 
 #### Public, private and protected methods and properties
 A method is simply a function inside of a class. A property is a variable inside a class.
