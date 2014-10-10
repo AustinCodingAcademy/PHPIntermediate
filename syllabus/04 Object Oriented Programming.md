@@ -329,8 +329,18 @@ $Adult->setName('John Doe');
 print_r($Adult);
 ```
 
+Here is the output from ```print_r($Adult);```
+```php
+Employee Object
+(
+    [name:protected] => John Doe
+    [medicalCondition:Employee:private] => The Shakes
+)
+```
+
 As you can see, even though the property is private, we can still see the data it contains when we print the object.
-Lets create another child class, and call it ```ChildEmployee```, and try to access the parent's private property.
+
+Lets create a child class, and call it ```ChildEmployee```, and try to access the parent's private property.
 
 ```php
 <?php

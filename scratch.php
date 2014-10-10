@@ -1,22 +1,53 @@
 <?php
 
-class Foo
+class Employee
 {
-    const BAR = 'fubar';
+    /**
+     * @var string
+     */
+    protected $name;
 
-    const NUM_COUNTRIES_ON_EARTH = 193;
+    /**
+     * Any medical condition this employee has
+     *
+     * @var string
+     */
+    private $medicalCondition;
 
-    public function displayConstant()
+    /**
+     * @param string $medicalCondition
+     */
+    public function setMedicalCondition($medicalCondition)
     {
-        echo self::BAR;
+        $this->medicalCondition = $medicalCondition;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMedicalCondition()
+    {
+        return $this->medicalCondition;
+    }
+
+    /**
+     * @param string $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
     }
 }
 
-
-$F = new Foo();
-
-// How to access the constant internally
-$F->displayConstant();
-
-// How to access the constant from the outside the class
-echo 'There are ' . Foo::NUM_COUNTRIES_ON_EARTH .' countries on earth';
+$Adult = new Employee();
+$Adult->setMedicalCondition('The Shakes');
+$Adult->setName('John Doe');
+print_r($Adult);
