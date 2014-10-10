@@ -350,15 +350,6 @@ while($keepRunning == true){
     }
 }
 ```
-    
-Errors and Error management
----------------------------
-
-    * Compile time, fatal, warning, notices
-    * Error reporting i.e. the level of noise
-    * Exceptions
-    * die() and exit
-    * Logging errors
 
 ***
 
