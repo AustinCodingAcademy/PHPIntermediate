@@ -1,5 +1,6 @@
 01 - PHP Basics
-----------
+===============
+
 > This week covers the basics of the PHP programming language and some of its most important features. 
 > Most of the material presented here should be learned as acutely as possible. 
 > Memorizing syntax, keywords and control structures is crucial to student success.
@@ -7,11 +8,50 @@
 
 ***
 
-* Syntax
-    * PHP tags, define blocks of PHP code
-    * The use of comments
-    * Print stuff to screen
-    * Debug using die; an alias to exit
+Syntax
+------------------
+
+### PHP tags, define blocks of PHP code
+```php
+<?php
+    echo 'This is PHP code!';
+?>
+This is not PHP code, just plain old text.
+```
+
+### The use of comments
+```php
+<?php
+// This is one way to define a comment
+
+# This is another way to do the same thing
+
+/*
+ * This is a comment that spans
+ * multiple lines
+ * and is slightly different from this next comment...
+ */
+
+ /**
+  * ...that has 2 ** after the first /
+  * This style of commenting is used in a "docblock"
+  * Use this to document a method signature
+  */
+?>
+```
+
+### Debug using die; an alias to exit
+```php
+<?php
+    echo 'I am about to run...';
+
+    die('I am here! and I am dead. Nothing after this line will run...');
+
+    echo 'I will not run, because I am after the die()';
+
+    echo 'Neither will I :/';
+?>
+```
 
 * Data types and loose typing
     * int, bool, float, string, NULL, resource

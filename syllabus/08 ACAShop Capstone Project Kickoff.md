@@ -12,3 +12,7 @@ For our capstone project, we will be building an online store! Here some of the 
 * User's can also update their personal information, shipping and billing addresses.
 * After the user checks out, show a confirmation page with details about the order they just created.
 * Create a simple sales report, showing what our sales numbers look like over time.
+
+You have two choices for this particular project.
+You can either be a lone ranger and work on it yourself, or you can pair up with another person.
+If you do choose to pair up, we can help you structure your work so its more atomic and create a branch for you,
