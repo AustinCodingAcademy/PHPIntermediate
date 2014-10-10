@@ -43,11 +43,8 @@ This is not PHP code, just plain old text.
 ```php
 <?php
     echo 'I am about to run...';
-
     die('I am here! and I am dead. Nothing after this line will run...');
-
     echo 'I will not run, because I am after the die()';
-
     echo 'Neither will I :/';
 ```
 
