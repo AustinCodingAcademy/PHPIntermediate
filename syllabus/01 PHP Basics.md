@@ -53,6 +53,34 @@ This is not PHP code, just plain old text.
 ?>
 ```
 
+Variables
+---------
+
+#### What is a variable? why variables?
+Variables are containers for values.
+The values that are assigned to variables, are done when your program runs, and are typically different during each run.
+Values that don't change are called constants.
+```php
+<?php
+//Define some variables
+$personName = 'Jane Doe';
+$personAddress = 'MugShots, 407 E 7th St. Austin, TX 78701';
+
+//Define some constants
+define('SPEED_OF_LIGHT', '299,792,458 m/s');
+define('HOURS_IN_DAY', 24);
+define('SECONDS_IN_MINUTE', 60);
+
+//Overwrite the value for person name from earlier.
+$personName = 'John Doe';
+?>
+```
+
+    * Creating a variable
+    * Checking if a variable exists
+    * Arrays
+    * stdClass objects
+
 * Data types and loose typing
     * int, bool, float, string, NULL, resource
     * Difference between a loosely typed and strongly typed language
@@ -62,12 +90,7 @@ This is not PHP code, just plain old text.
     * Difference between a variable and a constant
     * Checking if a constant is defined
     
-* Variables
-    * What is a variable? why variables?
-    * Creating a variable
-    * Checking if a variable exists
-    * Arrays
-    * stdClass objects
+
 
 * Operators
     * Mathematical operations on variables
