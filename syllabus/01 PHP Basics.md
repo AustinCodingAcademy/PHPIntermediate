@@ -11,7 +11,7 @@
 Syntax
 ------------------
 
-### PHP tags, define blocks of PHP code
+#### PHP tags, define blocks of PHP code
 ```php
 <?php
     echo 'This is PHP code!';
@@ -19,7 +19,7 @@ Syntax
 This is not PHP code, just plain old text.
 ```
 
-### The use of comments
+#### The use of comments
 ```php
 <?php
 // This is one way to define a comment
@@ -40,7 +40,7 @@ This is not PHP code, just plain old text.
 ?>
 ```
 
-### Debug using die; an alias to exit
+#### Debug using die; an alias to exit
 ```php
 <?php
     echo 'I am about to run...';
@@ -94,7 +94,7 @@ This is not PHP code, just plain old text.
 
 ***
 
-#### Homework 01 - Count Types
+##### Homework 01 - Count Types
 
 [Sample Code](homework/01_count_types.md)
 
