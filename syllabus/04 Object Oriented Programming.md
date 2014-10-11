@@ -376,10 +376,10 @@ $Child->setName('Bonobo');
 $Child->setMedicalCondition('Shivers');
 
 // This works
-echo 'Read using parent's public getter: '. $Child->getMedicalCondition();
+echo 'Read using public getter from parent class: ' . $Child->getMedicalCondition() . "\n";
 
 // So does this
-echo 'Read using child's public getter: '. $Child->readMedicalCondition();
+echo 'Read using public getter from child class: ' . $Child->readMedicalCondition() . "\n";
 
 // This does not work
 $Child->accessMedicalConditionProperty(); // Notice: Undefined property: ChildEmployee::$medicalCondition
