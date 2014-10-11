@@ -226,7 +226,7 @@ will take when you instantiate it. When we say ```$Obj = new MyCoolClass();``` w
 
 Lets create a simple class called ```Weather```.
 Notice that this class has two constructor arguments, ```$temperature``` and ```$location```.
-The ```$location``` argument is overridden.
+The ```$location``` argument has a default value.
 In other words, you don't need to specify the location when you instantiate the class, as its optional.
 
 ```php
