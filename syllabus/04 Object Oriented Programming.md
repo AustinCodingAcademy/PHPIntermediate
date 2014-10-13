@@ -229,7 +229,7 @@ will take when you instantiate it. When we say ```$Obj = new MyCoolClass();``` w
 
 Lets create a simple class called ```Weather```.
 Notice that this class has two constructor arguments, ```$temperature``` and ```$location```.
-The ```$location``` argument is overridden.
+The ```$location``` argument has a default value.
 In other words, you don't need to specify the location when you instantiate the class, as its optional.
 
 ```php
@@ -379,7 +379,10 @@ $Child->setName('Bonobo');
 $Child->setMedicalCondition('Shivers');
 
 // This works
-echo 'Read using public getter: '. $Child->getMedicalCondition();
+echo 'Read using public getter from parent class: ' . $Child->getMedicalCondition() . "\n";
+
+// So does this
+echo 'Read using public getter from child class: ' . $Child->readMedicalCondition() . "\n";
 
 // This does not work
 $Child->accessMedicalConditionProperty(); // Notice: Undefined property: ChildEmployee::$medicalCondition
