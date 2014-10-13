@@ -751,5 +751,5 @@ class MoneyCache implements CacheInterface
 }
 ```
 
-As you can see, each class ( ```MemcacheCache```, ```FilesystemCache``` and ```MoneyCache``` ) that implements the ```CacheInterface``` interface, 
-is forced to implement the ```get($key)``` and ```php set($key, $val)``` methods with the exact same signature as was defined in the interface.
+As you can see, each class ( ```MemcacheCache```, ```FilesystemCache``` and ```MoneyCache``` ) that implements the ```CacheInterface``` interface,
+is forced to implement the ```get($key)``` and ```set($key, $val)``` methods with the exact same signature as was defined in the interface.
