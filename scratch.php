@@ -1,63 +1,33 @@
 <?php
 
-interface CacheInterface
+/**
+ * Create some cookies
+ *
+ * @param int    $howMany    How many cookies do you want me to make
+ * @param string $name       Name to print on each cookie
+ * @param bool   $shouldBake Should we bake these? By default we will bake these!
+ *
+ * @return array
+ */
+function makeCookies($howMany, $name, $shouldBake = true)
 {
-    /**
-     * Get a value from cache
-     *
-     * @param string $key Key to get from cache
-     *
-     * @return mixed
-     */
-    public function get($key);
+    $biscuits = array();
 
-    /**
-     * Set a value to cache
-     *
-     * @param string $key Cache key
-     * @param mixed  $val Value to set
-     *
-     * @return mixed
-     */
-    public function set($key, $val);
+    if ($shouldBake == true) {
+        $biscuitName = $name . ' Baked Cookie';
+    } else {
+        $biscuitName = $name . ' Cookie Dough';
+    }
+
+    // You can also rewrite the conditional above using a ternary, shortening 5 lines of code into 1
+    $biscuitName = $shouldBake ? $name . ' Baked Cookie' : $name . ' Cookie Dough';
+
+    for ($i = 1; $i <= $howMany; $i++) {
+        $biscuits[] = $biscuitName . ' - ' . $i;
+    }
+
+    return $biscuits;
 }
 
-class MemcacheCache implements CacheInterface
-{
-    public function get($key)
-    {
-        return $key . ' from memcache';
-    }
-
-    public function set($key, $val)
-    {
-        return 'set ' . $val . ' to memcache under ' . $key;
-    }
-}
-
-class FilesystemCache implements CacheInterface
-{
-
-    public function get($key)
-    {
-        return $key . ' from file system cache';
-    }
-
-    public function set($key, $val)
-    {
-        return 'set ' . $val . ' to file system cache under ' . $key;
-    }
-}
-
-class MoneyCache implements CacheInterface
-{
-    public function get($key)
-    {
-        return $key . ' from money cache';
-    }
-
-    public function set($key, $val)
-    {
-        return 'set ' . $val . ' to money cache under ' . $key;
-    }
-}
+$cookies = makeCookies(12, 'Foo-Kie', false);
+print_r($cookies);
