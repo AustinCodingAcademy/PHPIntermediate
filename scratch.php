@@ -1,35 +1,63 @@
 <?php
 
-class GateEstate
+interface CacheInterface
 {
     /**
-     * Said no one ever!
+     * Get a value from cache
      *
-     * @var string
+     * @param string $key Key to get from cache
+     *
+     * @return mixed
      */
-    public $codeComments = 'Windows is just amaaaazing man!';
+    public function get($key);
 
     /**
-     * This makes no sense, lets let our children figure this one out.
+     * Set a value to cache
      *
-     * @var string
-     */
-    protected $childrenCanSeeThis = 'CallProc32W is insane. It\'s a variadic function that uses';
-
-    /**
-     * Windows code comment that only the GateEstate is privy to seeing
-     * You can only access this property in the GateEstate class using the $this keyword
+     * @param string $key Cache key
+     * @param mixed  $val Value to set
      *
-     * @var string
+     * @return mixed
      */
-    private $windowsCodeComment = 'HACK ALERT, believe it or not there is no way to get the height of the current window';
+    public function set($key, $val);
 }
 
-class RJGate extends GateEstate
+class MemcacheCache implements CacheInterface
 {
-    public function __construct()
+    public function get($key)
     {
-        echo 'I can see this public property as well: ' . $this->codeComments;
-        echo 'I can see $childrenCanSeeThis: ' . $this->childrenCanSeeThis;
+        return $key . ' from memcache';
+    }
+
+    public function set($key, $val)
+    {
+        return 'set ' . $val . ' to memcache under ' . $key;
+    }
+}
+
+class FilesystemCache implements CacheInterface
+{
+
+    public function get($key)
+    {
+        return $key . ' from file system cache';
+    }
+
+    public function set($key, $val)
+    {
+        return 'set ' . $val . ' to file system cache under ' . $key;
+    }
+}
+
+class MoneyCache implements CacheInterface
+{
+    public function get($key)
+    {
+        return $key . ' from money cache';
+    }
+
+    public function set($key, $val)
+    {
+        return 'set ' . $val . ' to money cache under ' . $key;
     }
 }

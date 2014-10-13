@@ -584,13 +584,164 @@ class RJGate extends GateEstate
 }
 ```
 
-Abstract Classes & Interfaces
------------------------------
+Abstract Classes
+----------------
+Abstract classes are a blueprint of an actual class that may contain partially implemented functionality
+or method definitions that every child class should implement. Lets create an abstract class called ```GetFoo```
+```php
+<?php
 
-* What is an abstract class?
-* What is an interface?
-* Whats the difference?
-* What can we use this for?
+abstract class GetFoo
+{
+    public function getSomeFoo()
+    {
+        return 'Some Foo';
+    }
+
+    /**
+     * By making this method abstract, we are forcing any client class that extends this class to implement this method
+     *
+     * @return string
+     */
+    abstract public function getMoreFoo();
+}
+```
+
+This particular class has one abstract method. Any class that extends this class **must** implement the ```getMoreFoo()``` method.
+```GetFoo``` cannot be instantiated into an object because it is abstract.
+```php
+<?php
+
+//Fatal error: Cannot instantiate abstract class GetFoo
+$AbstractFoo = new GetFoo();
+```
+
+This is what our child class looks like. We have implemented the ```getMoreFoo()``` method.
+From within this method, we can access any parent methods by using the ```parent``` keyword.
+```php
+<?php
+
+class WantFoo extends GetFoo
+{
+    /**
+     * This method can be called from within this class, and any child that extends it.
+     *
+     * @return string
+     */
+    protected function addFoo()
+    {
+        return 'is good for you.';
+    }
+
+    /**
+     * We have to implement this method, because the parent method is abstract
+     *
+     * @return string|void
+     */
+    public function getMoreFoo()
+    {
+        // Get some foo from the parent class
+        $someFoo = parent::getSomeFoo();
+
+        // Call a protected method from within this class
+        $addFoo = $this->addFoo();
+
+        return $someFoo . ' ' . $addFoo;
+    }
+}
+```
+
+And of course this is how we can call these methods.
+```php
+<?php
+
+$Wufu = new WantFoo();
+
+// We can access the public property in the abstract class because we extended it.
+echo $Wufu->getSomeFoo();
+
+// Get more foo, calls parent method and local protected method
+echo $Wufu->getMoreFoo();
+```
+
+Interfaces
+----------
+An Interface cannot define any functionality but it can be used to ensure that any class that ```implements``` it, will
+implement every method that is specified in the interface. This is useful when you want to make sure a set of interchangeable child classes
+always have the same set of methods. Interfaces are widely used in systems whose classes are **polymorphic** i.e. classes that can take on many forms.
+
+Lets say we are asked to build a system that allows user data to be cached. We need to support ```memcache```, ```filesystem``` and ```moneycache``` handlers.
+Furthermore, any new client that is added, needs to have a ```get($key)``` and ```set($key, $val)``` method that have the mentioned arguments.
+
+Here is how we define an interface
+```php
+interface CacheInterface
+{
+    /**
+     * Get a value from cache
+     *
+     * @param string $key Key to get from cache
+     *
+     * @return mixed
+     */
+    public function get($key);
+
+    /**
+     * Set a value to cache
+     *
+     * @param string $key Cache key
+     * @param mixed  $val Value to set
+     *
+     * @return mixed
+     */
+    public function set($key, $val);
+}
+```
+
+Now lets define our methods that implement this interface.
+
+```php
+class MemcacheCache implements CacheInterface
+{
+    public function get($key)
+    {
+        return $key . ' from memcache';
+    }
+
+    public function set($key, $val)
+    {
+        return 'set ' . $val . ' to memcache under ' . $key;
+    }
+}
+
+class FilesystemCache implements CacheInterface
+{
+
+    public function get($key)
+    {
+        return $key . ' from file system cache';
+    }
+
+    public function set($key, $val)
+    {
+        return 'set ' . $val . ' to file system cache under ' . $key;
+    }
+}
+
+class MoneyCache implements CacheInterface
+{
+    public function get($key)
+    {
+        return $key . ' from money cache';
+    }
+
+    public function set($key, $val)
+    {
+        return 'set ' . $val . ' to money cache under ' . $key;
+    }
+}
+```
+
 
 ### Exceptions revisited
 * Base Exception class
