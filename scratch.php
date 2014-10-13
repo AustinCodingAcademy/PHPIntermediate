@@ -1,33 +1,39 @@
 <?php
 
 /**
- * Create some cookies
+ * Pass in an argument by value
  *
- * @param int    $howMany    How many cookies do you want me to make
- * @param string $name       Name to print on each cookie
- * @param bool   $shouldBake Should we bake these? By default we will bake these!
+ * @param string $immutable Some string
  *
- * @return array
+ * @return void
  */
-function makeCookies($howMany, $name, $shouldBake = true)
+function mutateUniverse($immutable)
 {
-    $biscuits = array();
-
-    if ($shouldBake == true) {
-        $biscuitName = $name . ' Baked Cookie';
-    } else {
-        $biscuitName = $name . ' Cookie Dough';
-    }
-
-    // You can also rewrite the conditional above using a ternary, shortening 5 lines of code into 1
-    $biscuitName = $shouldBake ? $name . ' Baked Cookie' : $name . ' Cookie Dough';
-
-    for ($i = 1; $i <= $howMany; $i++) {
-        $biscuits[] = $biscuitName . ' - ' . $i;
-    }
-
-    return $biscuits;
+    //This value will not be changed on the outside, just inside the function as it is copied.
+    $immutable = 'The universe is expanding, so it is mutable!';
 }
 
-$cookies = makeCookies(12, 'Foo-Kie', false);
-print_r($cookies);
+/**
+ * Mutate a varible on the outside as we are passing in a value by
+ *
+ * @param string $mutant Some string representing a mutant, passed in byref
+ *
+ * @return void
+ */
+function mutateMutant(&$mutant)
+{
+    // The caller's copy of the variable will be mutated, and
+    $mutant .= 'but he is really Wolverine!';
+}
+
+// Example of calling function by value
+$fact = 'The universe is timeless, eternal and cannot be changed?';
+echo '$fact before call: '.$fact."\n";
+mutateUniverse($fact); // $fact is not mutated and it stays the same
+echo '$fact after call: '.$fact."\n";
+
+// Example of calling function by reference
+$wolverine = 'Looks like a regular guy...';
+echo '$wolverine before call: '.$wolverine."\n";
+mutateMutant($wolverine);
+echo '$wolverine after call: '.$wolverine."\n";

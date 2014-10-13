@@ -12,7 +12,7 @@ Functions
 ---------
 
 #### Creating a function
-A function is a block of code that may accept some input as parameters, will execute some localized block of code and may or may not return a value.
+A function is a block of code that may accept some input as parameters, will execute statements contained therein and may or may not return a value.
 ```php
 <?php
 
@@ -26,7 +26,7 @@ function sayFoo()
 }
 ```
 
-A function can accept arguments, type hinted arguments and optional default arguments
+Here is how you can pass arguments to a function. Notice that the last argument, ```$shouldBake```, is defaulted to false.
 ```php
 <?php
 
@@ -70,11 +70,84 @@ print_r($cookieDoughCookies);
 
 ```
 
+#### Returning values
+As we mentioned earlier, a function can return a value.
+The only way for a client that uses your function to know what value it will return is because you mention an ```@return <type>``` in the [DocBlock](http://en.wikipedia.org/wiki/PHPDoc#DocBlock).
+
+```php
+<?php
+
+/**
+ * Get today's date
+ *
+ * @return string
+ */
+function getDate()
+{
+    return date('m/d/Y');
+}
+```
 
 #### Distinction between 'by value' and 'by reference' arguments
+In PHP you can pass arguments into a function in two values
+- By Value
+When you pass in an argument by value, a copy of the variable you are passing in is given to the function.
+The original variable is unaltered.
 
-* Returning values
-* Documenting the entire method
+- By Reference
+If you pass in a variable by reference, a pointer to the original variable is passed in to the function.
+Any mutation to the variable within the function will affect the original variable that was passed in.
+
+Lets take an example of how this works.
+```php
+/**
+ * Pass in an argument by value
+ *
+ * @param string $immutable Some string
+ *
+ * @return void
+ */
+function mutateUniverse($immutable)
+{
+    //This value will not be changed on the outside, just inside the function as it is copied.
+    $immutable = 'The universe is expanding, so it is mutable!';
+}
+
+/**
+ * Mutate a varible on the outside as we are passing in a value by
+ *
+ * @param string $mutant Some string representing a mutant, passed in byref
+ *
+ * @return void
+ */
+function mutateMutant(&$mutant)
+{
+    // The caller's copy of the variable will be mutated, and
+    $mutant .= 'but he is really Wolverine!';
+}
+```
+The syntax for passing in values by reference is ```&```. Whenever you prefix any parameter with the ```&``` operator
+it will be passed around by reference, i.e. only one copy of the variable will exist, and all other references will point to the original.
+
+Let's take a look at how we can use our functions and get some output.
+```php
+// Example of calling function by value
+$fact = 'The universe is timeless, eternal and cannot be changed?';
+echo '$fact before call: '.$fact."\n";
+mutateUniverse($fact); // $fact is not mutated and it stays the same
+echo '$fact after call: '.$fact."\n";
+
+// Example of calling function by reference
+$wolverine = 'Looks like a regular guy...';
+echo '$wolverine before call: '.$wolverine."\n";
+mutateMutant($wolverine);
+echo '$wolverine after call: '.$wolverine."\n";
+```
+
+#### Documenting the entire method
+
+
+
 * Variable scope within a function
 * Throwing exceptions
 * Variable length arguments with [func_get_args()](http://us3.php.net/manual/en/function.func-get-args.php)
