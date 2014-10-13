@@ -519,7 +519,8 @@ echo $Manager->getData();
 Variables that are within a class are known as object properties. Properties can take on the three standard visibility prefixes
 viz. ```public```, ```protected``` and ```private```. When in an object context, you can access ```public``` properties directly.
 Mutating public properties is very bad programming practice, but you can do it and here's how:
-'''php
+
+```php
 <?php
 
 class SoupOfTheDay
@@ -541,6 +542,7 @@ $Soup->soupName = 'Foo Old Soup';
 
 Remember from our discussion earlier we said that ```private``` properties can only be accessed from the class within which they were defined and
 ```protected``` properties can only be accessed from within an inheritance hierarchy.
+
 ```php
 <?php
 
@@ -576,7 +578,7 @@ class RJGate extends GateEstate
         echo 'I can see this public property as well: ' . $this->codeComments;
         echo 'I can see $childrenCanSeeThis: ' . $this->childrenCanSeeThis;
 
-        //Should not be able to access this
+        // Should not be able to access this
         echo 'I cannot access this: ' . $this->windowsCodeComment;
     }
 }
