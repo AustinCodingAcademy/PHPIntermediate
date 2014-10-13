@@ -9,8 +9,11 @@ on the context in which they were created.
 
 OOP Fundamentals
 ----------------
-Lets take a look at some syntax that we can use to create classes, instantiate objects from those newly created classes and
-create a parent child relationship where applicable.
+Classes are a organized group of properties (variables) and methods (functions). This grouping of data and functionality is known as **encapsulation**.
+Writing code in this way gives us the ability to create a system that is composed of discrete pieces that are isolated from one another
+and can only communicate with each other via messages.
+Classes cannot be used directly, they have to be instantiated into objects, or their methods can be called statically.
+Lets take a look at how we can create classes and instantiate objects from them.
 
 #### Defining a class
 ```php
@@ -421,16 +424,164 @@ $F->displayConstant();
 echo 'There are ' . Foo::NUM_COUNTRIES_ON_EARTH .' countries on earth';
 ```
 
+#### Static Methods and Properties
+Static methods start with a visibility modifier and the keyword ```static``` e.g. ```public static function getMoFoo()```.
+You do not need to instantiate a class into an object to call static methods, these methods can only be called in the class context.
+Similarly, you cannot call a static method from a non static context, e.g. you cannot call the ```getMoFoo()``` method from an instantiated object.
+```php
+<?php
 
-*
-*
-* Static methods
-* Static properties
-* How to access object properties
-* The $this keyword
-* The self keyword
+class StaticClass
+{
+    /**
+     * Get more foo statically :)
+     */
+    public static function getMoFoo()
+    {
+        return 'mo foo?';
+    }
+}
+```
 
-### Abstract Classes & Interfaces
+This is how you would call the static method.
+```php
+$fooHolder = StaticClass::getMoFoo();
+```
+
+This is how you could access/mutate a static property, which gets set at *compile* time.
+```php
+
+// Access the property
+echo StaticTest::$myBar;
+
+// Mutate the static property
+StaticTest::$myBar = 'Iron Bar';
+```
+
+One very important point to note is that when you set the value of a static property, every subsequent object you
+instantiate will take that newly set value into consideration. This is a *very useful* feature.
+You can make instantiated objects behave differently by setting up some static switches on your classes and manipulate them at runtime.
+
+An interesting use case for a static property could be to completely alter the context in which classes "do stuff".
+Let's take a look at a real world example of a ```DataManager``` class with a ```$cacheEnable``` switch.
+```php
+<?php
+
+class DataManager
+{
+    /**
+     * Should we cache results?
+     *
+     * @var bool
+     */
+    public static $cacheEnable = true;
+
+    /**
+     * Get data from cache if switch is set, otherwise get from DB
+     *
+     * @return string
+     */
+    public function getData()
+    {
+        if (self::$cacheEnable == true) {
+            return 'Got data from cache';
+        } else {
+            return 'Got data from database';
+        }
+    }
+}
+```
+
+The ```getData()``` method will check the static property by using the ```self``` keyword. The value of ```$cacheEnable```, once set,
+will be checked for every new object that is instantiated till the end of the request lifecycle.
+
+```php
+<?php
+
+// Statically enable the cache, instantiate object and call non static method
+DataManager::$cacheEnable = true;
+$Manager = new DataManager();
+echo $Manager->getData();
+
+echo PHP_EOL;
+
+// Statically disable the cache, instantiate object and call non static method
+DataManager::$cacheEnable = false;
+$Manager = new DataManager();
+echo $Manager->getData();
+```
+
+#### How to access object properties
+
+Variables that are within a class are known as object properties. Properties can take on the three standard visibility prefixes
+viz. ```public```, ```protected``` and ```private```. When in an object context, you can access ```public``` properties directly.
+Mutating public properties is very bad programming practice, but you can do it and here's how:
+'''php
+<?php
+
+class SoupOfTheDay
+{
+    public $soupName = 'Foo Young Soup';
+}
+
+$Soup = new SoupOfTheDay();
+
+// Get soup name directly because its public
+echo $Soup->soupName;
+
+// Set soup name directly, also because its public
+// This is BAD programming practice, don't ever do this,
+// unless you have a great reason, and then still don't do it.
+$Soup->soupName = 'Foo Old Soup';
+
+```
+
+Remember from our discussion earlier we said that ```private``` properties can only be accessed from the class within which they were defined and
+```protected``` properties can only be accessed from within an inheritance hierarchy.
+```php
+<?php
+
+class GateEstate
+{
+    /**
+     * Said no one ever!
+     *
+     * @var string
+     */
+    public $codeComments = 'Windows is just amaaaazing man!';
+
+    /**
+     * This makes no sense, lets let our children figure this one out.
+     *
+     * @var string
+     */
+    protected $childrenCanSeeThis = 'CallProc32W is insane. It\'s a variadic function that uses';
+
+    /**
+     * Windows code comment that only the GateEstate is privy to seeing
+     * You can only access this property in the GateEstate class using the $this keyword
+     *
+     * @var string
+     */
+    private $windowsCodeComment = 'HACK ALERT, believe it or not there is no way to get the height of the current window';
+}
+
+class RJGate extends GateEstate
+{
+    public function __construct()
+    {
+        echo 'I can see this public property as well: ' . $this->codeComments;
+        echo 'I can see $childrenCanSeeThis: ' . $this->childrenCanSeeThis;
+
+        //Should not be able to access this
+        echo 'I cannot access this: ' . $this->windowsCodeComment;
+    }
+}
+```
+
+Abstract Classes & Interfaces
+-----------------------------
+
 * What is an abstract class?
 * What is an interface?
 * Whats the difference?

@@ -1,53 +1,35 @@
 <?php
 
-class Employee
+class GateEstate
 {
     /**
-     * @var string
-     */
-    protected $name;
-
-    /**
-     * Any medical condition this employee has
+     * Said no one ever!
      *
      * @var string
      */
-    private $medicalCondition;
+    public $codeComments = 'Windows is just amaaaazing man!';
 
     /**
-     * @param string $medicalCondition
+     * This makes no sense, lets let our children figure this one out.
+     *
+     * @var string
      */
-    public function setMedicalCondition($medicalCondition)
-    {
-        $this->medicalCondition = $medicalCondition;
-    }
+    protected $childrenCanSeeThis = 'CallProc32W is insane. It\'s a variadic function that uses';
 
     /**
-     * @return string
+     * Windows code comment that only the GateEstate is privy to seeing
+     * You can only access this property in the GateEstate class using the $this keyword
+     *
+     * @var string
      */
-    public function getMedicalCondition()
-    {
-        return $this->medicalCondition;
-    }
-
-    /**
-     * @param string $name
-     */
-    public function setName($name)
-    {
-        $this->name = $name;
-    }
-
-    /**
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
+    private $windowsCodeComment = 'HACK ALERT, believe it or not there is no way to get the height of the current window';
 }
 
-$Adult = new Employee();
-$Adult->setMedicalCondition('The Shakes');
-$Adult->setName('John Doe');
-print_r($Adult);
+class RJGate extends GateEstate
+{
+    public function __construct()
+    {
+        echo 'I can see this public property as well: ' . $this->codeComments;
+        echo 'I can see $childrenCanSeeThis: ' . $this->childrenCanSeeThis;
+    }
+}
