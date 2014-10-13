@@ -675,6 +675,8 @@ Furthermore, any new client that is added, needs to have a ```get($key)``` and `
 
 Here is how we define an interface
 ```php
+<?php
+
 interface CacheInterface
 {
     /**
@@ -698,9 +700,11 @@ interface CacheInterface
 }
 ```
 
-Now lets define our methods that implement this interface.
+Now lets define some classes that implement this interface.
 
 ```php
+<?php
+
 class MemcacheCache implements CacheInterface
 {
     public function get($key)
@@ -713,10 +717,12 @@ class MemcacheCache implements CacheInterface
         return 'set ' . $val . ' to memcache under ' . $key;
     }
 }
+```
+```php
+<?php
 
 class FilesystemCache implements CacheInterface
 {
-
     public function get($key)
     {
         return $key . ' from file system cache';
@@ -727,6 +733,9 @@ class FilesystemCache implements CacheInterface
         return 'set ' . $val . ' to file system cache under ' . $key;
     }
 }
+```
+```php
+<?php
 
 class MoneyCache implements CacheInterface
 {
@@ -741,7 +750,6 @@ class MoneyCache implements CacheInterface
     }
 }
 ```
-
 
 ### Exceptions revisited
 * Base Exception class
