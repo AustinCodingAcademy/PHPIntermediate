@@ -751,8 +751,5 @@ class MoneyCache implements CacheInterface
 }
 ```
 
-### Exceptions revisited
-* Base Exception class
-* Overriding Exception by extending
-* Why would we want to override the base Exception class?
-* How to throw your own Exceptions and why it matters
+As you can see, each class ( ```MemcacheCache```, ```FilesystemCache``` and ```MoneyCache``` )
+is forced to implement the ```get($key)``` and ```set($key, $val)``` methods with the exact same signature as was defined in the interface.
