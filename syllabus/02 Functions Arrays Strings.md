@@ -119,7 +119,7 @@ function mutateUniverse($immutable)
  */
 function mutateMutant(&$mutant)
 {
-    // The caller's copy of the variable will be mutated, and
+    // The caller's copy of the variable will be mutated
     $mutant .= 'but he is really Wolverine!';
 }
 ```
@@ -142,7 +142,19 @@ echo '$wolverine after call: '.$wolverine."\n";
 ```
 
 #### Documenting the entire method
+Documenting a method is slightly time consuming and doesn't seem to provide any immediate benefit at first.
+However, documenting is more important than the actual code you are about to write. It is of paramount important that code be readable.
+As a developer, you will end up reading lots of source code. Nobody likes reading badly formatted/undocumented code.
+Here are a few simple rules to follow:
+- Specify what your method does in plain english e.g. ```This method teaches you karate```
+- Specify the type of each argument
+- Mention the name of the variable that matches the argument name
+- Type hint your arguments if they are complex objects e.g. ```Person $person```
+- Specify a return type e.g. ```@return string```
+- Mention any Exceptions that your function throws e.g. ```@throws MissingDataException```
 
+If you document your methods property, specify the name, number and kind of arguments it accepts,
+specify a return type and mention if the function throws any Exceptions, then you have documented your function perfectly!
 
 
 * Variable scope within a function
