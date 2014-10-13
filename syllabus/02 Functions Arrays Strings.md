@@ -90,12 +90,9 @@ function getDate()
 
 #### Distinction between 'by value' and 'by reference' arguments
 In PHP you can pass arguments into a function in two values
-- By Value
-When you pass in an argument by value, a copy of the variable you are passing in is given to the function.
-The original variable is unaltered.
+- By Value -  When you pass in an argument by value, a copy of the variable you are passing in is given to the function. The original variable is unaltered.
 
-- By Reference
-If you pass in a variable by reference, a pointer to the original variable is passed in to the function.
+- By Reference - If you pass in a variable by reference, a pointer to the original variable is passed in to the function.
 Any mutation to the variable within the function will affect the original variable that was passed in.
 
 Lets take an example of how this works.
