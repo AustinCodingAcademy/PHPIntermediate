@@ -141,14 +141,15 @@ mutateMutant($wolverine);
 echo '$wolverine after call: '.$wolverine."\n";
 ```
 
-#### Documenting the entire method
-Documenting a method is slightly time consuming and doesn't seem to provide any immediate benefit at first.
-However, documenting is more important than the actual code you are about to write. It is of paramount important that code be readable.
+#### Documenting functions using DocBlock
+
+Documenting a function is slightly time consuming and doesn't seem to provide any immediate benefit at first.
+However, documenting is more important than the actual code you are about to write. It is of paramount importance that code be readable.
 As a developer, you will end up reading lots of source code. Nobody likes reading badly formatted/undocumented code.
 Here are a few simple rules to follow:
-- Specify what your method does in plain english e.g. ```This method teaches you karate```
-- Specify the type of each argument
-- Mention the name of the variable that matches the argument name
+- Specify what your function does in plain english e.g. ```This method teaches you karate```
+- Specify the type of each argument e.g. ```@param string```
+- Mention the name of the variable that matches the argument name ```@param string $personName Name of the karate student```
 - Type hint your arguments if they are complex objects e.g. ```Person $person```
 - Specify a return type e.g. ```@return string```
 - Mention any Exceptions that your function throws e.g. ```@throws MissingDataException```
@@ -156,8 +157,52 @@ Here are a few simple rules to follow:
 If you document your methods property, specify the name, number and kind of arguments it accepts,
 specify a return type and mention if the function throws any Exceptions, then you have documented your function perfectly!
 
+Lets look at a properly formatted function
+```php
+<?php
 
-* Variable scope within a function
+/**
+ * Teach everyone how to practice karate
+ *
+ * @param string $name        Instructor name
+ * @param int    $numStudents How many students in the class
+ * @param array  $names       Array of student names
+ *
+ * @return bool [true = Yes! Everyone learned karate, false = No! Not everyone is a karate kid]
+ */
+function learnKarate($name, $numStudents, $names)
+{
+    echo 'Instructor for this class is: ' . $name . PHP_EOL;
+
+    echo 'There are ' . $numStudents . ' in this karate class!' . PHP_EOL;
+
+    foreach ($names as $name) {
+
+        echo $name . ' is a karate kid!';
+    }
+
+    return true; // Everyone is a karate kid!
+}
+```
+Notice how each parameter's type is specified i.e. ```string```, ```int```, ```array``` etc...
+followed by the argument variable name followed by a description of the argument.
+Use ```@return``` notation to indicate what your function returns. You may optionally provide a string description
+of the return type in case it isn't intuitive.
+
+Here is how you would call the above function, and test it's return value.
+```php
+<?php
+
+if(learnKarate('Chun Lee', 12, ['Hugh Jass', 'Kung Fu Panda', 'Donald Macaque'])){
+    echo 'Everyone is a karate kid!';
+}else{
+    echo 'Some kids were left behind!';
+}
+```
+
+#### Variable scope within a function
+
+
 * Throwing exceptions
 * Variable length arguments with [func_get_args()](http://us3.php.net/manual/en/function.func-get-args.php)
 

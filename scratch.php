@@ -1,39 +1,30 @@
 <?php
 
 /**
- * Pass in an argument by value
+ * Teach everyone how to practice karate
  *
- * @param string $immutable Some string
+ * @param string $name        Instructor name
+ * @param int    $numStudents How many students in the class
+ * @param array  $names       Array of student names
  *
- * @return void
+ * @return bool [true = Yes! Everyone learned karate, false = No! Not everyone is a karate kid]
  */
-function mutateUniverse($immutable)
+function learnKarate($name, $numStudents, $names)
 {
-    //This value will not be changed on the outside, just inside the function as it is copied.
-    $immutable = 'The universe is expanding, so it is mutable!';
+    echo 'Instructor for this class is: ' . $name . PHP_EOL;
+
+    echo 'There are ' . $numStudents . ' in this karate class!' . PHP_EOL;
+
+    foreach ($names as $name) {
+
+        echo "\t".$name . ' is a karate kid!'.PHP_EOL;
+    }
+
+    return true; // Everyone is a karate kid!
 }
 
-/**
- * Mutate a varible on the outside as we are passing in a value by
- *
- * @param string $mutant Some string representing a mutant, passed in byref
- *
- * @return void
- */
-function mutateMutant(&$mutant)
-{
-    // The caller's copy of the variable will be mutated, and
-    $mutant .= 'but he is really Wolverine!';
+if(learnKarate('Chun Lee', 12, ['Hugh Jass', 'Kung Fu Panda', 'Donald Macaque'])){
+    echo 'Everyone is a karate kid!';
+}else{
+    echo 'Some kids were left behind!';
 }
-
-// Example of calling function by value
-$fact = 'The universe is timeless, eternal and cannot be changed?';
-echo '$fact before call: '.$fact."\n";
-mutateUniverse($fact); // $fact is not mutated and it stays the same
-echo '$fact after call: '.$fact."\n";
-
-// Example of calling function by reference
-$wolverine = 'Looks like a regular guy...';
-echo '$wolverine before call: '.$wolverine."\n";
-mutateMutant($wolverine);
-echo '$wolverine after call: '.$wolverine."\n";
