@@ -1,4 +1,4 @@
-02 - Functions, Arrays & Strings
+02 - Strings, Functions & Arrays
 ----------------------------
 >Now that we have the basics out of the way, we will be looking at functions in greater detail.
 >Encapsulating our procedural style code, into reusable units, is arguably one of the most important concepts in programming.
@@ -7,6 +7,16 @@
 value is in a string, replacing values, formatting etc... With over 90 native functions, we will have plenty to keep us busy!
 
 ***
+
+Strings
+-------
+* Creating a string
+* Concatenating two strings
+* Concatenating mixed types
+* Escaping literal values
+* Referencing individual characters using array notation
+* Simple string search
+* Formatting strings and numbers
 
 Functions
 ---------
@@ -91,16 +101,16 @@ function getDate()
 ```
 
 #### Distinction between 'by value' and 'by reference' arguments
-In PHP you can pass arguments into a function in two values
-- By Value -  When you pass in an argument by value, a copy of the variable you are passing in is given to the function. The original variable is unaltered.
+In PHP you can pass arguments into a function in two ways
+- By Value ```byval``` -  When you pass in an argument by value, a copy of the variable you are passing in is given to the function. The original variable is unaltered.
 
-- By Reference - If you pass in a variable by reference, a pointer to the original variable is passed in to the function.
+- By Reference ```byref``` - If you pass in a variable by reference, a pointer to the original variable is passed in to the function.
 Any mutation to the variable within the function will affect the original variable that was passed in.
 
 Lets take an example of how this works.
 ```php
 /**
- * Pass in an argument by value
+ * Accept an argument by value
  *
  * @param string $immutable Some string
  *
@@ -113,11 +123,12 @@ function mutateUniverse($immutable)
 }
 
 /**
- * Mutate a varible on the outside as we are passing in a value by
+ * Accept an argument by reference
  *
  * @param string $mutant Some string representing a mutant, passed in byref
  *
  * @return void
+ * @note The variable that is passed in will be altered, because this function mutates it
  */
 function mutateMutant(&$mutant)
 {
@@ -139,27 +150,27 @@ echo '$fact after call: '.$fact."\n";
 // Example of calling function by reference
 $wolverine = 'Looks like a regular guy...';
 echo '$wolverine before call: '.$wolverine."\n";
-mutateMutant($wolverine);
+mutateMutant($wolverine); // $wolverine is mutated because it is passed in byref
 echo '$wolverine after call: '.$wolverine."\n";
 ```
 
 #### Documenting functions using DocBlock
-
 Documenting a function is slightly time consuming and doesn't seem to provide any immediate benefit at first.
-However, documenting is more important than the actual code you are about to write. It is of paramount importance that code be readable.
+However, documenting is more important than the actual code you will write. It is of paramount importance that code be readable.
 As a developer, you will end up reading lots of source code. Nobody likes reading badly formatted/undocumented code.
 Here are a few simple rules to follow:
 - Specify what your function does in plain english e.g. ```This method teaches you karate```
 - Specify the type of each argument e.g. ```@param string```
-- Mention the name of the variable that matches the argument name ```@param string $personName Name of the karate student```
-- Type hint your arguments if they are complex objects e.g. ```Person $person```
+- Mention the name of the variable that matches the argument name ```@param string $personName```
+- Describe your variable ```@param string $personName Name of the karate student```
+- Type hint function arguments if they are complex objects e.g. ```Person $person```
 - Specify a return type e.g. ```@return string```
 - Mention any Exceptions that your function throws e.g. ```@throws MissingDataException```
 
 If you document your methods property, specify the name, number and kind of arguments it accepts,
 specify a return type and mention if the function throws any Exceptions, then you have documented your function perfectly!
 
-Lets look at a properly formatted function
+Lets study a properly formatted function DocBlock
 ```php
 <?php
 
@@ -179,23 +190,24 @@ function learnKarate($name, $numStudents, $names)
     echo 'There are ' . $numStudents . ' in this karate class!' . PHP_EOL;
 
     foreach ($names as $name) {
-
         echo $name . ' is a karate kid!';
     }
 
     return true; // Everyone is a karate kid!
 }
 ```
-Notice how each parameter's type is specified i.e. ```string```, ```int```, ```array``` etc...
+Notice how each argument's type is specified i.e. ```string```, ```int```, ```array``` etc...
 followed by the argument variable name followed by a description of the argument.
-Use ```@return``` notation to indicate what your function returns. You may optionally provide a string description
-of the return type in case it isn't intuitive.
+Use ```@return``` notation to indicate what your function returns.
+You may optionally provide a string description of the return type in case it isn't intuitive.
 
 Here is how you would call the above function, and test it's return value.
 ```php
 <?php
 
-if(learnKarate('Chun Lee', 12, ['Hugh Jass', 'Kung Fu Panda', 'Donald Macaque'])){
+$students = array('Hugh Jass', 'Kung Fu Panda', 'Donald Macaque');
+
+if(learnKarate($instructorName = 'Chun Lee', $numStudents = 12, $students)){
     echo 'Everyone is a karate kid!';
 }else{
     echo 'Some kids were left behind!';
@@ -203,24 +215,189 @@ if(learnKarate('Chun Lee', 12, ['Hugh Jass', 'Kung Fu Panda', 'Donald Macaque'])
 ```
 
 #### Variable scope within a function
+PHP has a global scope, a function scope and a class scope.
+Since global scope is really bad programming practice, we will not be discussing it.
+Scope is the ability for you to access certain variables.
+When inside a function, you have a blank slate.
+Any new variable you crate, even if it has the same name as a variable outside the function,
+will be new and independent from any other variable anywhere else.
+Class scope refers to your ability to access variables inside a class.
 
 
-* Throwing exceptions
-* Variable length arguments with [func_get_args()](http://us3.php.net/manual/en/function.func-get-args.php)
+Arrays
+------
+An array is a the most commonly used data structure in PHP and is used to hold a contiguous collection of data.
+They are extremely flexible and can store just about anything you can think of.
 
-### Arrays
-* How to create an array
-* Basic array operations i.e. adding/removing/replacing values
-* Referencing values in an array
-* Looping through an array
-* Creating a hash table for fast index lookups
-* Sorting arrays
+#### Creating an array
+```php
+<?php
 
-### Strings
-* Creating a string
-* Concatenating two strings
-* Concatenating mixed types
-* Escaping literal values
-* Referencing individual characters using array notation
-* Simple string search
-* Formatting strings and numbers
+// Create an array using  Array() syntax
+$shoppingList = Array('Banana', 'Almond Milk', 'Cilantro', 'Apples');
+echo 'Create an array using Array() syntax:' . PHP_EOL;
+print_r($shoppingList);
+
+echo PHP_EOL;
+
+// Another way to create an array using shorthand syntax
+$verboseShoppingList[] = 'Banana';
+$verboseShoppingList[] = 'Almond milk';
+$verboseShoppingList[] = 'Cilantro';
+$verboseShoppingList[] = 'Apples';
+echo 'Shorthand array syntax:' . PHP_EOL;
+print_r($verboseShoppingList);
+
+echo PHP_EOL;
+
+// Sort the contents of an array alphabetically
+sort($shoppingList);
+echo 'Sorted Shopping List:' . PHP_EOL;
+print_r($shoppingList);
+
+echo PHP_EOL;
+
+// Create an array with keys using array(). Note: You can also make it lowercase
+$businessCard = array(
+    'name' => 'Samir',
+    'phone' => '(512) 745-7846',
+    'email' => 'samir@austincodingacademy.com'
+);
+echo 'Array with keys and values using array() syntax:' . PHP_EOL;
+print_r($businessCard);
+
+echo PHP_EOL;
+
+//Create an array with keys using shorthand syntax
+$verboseBusinessCard['name'] = 'Samir';
+$verboseBusinessCard['phone'] = '(512) 745-7846';
+$verboseBusinessCard['email'] = 'samir@austincodingacademy.com';
+echo 'Array with keys and values using shorthand syntax:' . PHP_EOL;
+print_r($verboseBusinessCard);
+```
+
+#### Basic array operations i.e. referencing/adding/removing/replacing values
+You can manipulate values in an array by referencing the ```index``` i.e. the position of the data element you want to manipulate.
+```php
+<?php
+
+$states = array(
+    'AK' => "Alaska",
+    'AZ' => "Arizona",
+    'CA' => "California",
+    'CO' => "Colorado",
+    'CT' => "Connecticut",
+    'DC' => "District Of Columbia",
+    'HI' => "Hawaii",
+    'ME' => "Maine",
+    'MD' => "Maryland",
+    'MA' => "Massachusetts",
+    'MI' => "Michigan",
+    'MN' => "Minnesota",
+    'MT' => "Montana",
+    'NV' => "Nevada",
+    'NH' => "New Hampshire",
+    'NJ' => "New Jersey",
+    'NM' => "New Mexico",
+    'NY' => "New York",
+    'OR' => "Oregon",
+    'RI' => "Rhode Island",
+    'VT' => "Vermont",
+    'WA' => "Washington"
+);
+
+// Reference a value in this array by key
+echo $states['OR']; // Oregon
+
+// You cannot reference an array with a non-numeric index numerically
+echo $states[2]; // Notice:  Undefined offset: 2
+
+// Add a value to this array
+$states['TX'] = 'Texas';
+
+// Remove a value from this array
+unset($states['ME']);
+
+// Replace a value from this array
+$states['CA'] = 'Cali';
+```
+
+#### Looping through an array
+You can iterate through each element in an array and do something with it.
+```php
+<?php
+
+/** @var array $weeklyTemperatures Array of temperature readings this week */
+$weeklyTemperatures = array(75.43, 84.87, 78.34, 88.34, 79.93, 83.34, 85.93);
+
+// Calculate the average temperature
+$avgTemperature = 0.00;
+$numReadings = sizeof($weeklyTemperatures);
+
+foreach ($weeklyTemperatures as $dailyTemperature) {
+    $avgTemperature += $dailyTemperature;
+}
+
+$avgTemperature = $avgTemperature / $numReadings;
+
+echo 'The average temperature is: ' . $avgTemperature . PHP_EOL;
+
+// Figure out the hottest day
+$hottestDay = 0.00; // Start off with 0
+
+foreach($weeklyTemperatures as $dailyTemperature){
+
+    // If the hottest day is less than the current day
+    // Make the hottest day the current day's temperature
+    if($hottestDay < $dailyTemperature){
+        $hottestDay = $dailyTemperature;
+    }
+}
+
+echo 'The hottest day is: '.$hottestDay.PHP_EOL;
+```
+
+PHP provides you with a number of helpful array functions.
+```php
+<?php
+
+echo 'The hottest day is: '. max($weeklyTemperatures).PHP_EOL;
+echo 'The coldest day is: '.min($weeklyTemperatures).PHP_EOL;
+```
+
+#### Creating a hash table for fast index lookups
+Think of a hash table as a dictionary, when you know the work you are looking for, you go right to it and lookup its definition.
+The reason why you can do that, is because the dictionary is sorted alphabetically. We can create a similar structure in PHP, using an array.
+```php
+<?php
+
+/** @var array $medicalCodes Medical disorder codes. Key is code value is the disorder itself. */
+$medicalCodes = array(
+    369 => 'Blindness and low vision',
+    372 => 'Disorders of conjunctiva',
+    377 => 'Disorders of optic nerve and visual pathways',
+    378 => 'Strabismus and other disorders of binocular eye movements',
+    380 => 'Disorders of external ear',
+    383 => 'Mastoiditis and related conditions'
+);
+
+// If you know the code, i.e. the key, getting the value is extremely fast.
+echo $medicalCodes[377]; // Disorders of optic nerve and visual pathways
+```
+
+#### Sorting arrays
+PHP has several functions you can use to sort arrays, you can read all about them [here](http://php.net/manual/en/array.sorting.php).
+The most commonly used method is ```sort()```
+``` php
+<?php
+
+/** @var array $randomArray Array of random things */
+$randomArray = array('Feather', 'Baseball', 'Santiago', 'Video', 'Lace', 'Gravy', 'Sunglasses');
+
+print_r($randomArray); // unsorted
+
+// Sort this array
+sort($randomArray);
+
+print_r($randomArray); // Sorted :)
+```

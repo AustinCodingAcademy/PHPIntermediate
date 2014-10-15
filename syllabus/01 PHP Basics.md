@@ -86,54 +86,6 @@ if (!isset($personGender)) {
 }
 ```
 
-#### Arrays
-An array is a data structure that is used to hold a collection of data. Here are some ways you can create arrays.
-```php
-<?php
-
-// Create an array using  Array() syntax
-$shoppingList = Array('Banana', 'Almond Milk', 'Cilantro', 'Apples');
-echo 'Create an array using Array() syntax:' . PHP_EOL;
-print_r($shoppingList);
-
-echo PHP_EOL;
-
-// Another way to create an array using shorthand syntax
-$verboseShoppingList[] = 'Banana';
-$verboseShoppingList[] = 'Almond milk';
-$verboseShoppingList[] = 'Cilantro';
-$verboseShoppingList[] = 'Apples';
-echo 'Shorthand array syntax:' . PHP_EOL;
-print_r($verboseShoppingList);
-
-echo PHP_EOL;
-
-// Sort the contents of an array alphabetically
-sort($shoppingList);
-echo 'Sorted Shopping List:' . PHP_EOL;
-print_r($shoppingList);
-
-echo PHP_EOL;
-
-// Create an array with keys using array(). Note: You can also make it lowercase
-$businessCard = array(
-    'name' => 'Samir',
-    'phone' => '(512) 745-7846',
-    'email' => 'samir@austincodingacademy.com'
-);
-echo 'Array with keys and values using array() syntax:' . PHP_EOL;
-print_r($businessCard);
-
-echo PHP_EOL;
-
-//Create an array with keys using shorthand syntax
-$verboseBusinessCard['name'] = 'Samir';
-$verboseBusinessCard['phone'] = '(512) 745-7846';
-$verboseBusinessCard['email'] = 'samir@austincodingacademy.com';
-echo 'Array with keys and values using shorthand syntax:' . PHP_EOL;
-print_r($verboseBusinessCard);
-```
-
 Data types and loose typing
 ---------------------------
 

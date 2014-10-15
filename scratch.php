@@ -1,30 +1,11 @@
 <?php
 
-/**
- * Teach everyone how to practice karate
- *
- * @param string $name        Instructor name
- * @param int    $numStudents How many students in the class
- * @param array  $names       Array of student names
- *
- * @return bool [true = Yes! Everyone learned karate, false = No! Not everyone is a karate kid]
- */
-function learnKarate($name, $numStudents, $names)
-{
-    echo 'Instructor for this class is: ' . $name . PHP_EOL;
+/** @var array $randomArray Array of random things */
+$randomArray = array('Feather', 'Baseball', 'Santiago', 'Video', 'Lace', 'Gravy', 'Sunglasses');
 
-    echo 'There are ' . $numStudents . ' in this karate class!' . PHP_EOL;
+print_r($randomArray); // unsorted
 
-    foreach ($names as $name) {
+// Sort this array
+sort($randomArray);
 
-        echo "\t".$name . ' is a karate kid!'.PHP_EOL;
-    }
-
-    return true; // Everyone is a karate kid!
-}
-
-if(learnKarate('Chun Lee', 12, ['Hugh Jass', 'Kung Fu Panda', 'Donald Macaque'])){
-    echo 'Everyone is a karate kid!';
-}else{
-    echo 'Some kids were left behind!';
-}
+print_r($randomArray); // Sorted :)
