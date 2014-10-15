@@ -250,13 +250,6 @@ print_r($verboseShoppingList);
 
 echo PHP_EOL;
 
-// Sort the contents of an array alphabetically
-sort($shoppingList);
-echo 'Sorted Shopping List:' . PHP_EOL;
-print_r($shoppingList);
-
-echo PHP_EOL;
-
 // Create an array with keys using array(). Note: You can also make it lowercase
 $businessCard = array(
     'name' => 'Samir',
@@ -281,6 +274,7 @@ You can manipulate values in an array by referencing the ```index``` i.e. the po
 ```php
 <?php
 
+/** @var array $states Some American states */
 $states = array(
     'AK' => "Alaska",
     'AZ' => "Arizona",
