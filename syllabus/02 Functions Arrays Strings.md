@@ -42,22 +42,24 @@ Here is how you can pass arguments to a function. Notice that the last argument,
  */
 function makeCookies($howMany, $name, $shouldBake = true)
 {
-    $biscuits = array();
+    $cookies = array();
 
     if ($shouldBake == true) {
-        $biscuitName = $name . ' Baked Cookie';
+        $cookieName = $name . ' Baked Cookie';
     } else {
-        $biscuitName = $name . ' Cookie Dough';
+        $cookieName = $name . ' Cookie Dough';
     }
 
     // You can also rewrite the conditional above using a ternary, shortening 5 lines of code into 1
-    $biscuitName = $shouldBake ? $name . ' Baked Cookie' : $name . ' Cookie Dough';
+    $cookieName = $shouldBake ? $name . ' Baked Cookie' : $name . ' Cookie Dough';
 
+    // Loop over the $howMany variable, to create elements in the $cookies array
     for ($i = 1; $i <= $howMany; $i++) {
-        $biscuits[] = $biscuitName . ' - ' . $i;
+        $cookies[] = $cookieName . ' - ' . $i;
     }
 
-    return $biscuits;
+    // Return the array we just created, like we promised we would do in the DocBlock
+    return $cookies;
 }
 
 // Make some baked cookies
@@ -65,14 +67,14 @@ $cookies = makeCookies(12, 'Foo-Kie');
 print_r($cookies);
 
 // I'll take the cookie dough!
-$cookieDoughCookies = makeCookies(12, 'Foo-Kie', $shouldBake = false);
+$cookieDoughCookies = makeCookies(12, 'Bar-Kie', $shouldBake = false);
 print_r($cookieDoughCookies);
 
 ```
 
 #### Returning values
 As we mentioned earlier, a function can return a value.
-The only way for a client that uses your function to know what value it will return is because you mention an ```@return <type>``` in the [DocBlock](http://en.wikipedia.org/wiki/PHPDoc#DocBlock).
+The only way for a client that uses your function to know what value it will return is because you mention it via ```@return <type>``` in the [DocBlock](http://en.wikipedia.org/wiki/PHPDoc#DocBlock).
 
 ```php
 <?php
