@@ -1,6 +1,6 @@
 MySQL Fundamentals
 ==================
->[MySQl](http://www.mysql.com/) is "The world's most popular open source database".
+>[MySQL](http://www.mysql.com/) is "The world's most popular open source database".
 It's fast, secure, scalable, ACID compliant and built to handle high intensity web workloads.
 The language of MysQL, and most other relational databases, is SQL.
 SQL is an expressive language that we will use to ask the database questions about our data.
