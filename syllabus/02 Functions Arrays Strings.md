@@ -10,9 +10,53 @@ value is in a string, replacing values, formatting etc... With over 90 native fu
 
 Strings
 -------
-* Creating a string
-* Concatenating two strings
-* Concatenating mixed types
+Strings are very important in PHP. As a web developer you will find yourself using and manipulating strings more often than other tasks.
+It is quite important that you understand the difference between simple and complex strings, concatenating, escaping, referencing, searching and formatting strings.
+Lets take a look at each one of these **important** string topics individually.
+
+#### Creating a string
+Creating a string is a simple affair.
+``php
+<?php
+
+$mySimpleString = 'This is a simple string';
+$myComplexString = "This is a complex string"; // Why is this complex?
+```
+Note that the difference between a simple string and a complex string is that simple strings are enclosed in ```'``` while complex strings are enclosed in ```"```.
+The reason why a distinction like this exists will become clear once we study the following example.
+```php
+<?php
+
+$myName = "Samir";
+
+// Simple string will print out just what you see here.
+$simpleString = 'My name is $myName'; // My name is $myName
+echo 'Simple String: ' . $simpleString . "\n";
+
+// Complex strings will replace the value of the variable in the string itself.
+$complexString = "My name is $myName" . "\n"; // My name is Samir
+echo 'Complex String: ' . $complexString . "\n";
+```
+As you can see the simple string is enclosed in ```'``` and the value of the variable ```$myName``` is not printed.
+Instead the name of the variable is printed.
+In the case of a complex string, which is enclosed in ```"```, the value of the variable ```$myName``` is replaced with Samir.
+Also note that each of the lines is terminated with a ```"\n"```. This is a special character called a newline and is equivalent to hitting the enter key.
+
+#### Concatenating two strings
+You can concatenate two strings, or a string and an int or float using the ```.``` character. For instance
+```php
+<?php
+
+$string1 = 'My name is';
+$string2 = 'Samir';
+$myNumber = 124;
+$myFloat = 456.343;
+
+$concatenatedString = $string1 . ' ' . $string2 . ' ' . $myNumber. ' '. $myFloat;
+echo 'Concatenated String: ' . $concatenatedString;
+```
+
+
 * Escaping literal values
 * Referencing individual characters using array notation
 * Simple string search
