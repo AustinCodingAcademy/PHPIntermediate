@@ -1,4 +1,4 @@
-## Relevant Links and Recommended Reading
+### Relevant Links and Recommended Reading
 
 [PHP Manual](http://php.net) - Official PHP manual
 
