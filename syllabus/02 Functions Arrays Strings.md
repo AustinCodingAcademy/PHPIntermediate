@@ -16,12 +16,13 @@ Lets take a look at each one of these **important** string topics individually.
 
 #### Creating a string
 Creating a string is a simple affair.
-``php
+```php
 <?php
 
 $mySimpleString = 'This is a simple string';
 $myComplexString = "This is a complex string"; // Why is this complex?
 ```
+
 Note that the difference between a simple string and a complex string is that simple strings are enclosed in ```'``` while complex strings are enclosed in ```"```.
 The reason why a distinction like this exists will become clear once we study the following example.
 ```php
@@ -37,6 +38,7 @@ echo 'Simple String: ' . $simpleString . "\n";
 $complexString = "My name is $myName" . "\n"; // My name is Samir
 echo 'Complex String: ' . $complexString . "\n";
 ```
+
 As you can see the simple string is enclosed in ```'``` and the value of the variable ```$myName``` is not printed.
 Instead the name of the variable is printed.
 In the case of a complex string, which is enclosed in ```"```, the value of the variable ```$myName``` is replaced with Samir.
@@ -65,11 +67,37 @@ PHP, like most languages, allow you to escape special characters with a ```\```
 ```php
 <?php
 
+echo "This is how you print a \" in a string enclosed by double quotes";
+
+echo "\n"; // This is how you print a newline
+
+echo 'This is how you print a \' in a string enclosed by single quotes';
+
+echo "\n";
+
+echo "This is how you print a single slash \\ i.e. escape the escape character";
+
 ```
 
-* Escaping literal values
-* Referencing individual characters using array notation
-* Simple string search
+#### Referencing individual characters using array notation
+In PHP, strings can be referenced using array notation. You can think of a string as an array of characters.
+
+```php
+<?php
+
+$longString = 'This is a really long string';
+
+$howLong = strlen($longString);
+
+echo '$longString is '.$howLong.' characters long!'.PHP_EOL;
+
+for($i = 0; $i < $howLong; $i ++){
+    echo $longString[$i]."\t";
+}
+```
+
+#### Simple string search
+
 * Formatting strings and numbers
 
 Functions
