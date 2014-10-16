@@ -56,6 +56,16 @@ $concatenatedString = $string1 . ' ' . $string2 . ' ' . $myNumber. ' '. $myFloat
 echo 'Concatenated String: ' . $concatenatedString;
 ```
 
+#### Escaping literal values
+As we just learned, the ```"``` character and the ```'``` character have special meaning in strings.
+We also learned that ```\n``` enclosed in double quotes is actually a newline character.
+What happens when we need to print out an actual double quote or single quote, or newline character?
+PHP, like most languages, allow you to escape special characters with a ```\```
+
+```php
+<?php
+
+```
 
 * Escaping literal values
 * Referencing individual characters using array notation
