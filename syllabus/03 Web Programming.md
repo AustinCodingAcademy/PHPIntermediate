@@ -95,41 +95,48 @@ A form consists of elements and is enclosed in a ```<form>``` tag:
 All the ```input``` types on your form are indicative of the kind of data you are interested in collecting.
 
 To collect:
-- A single line of text use ```text``` 
-    ```html
-    <input type="text"/>
-    ```
-- Multiple lines of text use ```textarea```
-    ```html
-    <textarea></textarea>
-    ```
-- Mutually exclusive values use ```radio``` (Notice how the name="yesOrNo" is the same for both radios. This is how you link the radio buttons together) 
-    ```html
-    <input type="radio" name="yesOrNo" value="Yes"/> Yes 
-    <input type="radio" name="yesOrNo" value="No"/> No
-    ```
-- Mutually inclusive values use ```checkbox```
-    ```html
-    <input type="checkbox" name="coursesTaken[]" value="PHP"/> PHP
-    <input type="checkbox" name="coursesTaken[]" value="MySQL"/> MySQL
-    <input type="checkbox" name="coursesTaken[]" value="Python"/> Python
-    ```
-- A single value from a list of many use ```select```
-  ```html
-  <select name="animals">
-      <option value="Human">Human</option>
-      <option value="Monkey">Monkey</option>
-      <option value="Goat">Goat</option>
-      <option value="Whale">Whale</option>
-  </select>
-  ```
-- A file use
-    ```html
-    <input type="file" name="myFile"/>
-    ```
-    Additionally, in the ```<form>``` you will need to add ```enctype="multipart/form-data""``` to indicate that the form will be posting a file
+
+#### A single line of text use ```text``` 
+```html
+<input type="text"/>
+```
+
+#### Multiple lines of text use ```textarea```
+```html
+<textarea></textarea>
+```
+
+#### Mutually exclusive values use ```radio``` 
+Notice how the name="yesOrNo" is the same for both radios. This is how you link the radio buttons together
+```html
+<input type="radio" name="yesOrNo" value="Yes"/> Yes 
+<input type="radio" name="yesOrNo" value="No"/> No
+```
+
+#### Mutually inclusive values use ```checkbox```
+```html
+<input type="checkbox" name="coursesTaken[]" value="PHP"/> PHP
+<input type="checkbox" name="coursesTaken[]" value="MySQL"/> MySQL
+<input type="checkbox" name="coursesTaken[]" value="Python"/> Python
+```
+
+#### A single value from a list of many use ```select```
+```html
+<select name="animals">
+  <option value="Human">Human</option>
+  <option value="Monkey">Monkey</option>
+  <option value="Goat">Goat</option>
+  <option value="Whale">Whale</option>
+</select>
+```
+#### A file use
+```html
+<input type="file" name="myFile"/>
+```
+Additionally, in the ```<form>``` you will need to add ```enctype="multipart/form-data""``` to indicate that the form will be posting a file
 
 
-* Making AJAX calls
+### Making AJAX calls
+
 * Using cookies to store local data and maintain state
 * Using sessions
