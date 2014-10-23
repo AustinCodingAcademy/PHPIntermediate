@@ -96,31 +96,31 @@ All the ```input``` types on your form are indicative of the kind of data you ar
 
 To collect:
 
-#### A single line of text use ```text``` 
+##### A single line of text use ```text``` 
 ```html
 <input type="text"/>
 ```
 
-#### Multiple lines of text use ```textarea```
+##### Multiple lines of text use ```textarea```
 ```html
 <textarea></textarea>
 ```
 
-#### Mutually exclusive values use ```radio``` 
+##### Mutually exclusive values use ```radio``` 
 Notice how the name="yesOrNo" is the same for both radios. This is how you link the radio buttons together
 ```html
 <input type="radio" name="yesOrNo" value="Yes"/> Yes 
 <input type="radio" name="yesOrNo" value="No"/> No
 ```
 
-#### Mutually inclusive values use ```checkbox```
+##### Mutually inclusive values use ```checkbox```
 ```html
 <input type="checkbox" name="coursesTaken[]" value="PHP"/> PHP
 <input type="checkbox" name="coursesTaken[]" value="MySQL"/> MySQL
 <input type="checkbox" name="coursesTaken[]" value="Python"/> Python
 ```
 
-#### A single value from a list of many use ```select```
+##### A single value from a list of many use ```select```
 ```html
 <select name="animals">
   <option value="Human">Human</option>
@@ -129,14 +129,14 @@ Notice how the name="yesOrNo" is the same for both radios. This is how you link 
   <option value="Whale">Whale</option>
 </select>
 ```
-#### A file use
+##### A file use
 ```html
 <input type="file" name="myFile"/>
 ```
 Additionally, in the ```<form>``` you will need to add ```enctype="multipart/form-data""``` to indicate that the form will be posting a file
 
 
-### Making AJAX calls
+#### Making AJAX calls
 
 * Using cookies to store local data and maintain state
 * Using sessions
