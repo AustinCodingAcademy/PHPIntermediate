@@ -98,12 +98,12 @@ To collect:
 
 ##### A single line of text use ```text``` 
 ```html
-<input type="text"/>
+<input type="text" name="leaderName" size="30" value="Gandhi" placeholder="Enter Name"/>
 ```
 
 ##### Multiple lines of text use ```textarea```
 ```html
-<textarea></textarea>
+<textarea name="lifeStory" rows="5" cols="30" placeholder="Enter Life Story"></textarea>
 ```
 
 ##### Mutually exclusive values use ```radio``` 
@@ -129,6 +129,7 @@ Notice how the name="yesOrNo" is the same for both radios. This is how you link 
   <option value="Whale">Whale</option>
 </select>
 ```
+
 ##### A file use
 ```html
 <input type="file" name="myFile"/>
@@ -137,6 +138,26 @@ Additionally, in the ```<form>``` you will need to add ```enctype="multipart/for
 
 
 #### Making AJAX calls
+AJAX is a way we can make a call to the server, with a specific request, and get back a specific response, without reloading the page. 
+With the data that we get back from the server, we can update certain pieces of the page. 
+All modern web applications leverage some sort of AJAX mechanism to make the application feel more responsive.
+ 
+Lets take a look at how we an make an AJAX call with jQuery.
+```javascript
+$.ajax({
+    url: "/get_data", 
+    dataType: "json",
+    data: {
+        action : 'get_scores',
+        student : 'Samir Patel'
+    }, 
+    success: function(jsonData) {
+        response(jsonData.results);
+    }
+});
+```
+The reason why you would want to use jQuery over plain javascript to do this is that in plain javascript you would need to account for cross 
+browser differences, with jQuery you don't.
 
 * Using cookies to store local data and maintain state
 * Using sessions
