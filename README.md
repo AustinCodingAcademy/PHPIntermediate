@@ -30,6 +30,10 @@ Week 9 - In class coding and project completion
 
 Week 10 - Continue in class coding for ACAShop, Student Q&A, the state of PHP and the job market.
 
+#### Reference
+- [Helpful Links](Links.md)
+- [git Commands](GitCommands.md)
+
 ***
 
 `Instructor`: [Samir Patel](http://samirpatel.me)
