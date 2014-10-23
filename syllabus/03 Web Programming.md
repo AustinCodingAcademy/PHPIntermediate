@@ -7,11 +7,9 @@
 ***
 
 #### HTML
-Hyper Text Markup Language is the language used to design and represent every website you see on the internet today, regardless of the back end language used to generate it. 
-The final product is a structured set of XML ish data with open and close tags that serve a variety of purposes. Markup can be used to break up a document into parts, 
-structure each part, create form controls, and style elements in conjunction with Cascading Style Sheets.
+Hyper Text Markup Language is the language used to design and represent every website you see on the internet today, regardless of the back end language used to generate it.
 
-A HTML document has the following structure
+A HTML document has the following features
 ```html
 <!DOCTYPE html>
 <html>
@@ -59,10 +57,14 @@ Enter Name: <input type="text" name="person_name" id="pname" size="20" class="in
 </html>
 ```
 
-Stuff between the ```<style type="text/css">``` and ```</style>``` tags is ```CSS```, and is used to style elements on a page. 
+Code between the ```<style type="text/css">``` and ```</style>``` tags is ```CSS```, and is used to style elements on a page. 
 The code between ```<script type="text/javascript" language="javascript">``` and ```</script>``` is called ```javascript``` and is used to add incredibly powerful dynamic functionality to your web application. 
-Learning javascript is essential to becoming a successful web applications developer. Markup between the ```<body>``` and ```</body>``` tags is the content of the page 
-and usually is a combination of text, images and form controls all styled by ```CSS``` and brought to life using ```javascript```. 
+Learning javascript is essential to becoming a successful web applications developer. 
+
+Markup between the ```<body>``` and ```</body>``` tags is the content of the page 
+and usually is a combination of text, images and form controls all styled by ```CSS``` and brought to life using ```javascript```.
+ 
+
 You can attach an event to a button, or any other element on the page for that matter, and run a custom javascript function when the event fires. 
 In this case we have created a function called ```myClickFunction()``` that gets called when the user clicks the button. 
 This works because the function is attached to the ```onclick``` event for that particular button.  
