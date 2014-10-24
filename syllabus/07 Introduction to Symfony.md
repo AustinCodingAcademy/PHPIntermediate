@@ -56,13 +56,15 @@ You will then be directed to answer a series of questions:
 - Confirm automatic update of the Routing [yes]? ``Hit enter```
 
 Once you are done with this, your directory should look like this:
+
 ![ACAShopBundle](../images/acashop_bundle.png "Bundle")
 
 #### Routing
 Any website that you visit will have a home page and some other pages that may be static content or contain some interface that you can interact with. 
 The various pages on a website can be accessed by ```routes```. Routing is the process of creating such routes.
 
-Open up your browser and view our newly created site by visiting ```http://10.10.10.10/acashop/web/app_dev.php```
+Open up your browser and view our newly created site by visiting ```http://10.10.10.10/acashop/web/app_dev.php``` we should get an error message that reads * No route found for "GET /" * 
+The reason why this is happening is because we have not defined any routes just yet. The first thing we will be doing is defining a route for the home page. 
 
 ### Framework Fundamentals
 * Routing
