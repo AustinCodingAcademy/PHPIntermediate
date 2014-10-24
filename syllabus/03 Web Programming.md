@@ -191,7 +191,6 @@ if (isset($_SESSION['logged_in'])) {
 ?>
 ```
 
-The method ```session_start()``` needs to get called prior to using ```$_SESSION```. PHP will then send out a session cookie to your local browser called ```PHPSESSID```. 
-![Session Cookie](../images/session_cookie.png "Session Cookie")
+The method ```session_start()``` needs to get called prior to using ```$_SESSION```. PHP will then send out a session cookie to your local browser called ```PHPSESSID```.
 This cookie will be sent back to the server with every request to identify this session as being yours. You don't have to worry about the details of how the session works, only how to use it. 
 Using the session is as simple as assigning or retrieving a value to the ```$_SESSION``` super global.
