@@ -80,8 +80,16 @@ Separating style from markup is the hallmark of a maintainable, easy to read, ex
 
 #### Dynamic behavior using the power of javascript and jQuery
 [jQuery](http://jquery.com/) is a ```javascript``` library used to speed up your ability to interact with the [DOM](http://en.wikipedia.org/wiki/Document_Object_Model) using javascript. 
-Going back to our original example, we stored the value of person name in a variable called person_name like so ```var person_name = document.getElementById('pname').value;``` 
-The way you can do the same thing in jQuery is ```var person_name = $("#pname").val();```. jQuery makes it incredibly easy to select elements using selectors, loop over a list of items, apply styles, make AJAX calls and much much more.
+Going back to our original example, we stored the value of person name in a variable called person_name like so 
+```javascript
+var person_name = document.getElementById('pname').value;
+``` 
+
+The way you can do the same thing in jQuery is 
+```javascript
+var person_name = $("#pname").val();
+```. 
+jQuery makes it incredibly easy to select elements using selectors, loop over a list of items, apply styles, make AJAX calls and much much more.
 
 #### Collecting user input using forms
 Any modern web application needs to collect user data in some structured way. This is typically accomplished using web forms. 
