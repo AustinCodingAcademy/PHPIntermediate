@@ -159,5 +159,39 @@ $.ajax({
 The reason why you would want to use jQuery over plain javascript to do this is that in plain javascript you would need to account for cross 
 browser differences, with jQuery you don't.
 
-* Using cookies to store local data and maintain state
-* Using sessions
+#### Sessions
+HTTP is a stateless protocol. Every time you make a request to a web server, the server has no memory of who you are or who you were. 
+Sessions aim to alleviate this problem by creating a session cookie locally. Once your session is established, i.e. the cookie is created, every subsequent request you make, 
+will contain that cookie in the header that uniquely identifies you. Sessions are typically used to store small amounts of data on a user. 
+Lets take a look at a typical use case for a session, a login box. 
+```php
+<?php
+session_start();
+
+// A form was posted
+if (!empty($_POST)) {
+    $username = $_POST['username'];
+    $_SESSION['username'] = $username;
+    $_SESSION['logged_in'] = 1;
+}
+?>
+
+<?php
+if (isset($_SESSION['logged_in'])) {
+    echo 'Welcome to the member\'s area '.$_SESSION['username'];
+} else {
+
+    ?>
+    <form name="loginForm" action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post">
+        Username: <input type="text" name="username" size="12"/>
+        <input type="submit" value="Login"/>
+    </form>
+<?php
+}
+?>
+```
+
+The method ```session_start()``` needs to get called prior to using ```$_SESSION```. PHP will then send out a session cookie to your local browser called ```PHPSESSID```. 
+![Session Cookie](../images/session_cookie.png "Session Cookie")
+This cookie will be sent back to the server with every request to identify this session as being yours. You don't have to worry about the details of how the session works, only how to use it. 
+Using the session is as simple as assigning or retrieving a value to the ```$_SESSION``` super global.
