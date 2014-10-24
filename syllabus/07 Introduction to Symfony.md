@@ -63,11 +63,65 @@ Once you are done with this, your directory should look like this:
 Any website that you visit will have a home page and some other pages that may be static content or contain some interface that you can interact with. 
 The various pages on a website can be accessed by ```routes```. Routing is the process of creating such routes.
 
-Open up your browser and view our newly created site by visiting ```http://10.10.10.10/acashop/web/app_dev.php``` we should get an error message that reads * No route found for "GET /" * 
+Open up your browser and view our newly created site by visiting [http://10.10.10.10/acashop/web/app_dev.php](http://10.10.10.10/acashop/web/app_dev.php) 
+we should get an error message that reads *No route found for "GET /"* 
 The reason why this is happening is because we have not defined any routes just yet. The first thing we will be doing is defining a route for the home page. 
 
-### Framework Fundamentals
-* Routing
+Open up a file called ```src/ACA/ShopBundle/Resources/config/routing.yml``` in your IDE. 
+
+![Bundle Routing](../images/routing_yml.png "routing.yml")
+
+This file should contain the following yml config
+```yml
+aca_shop_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: ACAShopBundle:Default:index }
+```
+
+Rename the first line that reads ```path: /hello/{name}``` to ```path: /``` 
+This means that we want the route to match ```/``` i.e. the home page. 
+The next line ```defaults``` is the corresponding controller and method that the route hits. 
+So, in this example we are in the ```ACAShopBundle```, under the ```DefaultController``` and the method ```indexAction()```
+
+#### Controllers
+A controller is a class in the framework that contains code that gets executed when a matching route is found. 
+Open up the file ```src/ACA/ShopBundle/Controller/DefaultController.php```
+
+![DefaultController](../images/default_controller.png "Controller")
+
+Get rid of the code for the indexAction() method
+```php
+public function indexAction($name)
+{
+    return $this->render('ACAShopBundle:Default:index.html.twig', array('name' => $name));
+}
+```
+
+Replace it with this 
+```php
+public function indexAction(){
+    return $this->render('ACAShopBundle:Default:index.html.twig');
+}
+```
+
+What we did is removed the $name parameter as an argument, from the method and the template.
+
+#### Templating
+Symfony uses a templating engine called twig. Twig templates are located in the views folder in your bundle. 
+The views folder should contain a sub-folder called ```Default```. The folder name should match the controller name, 
+so ```DefaultController```'s templates will live in ```/src/ACA/ShopBundle/Resources/views/Default/```
+
+Open the file ```index.html.twig``` located in the views folder, and replace its contents with 
+```html
+<h3>Welcome to ACAShop</h3>
+```
+
+Now lets visit the site [http://10.10.10.10/acashop/web/app_dev.php](http://10.10.10.10/acashop/web/app_dev.php), we should see the message we just entered. 
+
+You might be wondering why we took all this trouble just to get that one message on there when you could have done the exact same thing with plain PHP. 
+Symfony gives us a framework that we can use to develop a fully featured PHP application, while you could certainly achieve the same effect in PHP, 
+as you will learn, using a framework is a huge time saver. Our goal is to create a basic E-Commerce application.
+
 * Creating controller actions
 * Templating using twig
 * PSR4 autoloading and namespacing conventions
