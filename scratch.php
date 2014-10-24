@@ -21,4 +21,3 @@ if (isset($_SESSION['logged_in'])) {
     </form>
 <?php
 }
-?>

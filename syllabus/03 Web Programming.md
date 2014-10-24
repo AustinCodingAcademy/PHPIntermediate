@@ -174,13 +174,10 @@ if (!empty($_POST)) {
     $_SESSION['username'] = $username;
     $_SESSION['logged_in'] = 1;
 }
-?>
 
-<?php
 if (isset($_SESSION['logged_in'])) {
     echo 'Welcome to the member\'s area '.$_SESSION['username'];
 } else {
-
     ?>
     <form name="loginForm" action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post">
         Username: <input type="text" name="username" size="12"/>
@@ -188,7 +185,6 @@ if (isset($_SESSION['logged_in'])) {
     </form>
 <?php
 }
-?>
 ```
 
 The method ```session_start()``` needs to get called prior to using ```$_SESSION```. PHP will then send out a session cookie to your local browser called ```PHPSESSID```.
