@@ -145,8 +145,8 @@ spl_autoload_register(function ($class) {
 
 #### Namespaces
 It is generally a good practice to namespace your code. 
-Put your code in a specific folder structure, and then reference that same structure with the ```namespace``` keyword. 
-e.g. My class is located in the folder *ACA/ShopBundle/Shop/Product.php* then here is what the namespace declaration would look like. 
+Put your code in a specific folder structure, use the ```namespace``` keyword to mark it a part of that namespace. 
+e.g. My class is located in the folder **ACA/ShopBundle/Shop/Product.php** then here is what the namespace declaration would look like. 
 ```php
 <?php
 namespace ACA\ShopBundle\Shop;
@@ -176,7 +176,7 @@ class DoMoWerk{
 #### Dependency Injection
 As a concept, DI is quite simple. Instead of creating the dependencies a class needs from within itself, you provide the dependency from the outside. 
 If you pass in dependencies via arguments, you can easily swap those out with other test objects or even test values without mutating the fundamental nature of your classes. 
-Alas, in the wild this concept is sometimes taken too far, trading readability for testability, which, in my opinion, is a deal breaker!   
+Alas, in the field, this concept is sometimes taken too far, trading readability for testability, which, in my opinion, is a deal breaker!   
 
 Lets look at an example of a class with constructor dependency injection and the same class without it.
 ```php
@@ -251,3 +251,6 @@ class WithoutDI
     }
 }
 ```
+
+Now you may be wondering where the class ```WithDI``` gets it's constructor arguments from? In other words who gives each class the dependencies it needs? 
+Meet the [Service Container](http://symfony.com/doc/current/book/service_container.html), whose main task is to standardize and centralize the creation of objects in your system.
