@@ -11,9 +11,10 @@ In order to install the framework we are going to need to install composer first
 [Composer](https://getcomposer.org/) is a dependency manager that we will be using to download [Symfony](http://symfony.com).
 
 #### Install composer
+On your local machine, type in these commands.
 ```bash
 curl -sS https://getcomposer.org/installer | php
-sudo mv composer.phar /usr/local/bin/composer
+mv composer.phar /usr/local/bin/composer
 ```
 At this point you will need to close your terminal and open it up again, then type ```composer```
 
@@ -120,17 +121,103 @@ Now lets visit the site [http://10.10.10.10/acashop/web/app_dev.php](http://10.1
 
 You might be wondering why we took all this trouble just to get that one message on there when you could have done the exact same thing with plain PHP. 
 Symfony gives us a framework that we can use to develop a fully featured PHP application, while you could certainly achieve the same effect in PHP, 
-as you will learn, using a framework is a huge time saver. Our goal is to create a basic E-Commerce application.
+as you will learn, using a framework is a huge time saver. As we mentioned earlier, using MVC separation is the hallmark of modern web applications. 
+If you were to write your application in pure PHP you would have to spend time to create a router, controller, autoloader, templating engine etc...
 
-* Creating controller actions
-* Templating using twig
-* PSR4 autoloading and namespacing conventions
-* Dependency Injection
-* MVC architecture
+#### PSR4 autoloading and namespacing
+Symfony supports whats known as [PSR-4](http://www.php-fig.org/psr/psr-4/) [autoloading](http://us3.php.net/autoload). 
+In the days of yore, every file that you wanted to be a part of your project needed to have either an ```include```, ```require``` or ```require_once``` declaration prior to it's use. 
+Autoloading solves this problem by giving you the ```spl_autoload_register``` method that you can use to register an autoloader, or any number of autoloaders.
 
-### Databases
-* MySQL primer on SELECT, INSERT, UPDATE, DELETE queries
-* Specifying criteria with WHERE clause
-* Fetching related data using JOIN
-* Limiting the number of results returned 
-* Creating a custom database helper class
+Here is an example of how to use it
+```php
+function myCustomAutoloader($class) {
+    include 'classes/' . $class . '.class.php';
+}
+
+spl_autoload_register('myCustomAutoloader');
+
+// Or, using an anonymous function as of PHP 5.3.0
+spl_autoload_register(function ($class) {
+    include 'classes/' . $class . '.class.php';
+});
+```
+
+#### Dependency Injection
+As a concept, DI is quite simple. Instead of creating the dependencies a class needs from within itself, you provide the dependency from the outside. 
+If you pass in dependencies via arguments, you can easily swap those out with other test objects or even test values without mutating the fundamental nature of your classes. 
+Alas, in the wild this concept is sometimes taken too far, trading readability for testability, which, in my opinion, is a deal breaker!   
+
+Lets look at an example of a class with constructor dependency injection and the same class without it.
+```php
+<?php
+
+/**
+ * Class WithDI illustrates a class with dependencies that have been injected
+ */
+class WithDI
+{
+    /**
+     * Datbase connection
+     *
+     * @var DBCommon
+     */
+    protected $DB;
+
+    /**
+     * User placing an order
+     *
+     * @var ACAPerson
+     */
+    protected $User;
+
+    /**
+     * Order object containing the user's entire order
+     *
+     * @var ACAOrder
+     */
+    protected $Order;
+
+    public function __construct(DBCommon $DB, ACAPerson $User, ACAOrder $Order)
+    {
+        $this->DB = $DB;
+        $this->User = $User;
+        $this->Order = $Order;
+    }
+}
+
+
+/**
+ * Class WithoutDI illustrates a class with the ability for itself to fetch it's own dependencies.
+ */
+class WithoutDI
+{
+    /**
+     * Datbase connection
+     *
+     * @var DBCommon
+     */
+    protected $DB;
+
+    /**
+     * User placing an order
+     *
+     * @var ACAPerson
+     */
+    protected $User;
+
+    /**
+     * Order object containing the user's entire order
+     *
+     * @var ACAOrder
+     */
+    protected $Order;
+
+    public function __construct($userId, $orderId)
+    {
+        $this->DB = Factory::getDB();
+        $this->User = Factory::getACAPerson($userId);
+        $this->Order = Factory::getACAOrder($orderId);
+    }
+}
+```

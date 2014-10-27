@@ -1,23 +1,70 @@
 <?php
-session_start();
 
-// A form was posted
-if (!empty($_POST)) {
-    $username = $_POST['username'];
-    $_SESSION['username'] = $username;
-    $_SESSION['logged_in'] = 1;
+/**
+ * Class WithDI illustrates a class with dependencies that have been injected
+ */
+class WithDI
+{
+    /**
+     * Datbase connection
+     *
+     * @var DBCommon
+     */
+    protected $DB;
+
+    /**
+     * User placing an order
+     *
+     * @var ACAPerson
+     */
+    protected $User;
+
+    /**
+     * Order object containing the user's entire order
+     *
+     * @var ACAOrder
+     */
+    protected $Order;
+
+    public function __construct(DBCommon $DB, ACAPerson $User, ACAOrder $Order)
+    {
+        $this->DB = $DB;
+        $this->User = $User;
+        $this->Order = $Order;
+    }
 }
-?>
 
-<?php
-if (isset($_SESSION['logged_in'])) {
-    echo 'Welcome to the member\'s area '.$_SESSION['username'];
-} else {
 
-    ?>
-    <form name="loginForm" action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post">
-        Username: <input type="text" name="username" size="12"/>
-        <input type="submit" value="Login"/>
-    </form>
-<?php
+/**
+ * Class WithoutDI illustrates a class with the ability for itself to fetch it's own dependencies.
+ */
+class WithoutDI
+{
+    /**
+     * Datbase connection
+     *
+     * @var DBCommon
+     */
+    protected $DB;
+
+    /**
+     * User placing an order
+     *
+     * @var ACAPerson
+     */
+    protected $User;
+
+    /**
+     * Order object containing the user's entire order
+     *
+     * @var ACAOrder
+     */
+    protected $Order;
+
+    public function __construct($userId, $orderId)
+    {
+        $this->DB = Factory::getDB();
+        $this->User = Factory::getACAPerson($userId);
+        $this->Order = Factory::getACAOrder($orderId);
+    }
 }
