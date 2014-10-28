@@ -12,7 +12,7 @@ apply some of the most commonly used design patterns, learn about the MySQL data
 
 Week 1 - [PHP Basics](syllabus/01 PHP Basics.md)
 
-Week 2 - [Functions, Arrays & Strings](syllabus/02 Functions Arrays Strings.md)
+Week 2 - [Functions, Arrays & Strings](syllabus/02 Strings Functions Arrays.md)
 
 Week 3 - [Web Programming](syllabus/03 Web Programming.md)
 
