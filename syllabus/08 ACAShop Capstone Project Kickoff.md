@@ -69,7 +69,7 @@ i.e. in the database or not using a public method called ```isValid()```
 
 #### Tables
 
-> aca_user [SQL](sql/aca_user.sql)
+> [aca_user](sql/aca_user.sql)
 
 ```sql
 mysql> describe aca_user;
@@ -87,7 +87,7 @@ mysql> describe aca_user;
 7 rows in set (0.00 sec)
 ```
 
->aca_product
+> [aca_product](sql/aca_product.sql)
 
 ```sql
 mysql> describe aca_product;
@@ -104,7 +104,7 @@ mysql> describe aca_product;
 6 rows in set (0.00 sec)
 ```
 
->aca_order
+> [aca_order](sql/aca_order.sql)
 
 ```sql
 mysql> describe aca_order;
@@ -118,7 +118,7 @@ mysql> describe aca_order;
 3 rows in set (0.00 sec)
 ```
 
->aca_order_product
+> [aca_order_product](sql/aca_order_product.sql)
 
 ```sql
 mysql> describe aca_order_product;
