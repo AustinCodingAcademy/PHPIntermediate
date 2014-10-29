@@ -69,7 +69,7 @@ i.e. in the database or not using a public method called ```isValid()```
 
 #### Tables
 
->aca_user
+> aca_user [SQL](sql/aca_user.sql)
 
 ```sql
 mysql> describe aca_user;
