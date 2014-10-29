@@ -92,6 +92,23 @@ mysql> describe aca_user;
 7 rows in set (0.00 sec)
 ```
 
+> [aca_address](sql/aca_address.sql)
+```sql
+mysql> describe aca_address;
++------------+----------------------------+------+-----+-------------------+----------------+
+| Field      | Type                       | Null | Key | Default           | Extra          |
++------------+----------------------------+------+-----+-------------------+----------------+
+| address_id | int(11) unsigned           | NO   | PRI | NULL              | auto_increment |
+| type       | enum('BILLING','SHIPPING') | YES  |     | NULL              |                |
+| street     | varchar(255)               | YES  |     | NULL              |                |
+| city       | varchar(50)                | YES  |     | NULL              |                |
+| state      | varchar(5)                 | YES  |     | NULL              |                |
+| zip        | int(5)                     | YES  |     | NULL              |                |
+| date_added | timestamp                  | YES  |     | CURRENT_TIMESTAMP |                |
++------------+----------------------------+------+-----+-------------------+----------------+
+7 rows in set (0.00 sec)
+```
+
 > [aca_product](sql/aca_product.sql)
 
 ```sql
