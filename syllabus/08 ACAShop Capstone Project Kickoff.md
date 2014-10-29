@@ -6,10 +6,10 @@ Here are some of the features we expect our store to have to keep those hard to 
 
 #### Home Page
 - We will be using [bootstrap](http://getbootstrap.com/) to layout our ```base.html.twig``` template
-- Create a navigation menu that contains a few links to 
-```/``` that is a link to the home page, 
-```/catalog``` which is a link to our product catalog and 
-```cart``` that will show all the items that the user has added to their cart
+- Create a navigation menu that contains a few links:
+    - ```/``` that is a link to the home page, 
+    - ```/catalog``` which is a link to our product catalog and 
+    - ```cart``` that will show all the items that the user has added to their cart
 - Create a username and password login box, complete with a route that will handle user authentication
 - We will need a corresponding ```User``` class that will inform the client if the user is valid i.e. in the database or not
 
