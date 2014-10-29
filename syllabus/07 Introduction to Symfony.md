@@ -100,7 +100,8 @@ public function indexAction($name)
 
 Replace it with this 
 ```php
-public function indexAction(){
+public function indexAction()
+{
     return $this->render('ACAShopBundle:Default:index.html.twig');
 }
 ```
@@ -124,8 +125,8 @@ Symfony gives us a framework that we can use to develop a fully featured PHP app
 as you will learn, using a framework is a huge time saver. As we mentioned earlier, using MVC separation is the hallmark of modern web applications. 
 If you were to write your application in pure PHP you would have to spend time to create a router, controller, autoloader, templating engine etc...
 
-#### PSR4 autoloading
-Symfony supports whats known as [PSR-4](http://www.php-fig.org/psr/psr-4/) [autoloading](http://us3.php.net/autoload). 
+#### PSR-4 autoloading
+Symfony supports [PSR-4](http://www.php-fig.org/psr/psr-4/) [autoloading](http://us3.php.net/autoload) autoloading for all your classes.  
 In the days of yore, every file that you wanted to be a part of your project needed to have either an ```include```, ```require``` or ```require_once``` declaration prior to it's use. 
 Autoloading solves this problem by giving you the ```spl_autoload_register``` method that you can use to register an autoloader, or any number of autoloaders.
 

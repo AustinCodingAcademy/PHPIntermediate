@@ -38,7 +38,7 @@ i.e. in the database or not using a public method called ```isValid()```
 
 #### Checkout
 - For the checkout page lets create a controller called ```CheckoutController```
-- Display two forms with a shipping address and a billing address
+- Display two HTML forms with a shipping address and a billing address
 - We are not going to collect any form of payment information
 - Display the order total on the checkout page
 - Create a button called **Place Order** which will map to a route called ```/place_order```
@@ -97,6 +97,7 @@ mysql> describe aca_product;
 | product_id  | int(11) unsigned | NO   | PRI | NULL              | auto_increment |
 | name        | varchar(255)     | YES  |     | NULL              |                |
 | description | text             | YES  |     | NULL              |                |
+| image       | varchar(255)     | YES  |     | NULL              |                |
 | category    | varchar(50)      | YES  |     | NULL              |                |
 | price       | decimal(5,2)     | YES  |     | NULL              |                |
 | date_added  | timestamp        | YES  |     | CURRENT_TIMESTAMP |                |
