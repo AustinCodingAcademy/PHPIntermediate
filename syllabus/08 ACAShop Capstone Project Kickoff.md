@@ -9,14 +9,15 @@ Here are some of the features we expect our store to have to keep those hard to 
 - Create a navigation menu that contains a few links:
     - ```/``` that is a link to the home page, 
     - ```/catalog``` which is a link to our product catalog and 
-    - ```cart``` that will show all the items that the user has added to their cart
+    - ```/cart``` that will show all the items that the user has added to their cart
 - Create a username and password login box, complete with a route that will handle user authentication
-- We will need a corresponding ```User``` class that will inform the client if the user is valid i.e. in the database or not
+- We will need a corresponding ```User``` class that will inform the client if the user is valid  
+i.e. in the database or not using a public method called ```isValid()```
 
 #### Admin Area
 - Create a route called ```/admin``` and map it to ```AdminController::indexAction()``` also create a corresponding default template
 - The admin area is not secured, neither does it have any special navigation, all we want this to do is allow the admin to add a new product 
-- The fields that we need in order to add a new product are ```name```, ```category```, ```price```, ```picture``` 
+- The fields that we need in order to add a new product are ```name```, ```category```, ```price```, ```picture```
 - Create a table called ```product``` with the corresponding fields contained on the form
 - Allow for the admin to upload a product image, which will get stored in a folder on the server
 - Store the relative location of the image in the ```product.picture``` field e.g ```images/products/baseball-bat.png```
