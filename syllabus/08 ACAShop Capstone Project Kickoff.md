@@ -66,3 +66,66 @@ i.e. in the database or not using a public method called ```isValid()```
 - You can either be a lone ranger and work on it yourself, or you can pair up with another person.
 - If you do choose to pair up, we can help you structure your work so its more atomic and create a shared branch for y'all
 - All table names *should* be singular, unless you have a good reason to make it plural
+
+#### Tables
+
+>aca_user
+```sql
+mysql> describe aca_user;
++---------------------+------------------+------+-----+-------------------+-----------------------------+
+| Field               | Type             | Null | Key | Default           | Extra                       |
++---------------------+------------------+------+-----+-------------------+-----------------------------+
+| user_id             | int(11) unsigned | NO   | PRI | NULL              | auto_increment              |
+| name                | varchar(100)     | YES  |     | NULL              |                             |
+| username            | varchar(50)      | YES  |     | NULL              |                             |
+| password            | varchar(50)      | YES  |     | NULL              |                             |
+| shipping_address_id | int(10) unsigned | YES  |     | NULL              |                             |
+| billing_address_id  | int(10) unsigned | YES  |     | NULL              |                             |
+| last_login          | timestamp        | YES  |     | CURRENT_TIMESTAMP | on update CURRENT_TIMESTAMP |
++---------------------+------------------+------+-----+-------------------+-----------------------------+
+7 rows in set (0.00 sec)
+```
+
+>aca_product
+```sql
+mysql> describe aca_product;
++-------------+------------------+------+-----+-------------------+----------------+
+| Field       | Type             | Null | Key | Default           | Extra          |
++-------------+------------------+------+-----+-------------------+----------------+
+| product_id  | int(11) unsigned | NO   | PRI | NULL              | auto_increment |
+| name        | varchar(255)     | YES  |     | NULL              |                |
+| description | text             | YES  |     | NULL              |                |
+| category    | varchar(50)      | YES  |     | NULL              |                |
+| price       | decimal(5,2)     | YES  |     | NULL              |                |
+| date_added  | timestamp        | YES  |     | CURRENT_TIMESTAMP |                |
++-------------+------------------+------+-----+-------------------+----------------+
+6 rows in set (0.00 sec)
+```
+
+>aca_order
+```sql
+mysql> describe aca_order;
++------------+------------------+------+-----+-------------------+----------------+
+| Field      | Type             | Null | Key | Default           | Extra          |
++------------+------------------+------+-----+-------------------+----------------+
+| order_id   | int(11) unsigned | NO   | PRI | NULL              | auto_increment |
+| user_id    | int(11) unsigned | YES  |     | NULL              |                |
+| order_date | timestamp        | YES  |     | CURRENT_TIMESTAMP |                |
++------------+------------------+------+-----+-------------------+----------------+
+3 rows in set (0.00 sec)
+```
+
+>aca_order_product
+```sql
+mysql> describe aca_order_product;
++------------------+------------------+------+-----+---------+----------------+
+| Field            | Type             | Null | Key | Default | Extra          |
++------------------+------------------+------+-----+---------+----------------+
+| order_product_id | int(11) unsigned | NO   | PRI | NULL    | auto_increment |
+| order_id         | int(11) unsigned | YES  |     | NULL    |                |
+| product_id       | int(11) unsigned | YES  |     | NULL    |                |
+| quantity         | int(5) unsigned  | YES  |     | NULL    |                |
+| price            | decimal(5,2)     | YES  |     | NULL    |                |
++------------------+------------------+------+-----+---------+----------------+
+5 rows in set (0.00 sec)
+```
