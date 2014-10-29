@@ -51,17 +51,17 @@ Here are some of the features we expect our store to have to keep those hard to 
 - The address table and the class will contain a ```address_type``` field, whose values are ```shipping``` or ```billing```
 - Ensure that the shipping and billing options in the table are ```ENUM``` instead of just ```varchar``` or ```char``` values
 - Create a record in the address table, store the ```address``` & ```address_type``` as ```shipping``` retrieve the ID of that record, 
-- Store the Id in ```user.shipping_address_id``` for later retrieval if the user placed another order in the future. The same concept applies to billing address
+- Store the Id in ```user.shipping_address_id``` for later retrieval if the user placed another order in the future 
+- The same concept applies to billing address
+- Write order data to the ```order``` table, retrieve the newly created ```order_id``` 
+- Create one record per ```Product``` in the ```order_item``` table
 
+### Reporting
+- Create a report to show all sales that were made by all people to date
+- The report should rollup and show total sales
+- Create a filter to allow the user to query a certain date range
 
-* Create a shopping cart. The cart should allow the user to remove items, and update quantities.
-* Allow users to create an account, or checkout as a guest
-* Users can create an account before they checkout or during checkout.
-* Users can login at any time to view a list of all orders they have purchased.
-* Users can also update their personal information, shipping and billing addresses.
-* After the user checks out, show a confirmation page with details about the order they just created.
-* Create a simple sales report, showing what our sales numbers look like over time.
-
-You have two choices for this particular project.
-You can either be a lone ranger and work on it yourself, or you can pair up with another person.
-If you do choose to pair up, we can help you structure your work so its more atomic and create a branch for you,
+#### Footnotes
+- You can either be a lone ranger and work on it yourself, or you can pair up with another person.
+- If you do choose to pair up, we can help you structure your work so its more atomic and create a shared branch for y'all
+- All table names *should* be singular, unless you have a good reason to make it plural
