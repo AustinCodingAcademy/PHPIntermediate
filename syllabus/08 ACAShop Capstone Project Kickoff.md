@@ -64,8 +64,13 @@ i.e. in the database or not using a public method called ```isValid()```
 
 #### Footnotes
 - You can either be a lone ranger and work on it yourself, or you can pair up with another person.
-- If you do choose to pair up, we can help you structure your work so its more atomic and create a shared branch for y'all
-- All table names *should* be singular, unless you have a good reason to make it plural
+- If you do choose to pair up, we can help you structure your work so its more atomic and create a shared git branch
+- All table names *should* be singular, unless you have a good reason to them it plural
+- All your code *should* be on a branch
+- Make small, frequent and meaningful commits
+- Push changes to GitHub frequently so everyone can see your work; we don't like keeping secrets
+- You are *required* to **document every method you write** using PHP PSR DocBloc conventions
+
 
 #### Tables
 
