@@ -99,7 +99,6 @@ mysql> describe aca_address;
 | Field      | Type                       | Null | Key | Default           | Extra          |
 +------------+----------------------------+------+-----+-------------------+----------------+
 | address_id | int(11) unsigned           | NO   | PRI | NULL              | auto_increment |
-| type       | enum('BILLING','SHIPPING') | YES  |     | NULL              |                |
 | street     | varchar(255)               | YES  |     | NULL              |                |
 | city       | varchar(50)                | YES  |     | NULL              |                |
 | state      | varchar(5)                 | YES  |     | NULL              |                |

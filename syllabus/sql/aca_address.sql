@@ -1,6 +1,5 @@
 CREATE TABLE `aca_address` (
   `address_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `type` enum('BILLING','SHIPPING') DEFAULT NULL,
   `street` varchar(255) DEFAULT NULL,
   `city` varchar(50) DEFAULT NULL,
   `state` varchar(5) DEFAULT NULL,
