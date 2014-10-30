@@ -74,7 +74,7 @@ i.e. in the database or not using a public method called ```isValid()```
 
 #### Tables
 
-> [aca_user](sql/aca_user.sql) [Data](sql/aca_user-data.sql)
+> [aca_user](sql/aca_user.sql) [[data]](sql/aca_user-data.sql)
 
 ```sql
 mysql> describe aca_user;
