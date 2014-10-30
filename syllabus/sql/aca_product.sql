@@ -4,7 +4,7 @@ CREATE TABLE `aca_product` (
   `description` text,
   `image` varchar(255) DEFAULT NULL,
   `category` varchar(50) DEFAULT NULL,
-  `price` decimal(5,2) DEFAULT NULL,
+  `price` decimal(11,2) DEFAULT NULL,
   `date_added` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`product_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8
