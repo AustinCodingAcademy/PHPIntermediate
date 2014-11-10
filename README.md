@@ -2,6 +2,7 @@ Intermediate PHP & MySQL
 ========================
 ![PHP](images/php.png "PHP")
 ![MySQL](images/mysql.png "MySQL")
+![Symfony](images/symfony.png "Symfony")
 
 
 > This course is designed for students with a fundamental understanding of programming. 
