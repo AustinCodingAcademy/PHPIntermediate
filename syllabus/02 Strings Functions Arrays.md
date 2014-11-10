@@ -359,7 +359,6 @@ class Child extends Father
     }
 }
 
-
 $Child = new Child();
 $Child->testAccess();
 ```
@@ -492,7 +491,9 @@ foreach($weeklyTemperatures as $dailyTemperature){
 echo 'The hottest day is: '.$hottestDay.PHP_EOL;
 ```
 
-PHP provides you with a number of helpful array functions.
+PHP provides you with a number of helpful  
+[array functions](http://php.net/manual/en/ref.array.php) 
+that allow us to solve the aforementioned problem more efficiently. 
 ```php
 <?php
 
@@ -501,7 +502,7 @@ echo 'The coldest day is: '.min($weeklyTemperatures).PHP_EOL;
 ```
 
 #### Creating a hash table for fast index lookups
-Think of a hash table as a dictionary, when you know the work you are looking for, you go right to it and lookup its definition.
+Think of a hash table as a dictionary, when you know the word you are looking for, you go right to it and lookup its definition.
 The reason why you can do that, is because the dictionary is sorted alphabetically. We can create a similar structure in PHP, using an array.
 ```php
 <?php
@@ -536,3 +537,4 @@ sort($randomArray);
 
 print_r($randomArray); // Sorted :)
 ```
+Notice how the sort function accepts an array by reference, mutates the array you pass in and doesn't return anything. 
