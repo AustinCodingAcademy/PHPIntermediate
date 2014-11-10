@@ -1,9 +1,7 @@
 03 - Web Programming
 ===============
->Now that we are comfortable with strings, functions and arrays we will dive right into understanding how PHP can be used to build web applications. 
->Although now PHP has evolved into a language that can do more than just build the web, it was originally designed as a web development language. 
+>Now that we are comfortable with strings, functions and arrays we will dive right into understanding how PHP can be used to build web applications.
 >This week, we will look at how easy it is to build a page, style it, create a form, collect user input and persist state using sessions.
-
 ***
 
 #### HTML
@@ -88,7 +86,8 @@ var person_name = document.getElementById('pname').value;
 The way you can do the same thing in jQuery is 
 ```javascript
 var person_name = $("#pname").val();
-```. 
+```
+
 jQuery makes it incredibly easy to select elements using selectors, loop over a list of items, apply styles, make AJAX calls and much much more.
 
 #### Collecting user input using forms

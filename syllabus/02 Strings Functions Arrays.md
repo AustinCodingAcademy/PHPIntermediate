@@ -237,7 +237,8 @@ echo '$wolverine after call: '.$wolverine."\n";
 
 #### Documenting functions using DocBlock
 Documenting a function is slightly time consuming and doesn't seem to provide any immediate benefit at first.
-However, documenting is more important than the actual code you will write. It is of paramount importance that code be readable.
+However, documenting is more important than the actual code you will write. 
+It is of paramount importance that code be of the highest quality, readily comprehensible, elegant, and visually pleasing.
 As a developer, you will end up reading lots of source code. Nobody likes reading badly formatted/undocumented code.
 Here are a few simple rules to follow:
 - Specify what your function does in plain english e.g. ```This method teaches you karate```
