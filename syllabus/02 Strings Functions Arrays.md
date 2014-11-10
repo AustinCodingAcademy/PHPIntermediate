@@ -188,6 +188,8 @@ Any mutation to the variable within the function will affect the original variab
 
 Lets take an example of how this works.
 ```php
+<?php
+
 /**
  * Accept an argument by value
  *
