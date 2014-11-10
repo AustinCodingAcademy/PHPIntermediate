@@ -1,30 +1,11 @@
 <?php
 
-class Father
-{
-    public $firstName = 'Samir';
+$longString = 'This is a really long string';
 
-    protected $favoriteColor = 'Orange';
+$howLong = strlen($longString);
 
-    private $socialSecurityNumber = '325-34-8724';
+echo '$longString is ' . $howLong . ' characters long!' . PHP_EOL;
+
+for ($i = 0; $i < $howLong; $i++) {
+    echo $longString[$i] . "\t";
 }
-
-class Child extends Father
-{
-    public function testAccess()
-    {
-        // public properties can be accessed from anywhere
-        echo "Father's First Name: " . $this->firstName . PHP_EOL;
-
-        // Protected properties can be accessed by a child class only!
-        echo "Favorite Color: " . $this->favoriteColor . PHP_EOL;
-
-        // Private properties cannot be accessed by children
-        // Notice: Undefined property: Child::$socialSecurityNumber
-        echo 'SS Number: ' . $this->socialSecurityNumber . PHP_EOL;
-    }
-}
-
-
-$Child = new Child();
-$Child->testAccess();

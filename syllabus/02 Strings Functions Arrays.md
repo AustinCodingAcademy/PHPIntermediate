@@ -4,13 +4,13 @@
 >Encapsulating our procedural style code, into reusable units, is arguably one of the most important concepts in programming.
 >Arrays are one of the most useful and handy data structures that you will use almost every day in your life as a developer.
 >String manipulation is an important skill. We will become familiar with strings, searching through them, checking if a 
-value is in a string, replacing values, formatting etc... With over 90 native functions, we will have plenty to keep us busy!
+value is in a string, replacing values, formatting etc... With over 90 native string manipulation functions, we will have plenty to keep us busy!
 
 ***
 
 Strings
 -------
-Strings are very important in PHP. As a web developer you will find yourself using and manipulating strings more often than other tasks.
+Strings are very important in PHP. As a web developer you will find yourself using and manipulating strings more often than other task.
 It is quite important that you understand the difference between simple and complex strings, concatenating, escaping, referencing, searching and formatting strings.
 Lets take a look at each one of these **important** string topics individually.
 
@@ -35,14 +35,15 @@ $simpleString = 'My name is $myName'; // My name is $myName
 echo 'Simple String: ' . $simpleString . "\n";
 
 // Complex strings will replace the value of the variable in the string itself.
-$complexString = "My name is $myName" . "\n"; // My name is Samir
-echo 'Complex String: ' . $complexString . "\n";
+$complexString = "My name is $myName\n"; // My name is Samir
+echo 'Complex String: ' . $complexString;
 ```
 
 As you can see the simple string is enclosed in ```'``` and the value of the variable ```$myName``` is not printed.
 Instead the name of the variable is printed.
 In the case of a complex string, which is enclosed in ```"```, the value of the variable ```$myName``` is replaced with Samir.
-Also note that each of the lines is terminated with a ```"\n"```. This is a special character called a newline and is equivalent to hitting the enter key.
+Also note that each of the lines is terminated with a ```"\n"```. 
+This is a special character called a newline and is equivalent to hitting the enter key you may also use the PHP provided constant ```PHP_EOL``` to achieve the same effect.
 
 #### Concatenating two strings
 You can concatenate two strings, or a string and an int or float using the ```.``` character. For instance
@@ -89,16 +90,12 @@ $longString = 'This is a really long string';
 
 $howLong = strlen($longString);
 
-echo '$longString is '.$howLong.' characters long!'.PHP_EOL;
+echo '$longString is ' . $howLong . ' characters long!' . PHP_EOL;
 
-for($i = 0; $i < $howLong; $i ++){
-    echo $longString[$i]."\t";
+for ($i = 0; $i < $howLong; $i++) {
+    echo $longString[$i] . "\t";
 }
 ```
-
-#### Simple string search
-
-* Formatting strings and numbers
 
 Functions
 ---------
