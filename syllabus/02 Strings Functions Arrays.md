@@ -491,9 +491,7 @@ foreach($weeklyTemperatures as $dailyTemperature){
 echo 'The hottest day is: '.$hottestDay.PHP_EOL;
 ```
 
-PHP provides you with a number of helpful  
-[array functions](http://php.net/manual/en/ref.array.php) 
-that allow us to solve the aforementioned problem more efficiently. 
+PHP provides you with a number of helpful [array functions](http://php.net/manual/en/ref.array.php) that allow us to solve the aforementioned problem more efficiently. 
 ```php
 <?php
 
