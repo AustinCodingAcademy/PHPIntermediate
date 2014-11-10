@@ -301,10 +301,35 @@ PHP has a global scope, a function scope and a class scope.
 Since global scope is really bad programming practice, we will not be discussing it.
 Scope is the ability for you to access certain variables.
 When inside a function, you have a blank slate.
-Any new variable you crate, even if it has the same name as a variable outside the function,
+Any new variable you create, even if it has the same name as a variable outside the function,
 will be new and independent from any other variable anywhere else.
 Class scope refers to your ability to access variables inside a class.
 
+Lets take a look at an example of function scope:
+```php
+<?php
+
+$outsideFunction = "This is a string defined outside the function";
+
+function myUsefulFunction(){
+
+    // Cannot access the variable $outsideFunction here
+    // Notice: Undefined variable: outsideFunction
+    echo $outsideFunction;
+
+    $insideFunction = 'I am inside the function';
+
+    echo $insideFunction;
+}
+
+// Cannot access the variable we defined inside the function here
+// Notice: Undefined variable: insideFunction
+echo $insideFunction;
+
+
+// Call the function we just defined
+myUsefulFunction();
+```
 
 Arrays
 ------
