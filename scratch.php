@@ -1,22 +1,30 @@
 <?php
 
-$outsideFunction = "This is a string defined outside the function";
+class Father
+{
+    public $firstName = 'Samir';
 
-function myUsefulFunction(){
+    protected $favoriteColor = 'Orange';
 
-    // Cannot access the variable $outsideFunction here
-    // Notice: Undefined variable: outsideFunction
-    echo $outsideFunction;
-
-    $insideFunction = 'I am inside the function';
-
-    echo $insideFunction;
+    private $socialSecurityNumber = '325-34-8724';
 }
 
-// Cannot access the variable we defined inside the function here
-// Notice: Undefined variable: insideFunction
-echo $insideFunction;
+class Child extends Father
+{
+    public function testAccess()
+    {
+        // public properties can be accessed from anywhere
+        echo "Father's First Name: " . $this->firstName . PHP_EOL;
+
+        // Protected properties can be accessed by a child class only!
+        echo "Favorite Color: " . $this->favoriteColor . PHP_EOL;
+
+        // Private properties cannot be accessed by children
+        // Notice: Undefined property: Child::$socialSecurityNumber
+        echo 'SS Number: ' . $this->socialSecurityNumber . PHP_EOL;
+    }
+}
 
 
-// Call the function we just defined
-myUsefulFunction();
+$Child = new Child();
+$Child->testAccess();

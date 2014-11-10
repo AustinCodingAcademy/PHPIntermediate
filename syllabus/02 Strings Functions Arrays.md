@@ -311,25 +311,59 @@ Lets take a look at an example of function scope:
 
 $outsideFunction = "This is a string defined outside the function";
 
-function myUsefulFunction(){
-
+function myUsefulFunction() 
+{
     // Cannot access the variable $outsideFunction here
     // Notice: Undefined variable: outsideFunction
     echo $outsideFunction;
 
     $insideFunction = 'I am inside the function';
 
-    echo $insideFunction;
+    echo $insideFunction; // This is legal because this variable is scoped within this function
 }
 
 // Cannot access the variable we defined inside the function here
 // Notice: Undefined variable: insideFunction
 echo $insideFunction;
 
-
 // Call the function we just defined
 myUsefulFunction();
 ```
+
+Lets take a look at an example of object properties and their scopes
+```php
+<?php
+
+class Father
+{
+    public $firstName = 'Samir';
+
+    protected $favoriteColor = 'Orange';
+
+    private $socialSecurityNumber = '325-34-8724';
+}
+
+class Child extends Father
+{
+    public function testAccess()
+    {
+        // public properties can be accessed from anywhere
+        echo "Father's First Name: " . $this->firstName . PHP_EOL;
+        
+        // Protected properties can be accessed by a child class only!
+        echo "Favorite Color: " . $this->favoriteColor . PHP_EOL;
+
+        // Private properties cannot be accessed by children
+        // Notice: Undefined property: Child::$socialSecurityNumber
+        echo 'SS Number: ' . $this->socialSecurityNumber . PHP_EOL;
+    }
+}
+
+
+$Child = new Child();
+$Child->testAccess();
+```
+
 
 Arrays
 ------
