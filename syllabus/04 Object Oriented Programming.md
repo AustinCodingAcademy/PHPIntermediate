@@ -227,7 +227,7 @@ Instructor Object
 Classes explained
 -----------------
 
-#### Constructors, arguments and overloading
+#### Constructors
 A constructor looks like this ```___construct()```. A constructor is a way for you to define the arguments the class
 will take when you instantiate it. When we say ```$Obj = new MyCoolClass();``` we are *instantiating* the class into an object.
 
@@ -266,7 +266,7 @@ $NorthWeather = new Weather(60.34, 'Alaska'); // Outputs: Its really cold in Ala
 Notice that when we instantiate a class into an object,
 the first thing that runs is all the code you have defined in the constructor. 
 The instantiated object is now of the same type as the class. 
-You can use the ```get_class()`` method to determine the class of the object, 
+You can use the ```get_class()``` method to determine the class of the object, 
 or you can use the ```instanceof``` operator to check if an object was instantiated from a given class. 
 
 ```php
@@ -281,7 +281,7 @@ if($EastWeather instanceof Weather){
 }
 ```
 
-#### Public, private and protected methods and properties
+#### Properties: Public, private and protected methods and properties
 A method is simply a function inside of a class. A property is a variable inside a class.
 PHP has three levels of visibility that apply to methods and properties.
 
@@ -471,18 +471,32 @@ This is how you would call the static method.
 $fooHolder = StaticClass::getMoFoo();
 ```
 
-This is how you could access/mutate a static property, which gets set at *compile* time.
+This is how you could access/mutate a static property.
 ```php
+<?php
+
+class StaticTest
+{
+    /**
+     * Static property whose visibility and mutability is public
+     *
+     * @var string
+     */
+    public static $myBar = 'Should be raised';
+}
 
 // Access the property
-echo StaticTest::$myBar;
+echo StaticTest::$myBar . PHP_EOL; // Should be raised
 
 // Mutate the static property
-StaticTest::$myBar = 'Iron Bar';
+StaticTest::$myBar = 'Handlebar';
+
+// Access the property after mutating
+echo StaticTest::$myBar;
 ```
 
 One very important point to note is that when you set the value of a static property, every subsequent object you
-instantiate will take that newly set value into consideration. This is a *very useful* feature.
+instantiate will take that newly set value into consideration. This is a **very useful** feature.
 You can make instantiated objects behave differently by setting up some static switches on your classes and manipulate them at runtime.
 
 An interesting use case for a static property could be to completely alter the context in which classes "do stuff".
@@ -536,8 +550,10 @@ echo $Manager->getData();
 
 #### How to access object properties
 
-Variables that are within a class are known as object properties. Properties can take on the three standard visibility prefixes
-viz. ```public```, ```protected``` and ```private```. When in an object context, you can access ```public``` properties directly.
+Variables contained within a class are known as properties. Properties can take on three standard visibility prefixes
+viz. ```public```, ```protected``` and ```private```. When in an object context, you can access ```public``` properties directly. 
+```protected``` properties can only be accessed via children in a class context. 
+```private``` properties can only be accessed within the class they were defined in. 
 Mutating public properties is very bad programming practice, but you can do it and here's how:
 
 ```php
@@ -557,8 +573,31 @@ echo $Soup->soupName;
 // This is BAD programming practice, don't ever do this,
 // unless you have a great reason, and then still don't do it.
 $Soup->soupName = 'Foo Old Soup';
-
 ```
+
+The reason why mutating public properties is bad is because its breaks [encapsulation](http://en.wikipedia.org/wiki/Encapsulation_(object-oriented_programming)). 
+If you wanted someone to change the soup of the day, then you should provide a ```setter``` for client code to do so. You can achieve this effect quite simply.
+```php
+<?php
+
+class SoupOfTheDay
+{
+    protected $soupName = 'Foo Young Soup';
+
+    /**
+     * @param string $soupName
+     */
+    public function setSoupName($soupName)
+    {
+        $this->soupName = $soupName;
+    }
+}
+
+$Soup = new SoupOfTheDay();
+$Soup->setSoupName('Soup-A-Pilla');
+```
+Setters are important because now made it aptly clear to anyone that uses your class that you are giving them permission to mutate the soup of the day. 
+If you just made all your properties public, the client would assume that they could modify anything, at any point in time, and this might not be what you intend. 
 
 Remember from our discussion earlier we said that ```private``` properties can only be accessed from the class within which they were defined and
 ```protected``` properties can only be accessed from within an inheritance hierarchy.
