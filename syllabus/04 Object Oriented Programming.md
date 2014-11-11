@@ -108,10 +108,10 @@ Person Object
     [address:protected] => 5000 Memory Lane
 )
 ```
-Instructor's teach several classes, but ```Person```s do not. ```Student```s take a class or they can take multiple classes.
+Instructor's teach several courses, but don't take any courses. ```Student```s take courses, but don't teach any.
 We could add two ```array``` properties to the ```Person``` class and call them ```$coursesTaught``` and ```$coursesTaken```.
-This solution is far from ideal, because now every time we create an instructor, we will have ```$coursesTaken``` and when we
-create a student, we will have an extra property for ```$coursesTaught```.
+This solution is far from ideal, because now every time we create an instructor, we will have ```$coursesTaken``` property and when we
+create a student, we will have an extra property for ```$coursesTaught```, even though these properties belong to the instructor and student respectively.
 We will be using *Inheritance*, a staple of object oriented design, to solve this classic problem.
 
 #### Inheritance
