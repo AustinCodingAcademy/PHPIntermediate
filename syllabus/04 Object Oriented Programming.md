@@ -548,7 +548,7 @@ $Manager = new DataManager();
 echo $Manager->getData();
 ```
 
-#### How to access object properties
+#### Visibility and Encapsulation
 
 Variables contained within a class are known as properties. Properties can take on three standard visibility prefixes
 viz. ```public```, ```protected``` and ```private```. When in an object context, you can access ```public``` properties directly. 
@@ -596,8 +596,8 @@ class SoupOfTheDay
 $Soup = new SoupOfTheDay();
 $Soup->setSoupName('Soup-A-Pilla');
 ```
-Setters are important because now made it aptly clear to anyone that uses your class that you are giving them permission to mutate the soup of the day. 
-If you just made all your properties public, the client would assume that they could modify anything, at any point in time, and this might not be what you intend. 
+Setters are important because we have now made it aptly clear to anyone that uses our class that we are giving them permission to mutate the ```$soupName``` property. 
+If you just made all your properties public, the client would assume that they could modify anything, at any point in time, and this might not be what you intend.
 
 Remember from our discussion earlier we said that ```private``` properties can only be accessed from the class within which they were defined and
 ```protected``` properties can only be accessed from within an inheritance hierarchy.
@@ -642,6 +642,10 @@ class RJGate extends GateEstate
     }
 }
 ```
+
+Encapsulation is the creating of an object that contains both data and functionality and a clear definition of what can and cannot be accessed externally. 
+A well defined object should have a clear interface, in that, the client using the class should have a clear understanding of what can and cannot be mutated/accessed.  
+When we use ```private``` and ```protected``` methods or properties, we are using *Information Hiding* to hide the guts of our class and only show the parts that we want clients to interact with.
 
 Abstract Classes
 ----------------
