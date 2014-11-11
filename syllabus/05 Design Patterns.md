@@ -39,14 +39,14 @@ class DBCommon
     /**
      * Database connection
      *
-     * @var resource
+     * @var mysqli
      */
     protected $db;
 
     public function __construct()
     {
         $this->db = new mysqli(
-            $host = 'localhost', $username = 'user', $password = 'pass123',
+            $host = 'localhost', $username = 'root', $password = 'root',
             $databaseName = 'acadb', $port = 3306
         );
     }
@@ -64,11 +64,16 @@ Here is how client code will use our class
 
 $DB = new DBCommon();
 $DB->query('select * from user');
+```
 
-// If I wanted to run another query in some other method, I would have to instantiate the class again
+If I wanted to run another query in some other method, I would have to instantiate the class again
+```php
+<?php
+
 $DB = new DBCommon();
 $DB->query('select * from order');
 ```
+
 As you can see, we will have to instantiate the DBCommon class every single time we need to run a query.
 Every time we do that, the ```mysqli()``` class that we are assigning to the local protected property ```$db```, makes a socket connection to the MySQL database server.
 This can quickly become resource intensive and is a very inefficient way to design an application.
@@ -117,12 +122,14 @@ class DBCommon
     }
 }
 ```
+
 We have a new ```private static``` variable called ```$instance```.
 We made the constructor private, i.e. nobody should be able to instantiate this class directly.
 If client code tries to instantiate the class directly, they would get an error that looks like this
 ```php
 PHP Fatal error:  Call to private DBCommon::__construct() from invalid context in /DBCommon.php on line xxx
 ```
+
 The only way to instantiate the class, is via a ```public static``` method called ```getInstance()```.
 When ```getInstance()``` is called, we check if the local static property ```$instance``` has been previously set.
 If the instance property has not been set, then we instantiate the class, set the static property and return it.
@@ -145,11 +152,13 @@ $DB2->query('select foo from bar');
 ### Front Controller
 A front controller is a pattern that enables your application to have a single point of entry.
 All the URLs and their associated parameters are rewritten by the webserver and handed off to one .php file for processing.
+
 For example:
 ```
 Url with no rewriting: http://foo.com/bar.php
 Url with rewriting: http://foo.com/bar
 ```
+
 Notice in the second example, we have no .php because /bar is an alias we generated.
 [Apache](http://httpd.apache.org/) has a module called [mod_rewrite](http://httpd.apache.org/docs/current/mod/mod_rewrite.html) that allows you to perform this neat trick.
 
