@@ -1,15 +1,17 @@
 04 - Object Oriented Programming
 ===============
 >PHP5 is an enterprise grade object oriented programming language. This week, we will be looking at how to build classes
-that we will later use, at runtime, to instantiate objects. Instantiated objects can take on different forms, depending
-on the context in which they were created.
->In writing some OO code we will briefly delve into some design patterns.
+that we will use to instantiate objects.
+>OOP is the most important programming paradigm you will ever learn. 
+Most maintainable, large scale projects leverage the power of classes, objects and employ design patterns.
+>These concepts come with a little bit of a learning curve, since most of the code we have looked at so far has been procedural. 
+>Please read up on these topics as most, if not all, programming jobs these days expect developers to be fluent in OOP concepts.
 
 ***
 
 OOP Fundamentals
 ----------------
-Classes are a organized group of properties (variables) and methods (functions). This grouping of data and functionality is known as **encapsulation**.
+Classes are an organized group of properties (variables) and methods (functions). This grouping of data and functionality is known as **encapsulation**.
 Writing code in this way gives us the ability to create a system that is composed of discrete pieces that are isolated from one another
 and can only communicate with each other via messages.
 Classes cannot be used directly, they have to be instantiated into objects, or their methods can be called statically.
