@@ -10,11 +10,6 @@ Most maintainable, large scale projects leverage the power of classes and object
 
 ***
 
----------------------------------------
-  * [OOP Fundamentals](#OOP-Fundamentals)
-    * [Defining a class](#Defining-A-Class)
----------------------------------------
-
 OOP Fundamentals
 ----------------
 Classes are an organized group of properties (variables) and methods (functions). This grouping of data and functionality is known as **encapsulation**.
