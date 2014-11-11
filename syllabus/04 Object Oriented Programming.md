@@ -135,7 +135,7 @@ class Student extends Person
      * @param string $courseName Name of the course this student is taking
      * @return Student
      */
-    public function addTakenCourse($courseName)
+    public function addCourse($courseName)
     {
         $this->coursesTaken[] = $courseName;
         return $this;
@@ -157,7 +157,7 @@ class Instructor extends Person
      * @param string $courseName Name of the course this instructor is teaching
      * @return Instructor
      */
-    public function addTaughtCourse($courseName)
+    public function addCourse($courseName)
     {
         $this->coursesTaught[] = $courseName;
         return $this;
@@ -170,10 +170,10 @@ Create a student, and pile on a heavy course load.
 
 $IndustriousStudent = new Student(123, 'Albert Einstein', 'Munich, Germany');
 
-// You can chain methods like this because you returned $this in your addTakenCourse() method
+// You can chain methods like this because you returned $this in your addCourse() method
 // $this is pseudo variable that is an internal reference to the current object you are accessing or mutating
-$IndustriousStudent->addTakenCourse('Advanced Python')->addTakenCourse('Advanced PHP');
-$IndustriousStudent->addTakenCourse('Particle Physics');
+$IndustriousStudent->addCourse('Advanced Python')->addTakenCourse('Advanced PHP');
+$IndustriousStudent->addCourse('Particle Physics');
 print_r($IndustriousStudent);
 ```
 
@@ -196,14 +196,14 @@ Student Object
 )
 ```
 
-Lets create an ```Instructor``` and add some taught courses
+Lets create an ```Instructor``` and add some courses they teach
 ```php
 <?php
 
 $ACAInstructor = new Instructor(456, 'Samir Patel', 'Austin TX');
-$ACAInstructor->addTaughtCourse('Intermediate PHP');
-$ACAInstructor->addTaughtCourse('Advanced PHP');
-$ACAInstructor->addTaughtCourse('Golfing like a boss');
+$ACAInstructor->addCourse('Intermediate PHP');
+$ACAInstructor->addCourse('Advanced PHP');
+$ACAInstructor->addCourse('Golfing like a boss');
 print_r($ACAInstructor);
 ```
 
