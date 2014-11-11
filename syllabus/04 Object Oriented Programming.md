@@ -11,8 +11,8 @@ Most maintainable, large scale projects leverage the power of classes and object
 ***
 
 ---------------------------------------
-    * [OOP Fundamentals](#OOP Fundamentals)
-        * [Defining A Class](#Defining A Class)
+  * [OOP Fundamentals](#OOP-Fundamentals)
+    * [Defining A Class](#Defining-A-Class)
 ---------------------------------------
 
 OOP Fundamentals
