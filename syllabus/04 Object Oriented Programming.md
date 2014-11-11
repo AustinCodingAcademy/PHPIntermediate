@@ -172,7 +172,7 @@ $IndustriousStudent = new Student(123, 'Albert Einstein', 'Munich, Germany');
 
 // You can chain methods like this because you returned $this in your addCourse() method
 // $this is pseudo variable that is an internal reference to the current object you are accessing or mutating
-$IndustriousStudent->addCourse('Advanced Python')->addTakenCourse('Advanced PHP');
+$IndustriousStudent->addCourse('Advanced Python')->addCourse('Advanced PHP');
 $IndustriousStudent->addCourse('Particle Physics');
 print_r($IndustriousStudent);
 ```
@@ -233,8 +233,8 @@ will take when you instantiate it. When we say ```$Obj = new MyCoolClass();``` w
 
 Lets create a simple class called ```Weather```.
 Notice that this class has two constructor arguments, ```$temperature``` and ```$location```.
-The ```$location``` argument has a default value.
-In other words, you don't need to specify the location when you instantiate the class, as its optional.
+The ```$location``` argument is optional, because it has a default value of *Austin*.
+Since it is an optional argument, you don't need to specify the location when you instantiate the class, or you could if you wanted the weather in *Chicago* instead.
 
 ```php
 <?php
@@ -262,8 +262,24 @@ Let's instantiate this class in a few different ways, and examine the output.
 $EastWeather = new Weather(88.50, 'Bombay'); // Outputs: It is super hot in Bombay
 $NorthWeather = new Weather(60.34, 'Alaska'); // Outputs: Its really cold in Alaska
 ```
+
 Notice that when we instantiate a class into an object,
-the first thing that runs is all the code you have defined in the constructor.
+the first thing that runs is all the code you have defined in the constructor. 
+The instantiated object is now of the same type as the class. 
+You can use the ```get_class()`` method to determine the class of the object, 
+or you can use the ```instanceof``` operator to check if an object was instantiated from a given class. 
+
+```php
+<?php
+
+echo get_class($EastWeather); // Weather
+
+if($EastWeather instanceof Weather){
+    echo 'Yep its a Weather object';
+}else{
+    echo 'Nope its not a Weather object';
+}
+```
 
 #### Public, private and protected methods and properties
 A method is simply a function inside of a class. A property is a variable inside a class.
