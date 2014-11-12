@@ -226,6 +226,7 @@ SELECT product_id, product_name, category_id FROM product;
 +------------+-----------------+-------------+
 ```
 
+#### Join category table to product table
 What we are interested in doing is getting the ```category_name``` that each product belongs to. 
 In order to do that, we will join in the ```category``` table on ```category_id```. 
 The ```ON``` clause refers to a **foreign** key in the table that you are joining in. 
@@ -239,10 +240,10 @@ SELECT
 	c.category_name
 FROM 
 	product AS p
-	LEFT JOIN category c ON (c.category_id = p.category_id);
+	LEFT JOIN category AS c ON (c.category_id = p.category_id);
 ```
 
-The first thing to notice is that we aliased ```product``` and ```category``` as ```p``` and ```c``` respectively.  
+The first thing to notice is that we aliased ```product``` and ```category``` as ```p``` and ```c``` respectively.
 This is because we need to let the database know, which data set the fields we are selecting come from. 
 Next up is the join. We are joining the ```category``` table ```ON``` the ```category_id``` field. 
 The ```category_id``` field is a *foreign key* on the ```product``` table and a *primary key* on the ```category``` table. 
