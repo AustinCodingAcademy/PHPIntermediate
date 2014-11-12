@@ -135,7 +135,7 @@ FROM
 +-----------+-----------+-----------+
 ```
 
-#### Joining
+### Joins
 Joining tables involves merging two or more data sets on a certain criteria to produce a result. 
 The best way to explain this idea is with an example. Consider the ```product``` table that we just created. 
 This table has a field called ```category``` 
@@ -145,9 +145,10 @@ This table has a field called ```category```
 As you can see, this field contains textual values. 
 As we continue to add more products, we would need to enter textual values for each new category. 
 In our current implementation, this is a perfectly valid solution, but as our table grows, it is an inefficient strategy.
- 
+
+#### Creating a category table
 A superior solution would be to create another table that contains all our product categories. 
-In this way, we can simply ```assign``` each product a category. 
+In this way, we can simply assign each product a category. 
 ```sql
 CREATE TABLE `category` (
   `category_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
@@ -164,7 +165,7 @@ INSERT INTO `category` (`category_name`) VALUES ('Athletic Socks');
 
 Our category table now contains two records
 ```sql
-select * from category;
+SELECT * FROM category;
 ```
 
 ```
@@ -176,25 +177,28 @@ select * from category;
 +-------------+----------------+
 ```
 
+#### Modifying product table
 Lets modify our ```product``` table to use this new ```category_id``` in place of our old ```category``` name field.
 ```sql
 ALTER TABLE `product` ADD `category_id` INT  NULL  DEFAULT NULL  AFTER `category`;
 ```
 
+#### Update a value in the product table
 Update the ```product``` table with the appropriate ```category_id```s.
 ```sql
 UPDATE `product` SET `category_id` = '1' WHERE `product_id` = '1';
 UPDATE `product` SET `category_id` = '2' WHERE `product_id` = '2';
 ```
 
-Get rid of (```drop```) the existing ```category``` field.
+#### Remove a field from the product table
+Get rid of, i.e. ```DROP```, the existing ```category``` field.
 ```sql
 ALTER TABLE `product` DROP `category`;
 ```
 
-Now lets take a look at the contents of our ```product``` table by issuing a ```select```
+Now lets take a look at the contents of our ```product``` table by issuing a ```SELECT```
 ```sql
-select * from product;
+SELECT * FROM product;
 ```
 
 ```
