@@ -148,7 +148,7 @@ In our current implementation, this is a perfectly valid solution, but as our ta
 
 #### Creating a category table
 A superior solution would be to create another table that contains all our product categories. 
-In this way, we can simply assign each product a category. 
+In this way, we can simply assign each product a category. This process is known as [normalization](http://en.wikipedia.org/wiki/Database_normalization).
 ```sql
 CREATE TABLE `category` (
   `category_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
