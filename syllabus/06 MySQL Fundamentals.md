@@ -226,7 +226,7 @@ SELECT product_id, product_name, category_id FROM product;
 +------------+-----------------+-------------+
 ```
 
-#### Join category table to product table
+#### Join category and product tables
 What we are interested in doing is getting the ```category_name``` that each product belongs to. 
 In order to do that, we will join in the ```category``` table on ```category_id```. 
 The ```ON``` clause refers to a **foreign** key in the table that you are joining in. 
