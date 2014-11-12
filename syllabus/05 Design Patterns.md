@@ -207,14 +207,128 @@ MVC is one of the most widely accepted ways of separating our application.
 * V - View
 * C - Controller
 
-A request comes in from the web, probably using front controller and hits a PHP class called a controller.
+A request comes in from the web, using front controller, and hits a controller that executes code specific to the route.
 
-The controller's sole responsibility is to acquire data from the request via ```$_GET``` or ```$_POST``` parameters
+The controller's sole responsibility is to acquire data from the request via the URL, ```$_GET``` or ```$_POST``` parameters 
 and to instantiate any classes that are responsible for responding to that request.
-The controller also calls methods on model classes to get data, that handler objects will need to fulfill the request.
+The controller also calls methods on model classes to get data, that handler objects will need to fulfill the request. 
 Finally, the controller will hand off or assign the data returned from handler classes to a view class for rendering.
 
 View classes simply take data from the controller, figure out which template to render, assign the data to the template and generate some HTML.
 
 Model classes are responsible for modelling your database and all the relationships contained therein.
 Models should not contain any kind of business logic, and should only retrieve and persist data from and to the database respectively.
+
+### Dependency Injection
+Dependency Injection is a commonly used design pattern that allows us to build a decoupled architecture that promotes  reusable, testable code. 
+Most objects have dependencies, a class you write may depend on other classes. Instead of instantiating those classes within the class, 
+you should instead instantiate them outside the class, and **inject** them in. You can do this via *constructor injection* or via *setter injection*.
+
+Define a few objects we need to build a house.
+```php
+<?php
+
+class Door
+{
+    // Define properties and methods that define a door
+}
+
+class Window
+{
+    // Define properties and methods that define a window
+}
+
+class Floor
+{
+    // Define properties and methods that define floors
+}
+```
+
+This is an example of how we would build a house **without** DI.
+```php
+<?php
+
+/**
+ * Class House does NOT use Dependency Injection
+ */
+class House
+{
+    public function __construct()
+    {
+        $Door = new Door();
+        $Window = new Window();
+        $Floor = new Floor();
+
+        // Now use these objects to build your house
+    }
+}
+```
+
+As you can clearly see, the dependencies for building a house, among other things, are ```Door```, ```Window``` and ```Floor```. 
+What we have done here is we instantiated the objects we needed for building a house in the ```House::__construct()```. 
+This is not optimal, because if we needed to write a test case around this, 
+we would somehow need to figure out how to make sure this ```House``` got the right kind of door, window and floor.
+
+Let's take a look at the preferred way of solving this problem using Dependency Injection.
+```php
+<?php
+
+/**
+ * Class House that does use Dependency Injection
+ */
+class House
+{
+    /**
+     * @param Door   $Door   Main door
+     * @param Window $Window Living room window
+     * @param Floor  $Floor  Bathroom floor
+     */
+    public function __construct(Door $Door, Window $Window, Floor $Floor)
+    {
+        // Now build your house with the objects that we injected in the constructor
+    }
+}
+```
+
+Notice that we type hinted the objects in the constructor to ensure that the objects that are being  
+injected are of the type ```Door```, ```Window``` and ```Floor``` respectively. 
+
+Setter injection is the same concept, but instead of passing in the dependency via the constructor, we pass it in via a setter. 
+```php
+<?php
+
+/**
+ * Class House that uses Setter Injection
+ */
+class House
+{
+    public function __construct()
+    {
+        // We are not injecting anything into the constructor
+    }
+
+    /**
+     * @param Door $Door Main door
+     */
+    public function setDoor(Door $Door)
+    {
+        // Do something with the door
+    }
+
+    /**
+     * @param Window $Window Living room window
+     */
+    public function setWindow(Window $Window)
+    {
+        // Do something with the window
+    }
+
+    /**
+     * @param Floor $Floor Bathroom floor
+     */
+    public function setFloor(Floor $Floor)
+    {
+        // Do something with the floor
+    }
+}
+```
