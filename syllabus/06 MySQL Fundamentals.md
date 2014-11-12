@@ -144,7 +144,7 @@ This table has a field called ```category```
 ```
 As you can see, this field contains textual values. 
 As we continue to add more products, we would need to enter textual values for each new category. 
-In our current implementation, this is a perfectly valid solution, but as our table grows, it is an inefficient strategy.
+In our current implementation, this is a perfectly valid solution, but as our table grows, it will soon become an inefficient strategy.
 
 #### Creating a category table
 A superior solution would be to create another table that contains all our product categories. 
@@ -190,7 +190,7 @@ UPDATE `product` SET `category_id` = '1' WHERE `product_id` = '1';
 UPDATE `product` SET `category_id` = '2' WHERE `product_id` = '2';
 ```
 
-#### Remove a field from the product table
+#### Remove an existing field from the product table
 Get rid of, i.e. ```DROP```, the existing ```category``` field.
 ```sql
 ALTER TABLE `product` DROP `category`;
@@ -208,4 +208,51 @@ SELECT * FROM product;
 |          1 | Nike Shox       | Awesome running shoes    |         56.99 |           1 | shoes, running, footwear | 2014-11-12 17:12:54 |
 |          2 | Nike Elite Crew | Really comfortable socks |          7.97 |           2 | socks, running, footwear | 2014-11-12 17:13:00 |
 +------------+-----------------+--------------------------+---------------+-------------+--------------------------+---------------------+
+```
+Notice how we now have a ```category_id``` in place of ```category```. 
+
+#### Select specific fields
+Let's issue a ```SELECT``` query to only show a subset of the fields in the ```product``` table
+```sql
+SELECT product_id, product_name, category_id FROM product;
+```
+
+```
++------------+-----------------+-------------+
+| product_id | product_name    | category_id |
++------------+-----------------+-------------+
+|          1 | Nike Shox       |           1 |
+|          2 | Nike Elite Crew |           2 |
++------------+-----------------+-------------+
+```
+
+What we are interested in doing is getting the ```category_name``` that each product belongs to. 
+In order to do that, we will join in the ```category``` table on ```category_id```. 
+The ```ON``` clause refers to a **foreign** key in the table that you are joining in. 
+
+Here is how you would do it. 
+```sql
+SELECT 
+	p.product_id, 
+	p.product_name, 
+	p.category_id,
+	c.category_name
+FROM 
+	product AS p
+	LEFT JOIN category c ON (c.category_id = p.category_id);
+```
+
+The first thing to notice is that we aliased ```product``` and ```category``` as ```p``` and ```c``` respectively.  
+This is because we need to let the database know, which data set the fields we are selecting come from. 
+Next up is the join. We are joining the ```category``` table ```ON``` the ```category_id``` field. 
+The ```category_id``` field is a *foreign key* on the ```product``` table and a *primary key* on the ```category``` table. 
+
+This is what your ouput looks like 
+```
++------------+-----------------+-------------+----------------+
+| product_id | product_name    | category_id | category_name  |
++------------+-----------------+-------------+----------------+
+|          1 | Nike Shox       |           1 | Running Shoes  |
+|          2 | Nike Elite Crew |           2 | Athletic Socks |
++------------+-----------------+-------------+----------------+
 ```
