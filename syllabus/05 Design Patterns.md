@@ -291,7 +291,7 @@ class House
 ```
 
 Notice that we type hinted the objects in the constructor to ensure that the objects that are being  
-injected are of the type ```Door```, ```Window``` and ```Floor``` respectively. 
+injected are of the type ```Door```, ```Window``` and ```Floor``` respectively. You don't have to do this, it just makes for self documenting, robust, readable code.
 
 Setter injection is the same concept, but instead of passing in the dependency via the constructor, we pass it in via a setter. 
 ```php
