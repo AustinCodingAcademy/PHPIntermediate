@@ -2,7 +2,7 @@ MySQL Fundamentals
 ==================
 >[MySQL](http://www.mysql.com/) is "The world's most popular open source database".
 It's fast, secure, scalable, ACID compliant and built to handle high intensity web workloads.
-The language of MysQL, and most other relational databases, is SQL.
+The language of MySQL, and most other relational databases, is SQL.
 SQL is an expressive language that we will use to ask the database questions about our data.
 Our question is known as a query, and the data we get back is called a result set.
 
@@ -10,10 +10,11 @@ Our question is known as a query, and the data we get back is called a result se
 
 ### Terminology
 A database is a collection of tables. A table is a collection of fields that can hold certain kinds of data.
-Think of a table as an excel spreadsheet. Each column has a heading, and each row are values for each of those headings.
+Think of a table as an excel spreadsheet. Each column has a heading, and each row contains values for each of those headings.
 A table in MySQL has different data types.
-Setting the data type and data length on fields will ensure the type data the field can contain.
+Setting the data type and data length on fields dictates the type data the field can contain.
 
+#### Create a new table
 Here is an example of using ```CREATE TABLE``` to create a new table, if one with the same name doesn't already exist.
 ```sql
 CREATE TABLE IF NOT EXISTS `product` (
@@ -28,6 +29,7 @@ CREATE TABLE IF NOT EXISTS `product` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8
 ```
 
+#### Inserting records
 Once we have created a table, we can ```INSERT``` some data into it.
 ```sql
 INSERT INTO `product`
@@ -44,8 +46,8 @@ VALUES
     ("Nike Elite Crew", "Really comfortable socks", 7.97, "Athletic Socks", "socks, running, footwear", NOW());
 ```
 
+#### Selecting records
 Our product table now contains two records that we can retrieve by issuing a ```SELECT```
-
 ```sql
 SELECT * FROM product;
 ```
@@ -68,6 +70,7 @@ which is the practice of horizontally scaling the table out to multiple servers 
 
 ```SELECT``` statements can also filter data using the ```WHERE``` clause.
 
+#### Simple queries
  Find all products that are in the "Running Shoes" category
  ```sql
  SELECT * FROM product WHERE category = "Running Shoes";
@@ -88,6 +91,27 @@ Find all products that were added on 09/10/2014
 SELECT * FROM product WHERE DATE(date_time_added) = "2014-10-09";
 ```
 
+Create a list of just product names and prices with the $ symbol added to the price. Also sort by product name in ascending order.
+```sql
+SELECT
+    product_name as name,
+    CONCAT('$', '', product_price) as price
+FROM
+    product
+ORDER BY
+    product_name ASC
+```
+
+```
++-----------------+--------+
+| name            | price  |
++-----------------+--------+
+| Nike Elite Crew | $7.97  |
+| Nike Shox       | $56.99 |
++-----------------+--------+
+```
+
+#### Aggregate queries
 Count the number of products we sell
 ```sql
 SELECT COUNT(*) as num_products FROM product;
@@ -111,22 +135,5 @@ FROM
 +-----------+-----------+-----------+
 ```
 
-Create a list of just product names and prices with the $ symbol added to the price. Also sort by product name in ascending order.
-```sql
-SELECT
-    product_name as name,
-    CONCAT('$', '', product_price) as price
-FROM
-    product
-ORDER BY
-    product_name ASC
-```
+#### Joining
 
-```
-+-----------------+--------+
-| name            | price  |
-+-----------------+--------+
-| Nike Elite Crew | $7.97  |
-| Nike Shox       | $56.99 |
-+-----------------+--------+
-```

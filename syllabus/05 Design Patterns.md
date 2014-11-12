@@ -332,5 +332,4 @@ class House
     }
 }
 ```
-Setter injection is typically used for optional dependencies. In our example if we didn't call ```setWindow($Window)```,  
-then the living room would be built without a window! 
+Setter injection is typically used for optional dependencies. In our example if we didn't call ```setWindow($Window)```, the living room would be built without a window! 
