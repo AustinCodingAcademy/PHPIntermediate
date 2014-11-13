@@ -25,7 +25,7 @@ function getDeck()
  *
  * @return void
  */
-function shuffle(&$deck)
+function shuffleDeck(&$deck)
 {
 
 }
@@ -37,7 +37,7 @@ function shuffle(&$deck)
  *
  * @return array
  */
-function deal($players, $numCards, $shuffledDeck)
+function deal($players, $numCards, &$shuffledDeck)
 {
 
 }
@@ -49,13 +49,19 @@ function deal($players, $numCards, $shuffledDeck)
 $deck = getDeck();
 
 // Shuffle the deck
-shuffle($deck);
+shuffleDeck($deck);
+
+echo 'Deck after shuffling, but before dealing: <br/>';
+print_r($deck);
 
 $players = array('Joe', 'Mary', 'Zim');
 $numCards = 3;
 
-$dealtHands = deal($players, $numCards, $deck);
+$playerHands = deal($players, $numCards, $deck);
 
-echo 'Dealt hands per player: <br/>';
-print_r($dealtHands);
+echo 'Hands each player has: <br/>';
+print_r($playerHands);
+
+echo 'Deck after dealing: <br/>';
+print_r($deck);
 ```

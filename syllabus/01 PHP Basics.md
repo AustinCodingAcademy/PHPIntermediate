@@ -300,8 +300,6 @@ while($keepRunning == true){
 }
 ```
 
-[NEXT](02 Strings Functions Arrays.md)
-
 ***
 
 ##### Homework 01 - Count Types
