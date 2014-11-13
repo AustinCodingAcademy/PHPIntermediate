@@ -535,4 +535,12 @@ sort($randomArray);
 
 print_r($randomArray); // Sorted :)
 ```
-Notice how the sort function accepts an array by reference, mutates the array you pass in and doesn't return anything. 
+Notice how the sort function accepts an array by reference, mutates the array you pass in and doesn't return anything.
+
+***
+
+##### Homework 02 - Card Game
+
+[Sample Code](homework/02_card_game.md)
+
+Today we are being asked to write a few functions that revolve around cards and some operations

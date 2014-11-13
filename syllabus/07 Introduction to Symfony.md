@@ -1,8 +1,7 @@
 Introduction to Symfony
 =======================
->Now that we are comfortable with OOP and some design patterns, we will start learning about the [Symfony](http://symfony.com/)` web framework.
->The reason why we are looking at this framework instead of another is because it's modern and has all the features we could ever need. 
->It's fast, easy to set up, supports Composer, MVC, Front Controller, YML Configuration, Service Container, Dependency Injection etc...
+>Now that we are comfortable with OOP and some design patterns, we will start learning about the [Symfony](http://symfony.com/) web framework.
+>Symfony is fast, easy to set up, supports Composer, MVC, Front Controller, complex routing, YML Configuration, Service Container, Dependency Injection etc... all things we have come to expect of a modern and well documented framework.
 
 ***
 
@@ -189,7 +188,7 @@ Lets look at an example of a class with constructor dependency injection and the
 class WithDI
 {
     /**
-     * Datbase connection
+     * Database connection
      *
      * @var DBCommon
      */
@@ -224,7 +223,7 @@ class WithDI
 class WithoutDI
 {
     /**
-     * Datbase connection
+     * Database connection
      *
      * @var DBCommon
      */
@@ -253,5 +252,6 @@ class WithoutDI
 }
 ```
 
-Now you may be wondering where the class ```WithDI``` gets it's constructor arguments from? In other words who gives each class the dependencies it needs? 
+#### Service Container
+You may be wondering where the class ```WithDI``` gets it's constructor arguments from? In other words who gives each class the dependencies it needs?
 Meet the [Service Container](http://symfony.com/doc/current/book/service_container.html), whose main task is to standardize and centralize the creation of objects in your system.

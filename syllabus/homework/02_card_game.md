@@ -1,3 +1,4 @@
+```php
 <?php
 
 /**
@@ -57,3 +58,4 @@ $dealtHands = deal($players, $numCards, $deck);
 
 echo 'Dealt hands per player: <br/>';
 print_r($dealtHands);
+```
