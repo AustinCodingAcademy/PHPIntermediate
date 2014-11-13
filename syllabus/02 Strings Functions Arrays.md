@@ -390,7 +390,7 @@ print_r($verboseShoppingList);
 
 echo PHP_EOL;
 
-// Create an array with keys using array(). Note: You can also make it lowercase
+// Create an associative array with keys using array(). Note: You can also make it lowercase
 $businessCard = array(
     'name' => 'Samir',
     'phone' => '(512) 745-7846',
@@ -408,6 +408,10 @@ $verboseBusinessCard['email'] = 'samir@austincodingacademy.com';
 echo 'Array with keys and values using shorthand syntax:' . PHP_EOL;
 print_r($verboseBusinessCard);
 ```
+
+An array that has strings for keys is known as an **associative array**, as you are associating a key with a value. 
+In our example, ```$businessCard``` and ```$verboseBusinessCard``` are associative arrays, 
+while ```$shoppingList``` and ```$verboseShoppingList``` are not.
 
 #### Basic array operations i.e. referencing/adding/removing/replacing values
 You can manipulate values in an array by referencing the ```index``` i.e. the position of the data element you want to manipulate.
@@ -547,7 +551,7 @@ Today we are being asked to write a few functions that will help some of our oth
 Create the following functions
 - ```getDeck()``` - Returns an array of cards in a deck
 - ```shuffleDeck(&$deck)``` - Shuffle a deck of cards
-- ```deal($players, $numCards, &$shuffledDeck)``` - Deal cards out to each player
+- ```deal($players, $numCards, &$shuffledDeck)``` - Deal a certain number of cards out to each player from the given deck
 
 Sample cards: 
 - ```A-D``` Ace of Diamonds
