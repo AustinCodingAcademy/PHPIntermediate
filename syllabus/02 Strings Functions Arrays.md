@@ -567,13 +567,13 @@ In the sample code provided, under the usage section, we only created three play
 How would your function react if it did not have enough cards to deal? 
 We don't expect you to solve this edge case, but if you do come across an elegant solution, be sure to share it with us. Think of how a real dealer would react to this problem.
 
-While this is not required, you may substitute the character representations of suite D, H, S, C with their iconic representations, so it looks nicer in the browser. 
-You may also color code the output, for the browser. Spades and Clubs are black while Hearts and Diamonds are red.
-
 HTML entities for suite icons:
 - Diamonds ```&diams;```
 - Hearts ```&hearts;```
 - Spades ```&spades;```
 - Clubs ```&clubs;```
+
+While this is not required, you may substitute the character representations of suite D, H, S, C with their iconic representations, so it looks nicer in the browser. 
+You may also color code the output, for the browser. Spades and Clubs are black while Hearts and Diamonds are red.
 
 You may also enclose any ```print_r()``` statement in ```<pre>print_r($arrayToPrint)</pre>``` so your data structure is *pre-formatted* for the browser and is pleasant to look at.
