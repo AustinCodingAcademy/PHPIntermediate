@@ -214,10 +214,10 @@ You can get data from a URL using the ```file_get_contents()``` PHP method. The 
 
 You may use ```json_decode()``` to decode this data into an array. 
 
-Once your data has been decoded, display the following details about the country, on the same page as the search box:
+Once your data has been decoded, display the following details about the country:
 - Capital
 - Region
-- Population (this needs to be formatted so as to be readable)
+- Population (use ```number_format()``` to format this)
 - A comma separated list of all the languages spoken here
 
 As a bonus, you may add some styling to your app to make it look aesthetically pleasing
