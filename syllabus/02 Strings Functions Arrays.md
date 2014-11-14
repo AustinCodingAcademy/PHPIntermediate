@@ -390,7 +390,7 @@ print_r($verboseShoppingList);
 
 echo PHP_EOL;
 
-// Create an associative array with keys using array(). Note: You can also make it lowercase
+// Create an associative array with keys using array()
 $businessCard = array(
     'name' => 'Samir',
     'phone' => '(512) 745-7846',

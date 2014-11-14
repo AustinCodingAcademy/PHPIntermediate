@@ -14,7 +14,25 @@
  */
 function getDeck()
 {
+    $suites = array('D' => '&diams;', 'H' => '&hearts;', 'S' => '&spades;', 'C' => '&clubs;');
+    $ranks = array_merge(array('A'), range(2, 10), array('J', 'Q', 'K'));
 
+    $deck = array();
+    foreach ($suites as $suite => $suiteColor) {
+
+        foreach ($ranks as $rank) {
+
+            // Diamonds and hearts are red
+            if ($suite == 'D' || $suite == 'H') {
+                $color = 'red';
+            } else { // Spades and clubs are black
+                $color = 'black';
+            }
+
+            $deck[] = '<span style="color: ' . $color . ';">' . $rank . '' . $suiteColor . '</span>';
+        }
+    }
+    return $deck;
 }
 
 /**
@@ -24,9 +42,9 @@ function getDeck()
  *
  * @return void
  */
-function shuffle(&$deck)
+function shuffleDeck(&$deck)
 {
-
+    shuffle($deck);
 }
 
 /**
@@ -36,24 +54,58 @@ function shuffle(&$deck)
  *
  * @return array
  */
-function deal($players, $numCards, $shuffledDeck)
+function deal($players, $numCards, &$shuffledDeck)
 {
+    /** @var array $playersHands This is the array we will construct and return that has the hands we deal */
+    $playersHands = array();
 
+    foreach($players as $player){
+
+        /** @var array $playerCards Of cards that each player will get */
+        $playerCards = array();
+
+        foreach($shuffledDeck as $key => $card){
+
+            // Give a card to the player
+            $playerCards[] = $card;
+
+            // Remove the given card from the deck
+            unset($shuffledDeck[$key]);
+
+            // If we have given the player the number of cards they need
+            // break out of the loop
+            if(sizeof($playerCards) == $numCards){
+                break;
+            }
+        }
+
+        // Assign the hand to the player
+        $playersHands[$player] = $playerCards;
+    }
+    return $playersHands;
 }
 
 
 // ----------- USAGE -----------------
 
+echo '<pre>';
 // Crack open a brand new deck of cards
 $deck = getDeck();
 
 // Shuffle the deck
-shuffle($deck);
+shuffleDeck($deck);
 
-$players = array('Joe', 'Mary', 'Zim');
-$numCards = 3;
+echo 'Deck after shuffling, but before dealing: <br/>';
+print_r($deck);
 
-$dealtHands = deal($players, $numCards, $deck);
+$players = array('Joe', 'Mary', 'Zim', 'Samir', 'Ryan');
+$numCards = 4;
 
-echo 'Dealt hands per player: <br/>';
-print_r($dealtHands);
+$playerHands = deal($players, $numCards, $deck);
+
+echo 'Hands each player has: <br/>';
+print_r($playerHands);
+
+echo 'Deck has '.sizeof($deck).' cards after dealing: <br/>';
+print_r($deck);
+echo '<pre>';

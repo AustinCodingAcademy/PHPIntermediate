@@ -308,7 +308,7 @@ while($keepRunning == true){
 
 We will be creating a simple program, that can be executed in the [CLI](http://en.wikipedia.org/wiki/Command-line_interface) or in the browser.
 
-Create a function that will count the number of int, float, bool and string data types in a given input string.
+Count the number of words, booleans and numbers in the provided input string.
 
 The input string contains formatted numbers, and numbers with other formatting characters like exclamation marks.
 
