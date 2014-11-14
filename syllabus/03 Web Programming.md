@@ -215,6 +215,7 @@ You can get data from a URL using the ```file_get_contents()``` PHP method. The 
 You may use ```json_decode()``` to decode this data into an array. 
 
 Once your data has been decoded, display the following details about the country:
+- Country Name
 - Capital
 - Region
 - Population (use ```number_format()``` to format this)

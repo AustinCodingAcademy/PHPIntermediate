@@ -816,3 +816,39 @@ class MoneyCache implements CacheInterface
 
 As you can see, each class ( ```MemcacheCache```, ```FilesystemCache``` and ```MoneyCache``` ) that implements the ```CacheInterface``` interface,
 is forced to implement the ```get($key)``` and ```set($key, $val)``` methods with the exact same signature as was defined in the interface.
+
+***
+
+#### Homework 04 - Object Oriented Card Game
+
+[Starter Code](homework/04_OO_card_game.md)
+
+In the second week of class, we wrote some helper functions for our teammates, who were working on a card game.
+ 
+We created the following functions:
+- ```getDeck()``` - Returns an array of cards in a deck
+- ```shuffleDeck(&$deck)``` - Shuffle a deck of cards
+- ```deal($players, $numCards, &$shuffledDeck)``` - Deal a certain number of cards out to each player from the given deck
+
+Now that we have a solid understanding of how classes and objects work, we are being asked to create classes out of this functionality. 
+
+By Creating classes, we will allow for this functionality to be dropped into a wider system with ease,  
+make it flexible to test and make it perfectly clear to our client's (colleagues) how our classes are supposed to work.
+
+Here are the classes you are being asked to create:
+
+##### Card
+This class represents a single playing card
+![Card](../images/Card.png "Card")
+
+##### Deck
+This class represents a deck of cards. 
+It should have the ability to shuffle the deck, and the ability to get one card from the deck.
+![Deck](../images/Deck.png "Deck")
+
+##### Player
+This class represents a player playing this game. The player should have a name, and a hand of Cards
+![Player](../images/Player.png "Player")
+
+Finally, the sample code provides an example of an ```index.php``` file that instantiates the classes into objects and calls the appropriate methods.  
+Please use the starter code as your guide and breathe life into the empty methods.

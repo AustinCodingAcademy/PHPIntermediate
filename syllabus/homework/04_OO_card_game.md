@@ -1,89 +1,6 @@
+#### Card.php
+```php
 <?php
-
-/**
- * Return an array that represents a deck of cards
- *
- * e.g. array(
- *  0 => '1D', // Ace of diamonds
- *  1 => '2D', // 2 of diamonds
- *  ...
- *  11 => '11C' // Jack of clubs
- * )
- *
- * @return array
- */
-function getDeck()
-{
-    $suites = array('D' => '&diams;', 'H' => '&hearts;', 'S' => '&spades;', 'C' => '&clubs;');
-    $ranks = array_merge(array('A'), range(2, 10), array('J', 'Q', 'K'));
-
-    $deck = array();
-    foreach ($suites as $suite => $suiteColor) {
-
-        foreach ($ranks as $rank) {
-
-            // Diamonds and hearts are red
-            if ($suite == 'D' || $suite == 'H') {
-                $color = 'red';
-            } else { // Spades and clubs are black
-                $color = 'black';
-            }
-
-            $deck[] = '<span style="color: ' . $color . ';">' . $rank . '' . $suiteColor . '</span>';
-        }
-    }
-    return $deck;
-}
-
-/**
- * Shuffle the deck of cards
- *
- * @param array $deck Full deck of cards (passed by ref)
- *
- * @return void
- */
-function shuffleDeck(&$deck)
-{
-    shuffle($deck);
-}
-
-/**
- * @param array $players An array of player names
- * @param int $numCards How many cards to give each player
- * @param array $shuffledDeck A shuffled deck of cards
- *
- * @return array
- */
-function deal($players, $numCards, &$shuffledDeck)
-{
-    /** @var array $playersHands This is the array we will construct and return that has the hands we deal */
-    $playersHands = array();
-
-    foreach ($players as $player) {
-
-        /** @var array $playerCards Of cards that each player will get */
-        $playerCards = array();
-
-        foreach ($shuffledDeck as $key => $card) {
-
-            // Give a card to the player
-            $playerCards[] = $card;
-
-            // Remove the given card from the deck
-            unset($shuffledDeck[$key]);
-
-            // If we have given the player the number of cards they need
-            // break out of the loop
-            if (sizeof($playerCards) == $numCards) {
-                break;
-            }
-        }
-
-        // Assign the hand to the player
-        $playersHands[$player] = $playerCards;
-    }
-    return $playersHands;
-}
 
 /**
  * Class Card represents a single playing card
@@ -172,6 +89,11 @@ class Card
     {
     }
 }
+```
+
+##### Deck.php
+```php
+<?php
 
 /**
  * Class Deck represents a deck of cards and some common operations around a deck
@@ -231,6 +153,11 @@ class Deck
     {
     }
 }
+```
+
+#### Player.php
+```php
+<?php
 
 /**
  * Class Player represents one player playing a game
@@ -296,10 +223,17 @@ class Player
         return $this->name;
     }
 }
+```
 
+#### index.php
+```php
+<?php
+
+// Create a deck and shuffle it
 $Deck = new Deck();
 $Deck->shuffle();
 
+// Create two new players
 $PlayerBob = new Player('Bob');
 $PlayerSue = new Player('Sue');
 
@@ -313,7 +247,6 @@ $PlayerSue->giveCard($Deck->getCard());
 $PlayerSue->giveCard($Deck->getCard());
 $PlayerSue->giveCard($Deck->getCard());
 
-
 // Show all the cards each player has been dealt
 echo '<h3>'.$PlayerBob->getName().'</h3>';
 echo $PlayerBob->render();
@@ -322,3 +255,4 @@ echo '<h3>'.$PlayerSue->getName().'</h3>';
 echo $PlayerSue->render();
 echo '<br/>';
 echo 'Number of cards remaining in the deck: '.$Deck->getNumCards();
+```

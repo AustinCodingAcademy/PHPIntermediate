@@ -22,8 +22,10 @@
         if ($_POST) {
 
             $countryName = $_POST['country_name'];
-
             echo 'The user entered: ' . $countryName;
+            
+            // Hint: To access data in a stdClass object use the -> operator
+            // $data->name = 'Samir'; echo $data->name;
         }
         ?>
 
