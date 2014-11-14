@@ -545,7 +545,7 @@ Notice how the sort function accepts an array by reference, mutates the array yo
 
 ##### Homework 02 - Card Game
 
-[Sample Code](homework/02_card_game.md)
+[Starter Code](homework/02_card_game.md)
 
 Today we are being asked to write a few functions that will help some of our other team members create a card game they are working on. 
 Create the following functions

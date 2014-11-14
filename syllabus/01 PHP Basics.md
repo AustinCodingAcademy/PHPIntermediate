@@ -304,7 +304,7 @@ while($keepRunning == true){
 
 ##### Homework 01 - Count Types
 
-[Sample Code](homework/01_count_types.md)
+[Starter Code](homework/01_count_types.md)
 
 We will be creating a simple program, that can be executed in the [CLI](http://en.wikipedia.org/wiki/Command-line_interface) or in the browser.
 

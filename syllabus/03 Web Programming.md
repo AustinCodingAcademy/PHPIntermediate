@@ -197,3 +197,27 @@ if (isset($_SESSION['logged_in'])) {
 The method ```session_start()``` needs to get called prior to using ```$_SESSION```. PHP will then send out a session cookie to your local browser called ```PHPSESSID```.
 This cookie will be sent back to the server with every request to identify this session as being yours. You don't have to worry about the details of how the session works, only how to use it. 
 Using the session is as simple as assigning or retrieving a value to the ```$_SESSION``` super global.
+
+***
+
+##### Homework 03 - Countries on Earth
+
+[Starter Code](homework/03_countries_on_earth.md)
+
+As an ongoing effort to understand more about the earth we inhabit, we are being asked to build a single page web application that will help people explore countries.
+ 
+The application will consist of a search bar that will allow the user to enter a name of a country. 
+
+You will then write some code that will make an API call out to this endpoint with the name of country, ```http://restcountries.eu/rest/v1/name/Mongolia```
+
+You can get data from a URL using the ```file_get_contents()``` PHP method. The API will give you data back in JSON. 
+
+You may use ```json_decode()``` to decode this data into an array. 
+
+Once your data has been decoded, display the following details about the country, on the same page as the search box:
+- Capital
+- Region
+- Population (this needs to be formatted so as to be readable)
+- A comma separated list of all the languages spoken here
+
+As a bonus, you may add some styling to your app to make it look aesthetically pleasing
