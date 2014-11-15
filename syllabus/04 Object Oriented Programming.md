@@ -832,8 +832,8 @@ We created the following functions:
 
 Now that we have a solid understanding of how classes and objects work, we are being asked to create classes out of this functionality. 
 
-By Creating classes, we will allow for this functionality to be dropped into a wider system with ease,  
-make it flexible to test and make it perfectly clear to our client's (colleagues) how our classes are supposed to work.
+By creating classes, we will allow for this functionality to be dropped into a wider system with ease,  
+make it flexible to test and make it perfectly clear to our colleagues how our classes are supposed to work.
 
 Here are the classes you are being asked to create:
 
