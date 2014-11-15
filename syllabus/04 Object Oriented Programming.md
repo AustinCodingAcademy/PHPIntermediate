@@ -844,13 +844,13 @@ This class represents a single playing card
 
 ##### Deck
 This class represents a deck of cards. 
-It should have the ability to shuffle the deck, and the ability to get one card from the deck.
+You should be able to shuffle the deck, get a card from the deck and count the number of remaining cards, once some have been dealt.
 
 ![Deck](../images/Deck.png "Deck")
 
 ##### Player
-This class represents a player playing this game. The player should have a name, and a hand of Cards
+This class represents a player playing this game. The player should have a name, and a hand of cards
 
 ![Player](../images/Player.png "Player")
 
-The sample code provides an example of an ```index.php``` file that instantiates the classes into objects and calls the appropriate methods. Please use the starter code as your guide and breathe life into the empty methods
+The starter code provides an example of an ```index.php``` file that instantiates the classes into objects and calls the appropriate methods. Please use this code as your guide and breathe life into the empty methods
