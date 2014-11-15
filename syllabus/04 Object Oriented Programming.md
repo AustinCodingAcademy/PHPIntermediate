@@ -281,7 +281,7 @@ if($EastWeather instanceof Weather){
 }
 ```
 
-#### Properties: Public, private and protected methods and properties
+#### Visibility: Public, Protected, Private
 A method is simply a function inside of a class. A property is a variable inside a class.
 PHP has three levels of visibility that apply to methods and properties.
 
@@ -290,15 +290,18 @@ PHP has three levels of visibility that apply to methods and properties.
 * ```private``` - Private methods and properties can only be accessed from within the class that they were defined.
 
 The reason why we have the ability to control visibility is so when other developers read our code, it becomes clear to them
-what we want them to be able to modify and what is off limits. Lets take a look at an example of how visibility is useful.
+what we want them to be able to modify and what is off limits.
 Note that if we print out an object, using ```print_r()``` or ```var_dump()``` you will still see the value of the variable.
 
+Take a look at this example concerning visibility
 ```php
 <?php
 
 class Employee
 {
     /**
+     * Employee's full name
+     *
      * @var string
      */
     protected $name;
