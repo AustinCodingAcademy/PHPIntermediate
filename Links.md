@@ -2,7 +2,7 @@
 
 [PHP Manual](http://php.net) - Official PHP manual
 
-[PHP The Right Way](http://www.phptherightway.com/)
+[PHP The Right Way](http://www.phptherightway.com/) - State of the art coding techniques and ideas
 
 [MySQL Manual](http://dev.mysql.com/doc/refman/5.6/en/index.html) - Comprehensive and Official MySQL manual
 
