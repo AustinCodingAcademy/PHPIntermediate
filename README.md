@@ -29,7 +29,7 @@ Week 9 - In class coding and project completion
 Week 10 - Continue in class coding for ACAShop, Student Q&A, the state of PHP and the job market.
 
 #### Book
-Although you are not required to purchase this book for this class, I strongly recommend you do.
+Although you are not required to purchase a book for this class, I strongly recommend you do.
 The cookbook includes solutions to lots of common problems and is great for quickly referencing a working example on most web and CLI related topics in PHP.
 
 [http://www.amazon.com/PHP-Cookbook-Solutions-Examples-Programmers/dp/144936375X](http://www.amazon.com/PHP-Cookbook-Solutions-Examples-Programmers/dp/144936375X)
