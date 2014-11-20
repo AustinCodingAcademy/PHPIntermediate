@@ -8,13 +8,13 @@ Intermediate PHP & MySQL
 apply some of the most commonly used design patterns, learn about the MySQL database server and learn Symfony.
 > We will then spend the rest of the class working on a project, which will ultimately become a part of our portfolio.
 
-Week 1 - [PHP Basics](syllabus/01 PHP Basics.md) :notebook_with_decorative_cover:
+Week 1 - [PHP Basics](syllabus/01 PHP Basics.md) [:notebook_with_decorative_cover:](homework/01_count_types.md)
 
-Week 2 - [Functions, Arrays & Strings](syllabus/02 Strings Functions Arrays.md) :notebook_with_decorative_cover:
+Week 2 - [Functions, Arrays & Strings](syllabus/02 Strings Functions Arrays.md) [:notebook_with_decorative_cover:](homework/02_card_game.md)
 
-Week 3 - [Web Programming](syllabus/03 Web Programming.md) :notebook_with_decorative_cover:
+Week 3 - [Web Programming](syllabus/03 Web Programming.md) [:notebook_with_decorative_cover:](homework/03_countries_on_earth.md)
 
-Week 4 - [Object Oriented Programming](syllabus/04 Object Oriented Programming.md) :notebook_with_decorative_cover:
+Week 4 - [Object Oriented Programming](syllabus/04 Object Oriented Programming.md) [:notebook_with_decorative_cover:](homework/04_OO_card_game.md)
 
 Week 5 - [Design Patterns](syllabus/05 Design Patterns.md)
 
