@@ -45,6 +45,7 @@ The cookbook includes solutions to lots of common problems and is great for quic
 #### Reference
 - [Helpful Links](Links.md)
 - [git Commands](GitCommands.md)
+- [Symfony Book](http://symfony.com/doc/current/book/index.html)
 
 ***
 
