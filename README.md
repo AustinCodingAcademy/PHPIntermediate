@@ -37,9 +37,7 @@ Prior to class, we will host workshops to help students setup their machines wit
 - [PHPStorm](https://www.jetbrains.com/phpstorm/download/) - State of the art PHP IDE (we will be providing everyone student licenses)
 
 #### Book
-Although you are not required to read a book for this class, we recommend that you do.
-
-[The Symfony Book](http://symfony.com/doc/current/book/index.html) - Prepared by the core team, this is the Symfony bible
+[The Symfony Book](http://symfony.com/doc/current/book/index.html) - The Symfony bible, written and maintained by the core team
 
 #### Reference
 - [Helpful Links](Links.md)
