@@ -37,15 +37,12 @@ Prior to class, we will host workshops to help students setup their machines wit
 - [PHPStorm](https://www.jetbrains.com/phpstorm/download/) - State of the art PHP IDE (we will be providing everyone student licenses)
 
 #### Book
-Although you are not required to purchase a book for this class, we recommend that you do.
-The cookbook includes solutions to lots of common problems and is great for quickly referencing a working example on most web and CLI related topics in PHP.
-
-[http://www.amazon.com/PHP-Cookbook-Solutions-Examples-Programmers/dp/144936375X](http://www.amazon.com/PHP-Cookbook-Solutions-Examples-Programmers/dp/144936375X)
+Although you are not required to read a book for this class, we recommend that you do.
+[The Symfony Book](http://symfony.com/doc/current/book/index.html)
 
 #### Reference
 - [Helpful Links](Links.md)
 - [git Commands](GitCommands.md)
-- [Symfony Book](http://symfony.com/doc/current/book/index.html)
 
 ***
 
