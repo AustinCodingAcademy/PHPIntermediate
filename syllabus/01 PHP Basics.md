@@ -215,7 +215,7 @@ A nested condition is a condition within a condition i.e. an if statement within
 <?php
 
 // Use a nested conditional i.e. a condition within a condition
-$myFlower = 'lily1';
+$myFlower = 'lily';
 $myAnimal = 'human';
 $flowers = array('rose', 'daisy', 'lily', 'lotus');
 $animals = array('monkey', 'tiger', 'lion', 'human');
