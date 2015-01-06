@@ -1,8 +1,10 @@
 05 - Design Patterns
 =======================
 > Now that we are comfortable with Object Oriented Programming, we will take a look at Design Patterns.
-> Every piece of software is unique in what it does, there are however, some common patterns that have arisen that aim to solve recurring problems.
-> "In software engineering, a design pattern is a general reusable solution to a commonly occurring problem within a given context in software design." -[google](https://www.google.com/#q=design+patterns)-
+> Every piece of software is unique in what it does, there are however,  
+some common patterns that have arisen that aim to solve recurring problems.
+> "In software engineering, a design pattern is a general reusable solution to 
+a commonly occurring problem within a given context in software design." -[google](https://www.google.com/#q=design+patterns)-
 
 ***
 
@@ -26,8 +28,10 @@ $ToyotaCorolla->setSpeed(65)->setDestination->('Austin')->setDriver('autopilot')
 ```
 
 #### Singleton
-A Singleton is a pattern that we should use when we want to ensure that there is only one instance of our class instantiated during the entire request cycle.
-A great example of singleton in action is a DB class that connects a database and contains functionality to perform [CRUD](http://en.wikipedia.org/wiki/Create,_read,_update_and_delete) operations.
+A Singleton is a pattern that we should use when we want to ensure that there is only  
+one instance of our class instantiated during the entire request cycle.
+A great example of singleton in action is a DB class that connects a database  
+and contains functionality to perform [CRUD](http://en.wikipedia.org/wiki/Create,_read,_update_and_delete) operations.
 
 Lets create such a class.
 ```php
@@ -75,9 +79,11 @@ $DB->query('select * from order');
 ```
 
 As you can see, we will have to instantiate the DBCommon class every single time we need to run a query.
-Every time we do that, the ```mysqli()``` class that we are assigning to the local protected property ```$db```, makes a socket connection to the MySQL database server.
+Every time we do that, the ```mysqli()``` class that we are assigning to the local protected property ```$db```,  
+makes a socket connection to the MySQL database server.
 This can quickly become resource intensive and is a very inefficient way to design an application.
-A superior approach would be to make one connection to MySQL and reuse that connection for all queries we issue during the lifecycle of the request.
+A superior approach would be to make one connection to MySQL and reuse that connection for  
+all queries we issue during the lifecycle of the request.
 
 Let's take a look at how we can use Singleton to solve this particular problem.
 ```php
@@ -160,7 +166,8 @@ Url with rewriting: http://foo.com/bar
 ```
 
 Notice in the second example, we have no .php because /bar is an alias we generated.
-[Apache](http://httpd.apache.org/) has a module called [mod_rewrite](http://httpd.apache.org/docs/current/mod/mod_rewrite.html) that allows you to perform this neat trick.
+[Apache](http://httpd.apache.org/) has a module called [mod_rewrite](http://httpd.apache.org/docs/current/mod/mod_rewrite.html)  
+that allows you to perform this neat trick.
 
 This is an example of an apache configuration snippet that redirects all URL patterns on your domain to ```index.php```
 ```bash
@@ -291,9 +298,11 @@ class House
 ```
 
 Notice that we type hinted the objects in the constructor to ensure that the objects that are being  
-injected are of the type ```Door```, ```Window``` and ```Floor``` respectively. You don't have to do this, it just makes for self documenting, robust, readable code.
+injected are of the type ```Door```, ```Window``` and ```Floor``` respectively. You don't have to do this,  
+it just makes for self documenting, robust, readable code.
 
-Setter injection is the same concept, but instead of passing in the dependency via the constructor, we pass it in via a setter. 
+Setter injection is the same concept, but instead of passing in the dependency via the constructor,  
+we pass it in via a setter. 
 ```php
 <?php
 
@@ -332,4 +341,40 @@ class House
     }
 }
 ```
-Setter injection is typically used for optional dependencies. In our example if we didn't call ```setWindow($Window)```, the living room would be built without a window! 
+
+Setter injection is typically used for optional dependencies. In our example if we didn't call ```setWindow($Window)```,  
+the living room would be built without a window! 
+
+***
+
+#### Homework 05 - Ordering System
+
+[Starter Code](homework/05_ordering_system.md)
+
+We have been asked to create a basic ordering system to allow our employer to accept orders online. 
+
+In order to achieve this effect, we will need to create an ```AbstractOrder`` class, with two children viz. ```Order``` and ```OrderComplete``` respectively.
+
+```AbstractOrder``` will contain all common functionality to an order. 
+```Order``` will contain all data and functionality necessary for an *active* or *ongoing* order.   
+```OrderComplete``` is the object that gets instantiated once we have a completed order. 
+ 
+In the real world, this data will come from the database, a topic which we will be covering next week.  
+For now, your newly created order will be held in session. 
+
+Each order will contain
+- A ```Person``` object, that represents a person placing the order
+- An array of ```Product``` objects as a protected property
+
+The specific instructions for this system are provided in the starter code.  
+Detailed instructions on how to implement this example have been excluded on purpose.
+
+Project Notes:
+- This project has a sparse amount of written direction to model a real development request
+- Starter code contains class bare-bones class implementation 
+- You will be using inheritance, and abstraction for the ```Order``` family of classes
+- Factory will be leveraged to gather the appropriate order, depending on the state ie. *in progress* or *complete*
+- When you place your order, assign it a unique orderId and hold on to that value in session
+- The sytem should allow us to place multiple orders, all containing a unique number of products. 
+
+

@@ -28,8 +28,16 @@ Week 9 - In class coding and project completion
 
 Week 10 - Continue in class coding for ACAShop, Student Q&A, the state of PHP and the job market.
 
+#### Environment
+Prior to class, we will host workshops to help students setup their machines with required software.
+
+- [VirtualBox](https://www.virtualbox.org/) - Create and run a virtual development environment
+- [Vagrant](https://www.vagrantup.com/) - Quickly provision a virtual machine
+- [PHPVM](https://s3.amazonaws.com/austincodingacademy/boxes/phpvm.zip) - Configuration directives for virtual machine
+- [PHPStorm](https://www.jetbrains.com/phpstorm/download/) - State of the art PHP IDE (we will be providing everyone student licenses)
+
 #### Book
-Although you are not required to purchase a book for this class, I strongly recommend you do.
+Although you are not required to purchase a book for this class, we recommend that you do.
 The cookbook includes solutions to lots of common problems and is great for quickly referencing a working example on most web and CLI related topics in PHP.
 
 [http://www.amazon.com/PHP-Cookbook-Solutions-Examples-Programmers/dp/144936375X](http://www.amazon.com/PHP-Cookbook-Solutions-Examples-Programmers/dp/144936375X)
