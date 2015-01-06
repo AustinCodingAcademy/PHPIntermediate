@@ -38,7 +38,8 @@ Prior to class, we will host workshops to help students setup their machines wit
 
 #### Book
 Although you are not required to read a book for this class, we recommend that you do.
-[The Symfony Book](http://symfony.com/doc/current/book/index.html)
+
+[The Symfony Book](http://symfony.com/doc/current/book/index.html) - Prepared by the core team, this is the Symfony bible
 
 #### Reference
 - [Helpful Links](Links.md)
