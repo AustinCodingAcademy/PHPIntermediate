@@ -1,4 +1,4 @@
-(ACAShop)[https://github.com/AustinCodingAcademy/ACAShop] - Capstone Project Kickoff
+ACAShop - Capstone Project Kickoff
 =======================
 For our capstone project, we will be building an online store called ACAShop.
 We have created an implementation, with instructions, in a separate git repo that can be found [here](https://github.com/AustinCodingAcademy/ACAShop).
