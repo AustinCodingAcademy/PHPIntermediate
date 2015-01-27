@@ -35,6 +35,8 @@ Prior to class, we will host workshops to help students setup their machines wit
 - [Vagrant](https://www.vagrantup.com/) - Quickly provision a virtual machine
 - [PHPVM](https://s3.amazonaws.com/austincodingacademy/boxes/phpvm.zip) - Configuration directives for virtual machine
 - [PHPStorm](https://www.jetbrains.com/phpstorm/download/) - State of the art PHP IDE (we will be providing everyone student licenses)
+- [git](http://git-scm.com/) - Version control system
+- [SourceTree](http://www.sourcetreeapp.com/) - Free git GUI client
 
 #### Book
 [The Symfony Book](http://symfony.com/doc/current/book/index.html) - The Symfony bible, written and maintained by the core team
