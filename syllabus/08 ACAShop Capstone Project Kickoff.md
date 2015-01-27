@@ -3,7 +3,9 @@ ACAShop - Capstone Project Kickoff
 For our capstone project, we will be building an online store called ACAShop.
 We have created an implementation, with instructions, in a separate git repo that can be found [here](https://github.com/AustinCodingAcademy/ACAShop).
 
-#### Installation Instructions
+#### Checkout the code
+Execute the following commands on your local machine. These commands will checkout the code and update packages via [composer](https://getcomposer.org/doc/00-intro.md).
+
 - ```mkdir ~/Desktop/htdocs```
 - ```sudo ln -s ~/Desktop/htdocs /htdocs```
 - ```cd /htdocs```
@@ -11,7 +13,10 @@ We have created an implementation, with instructions, in a separate git repo tha
 - ```cd ACAShop```
 - ```./post_clone.sh```
 
-#### Tables
+#### SQL Schema Reference
+Our project will read and write from several different tables. 
+The database should be a part of your VM already. 
+The SQL that was used to create that schema is included here for your reference.
 
 > [aca_user](sql/aca_user.sql) - [[data]](sql/aca_user-data.sql)
 
