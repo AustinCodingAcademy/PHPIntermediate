@@ -28,15 +28,22 @@ Week 9 - In class coding and project completion
 
 Week 10 - Continue in class coding for ACAShop, Student Q&A, the state of PHP and the job market.
 
-#### Environment
-Prior to class, we will host workshops to help students setup their machines with required software.
+#### Developer Environment
+Prior to class, we will host workshops to help students setup their machines.
+
+**Required Software**
+Here are some applications you will need installed.
 
 - [VirtualBox](https://www.virtualbox.org/) - Create and run a virtual development environment
-- [Vagrant](https://www.vagrantup.com/) - Quickly provision a virtual machine
-- [PHPVM](https://s3.amazonaws.com/austincodingacademy/boxes/phpvm.zip) - Configuration directives for virtual machine
+- [Vagrant](https://www.vagrantup.com/) - Provision a virtual machine
+- [ansible](http://docs.ansible.com/intro_installation.html) - Configure the VM
 - [PHPStorm](https://www.jetbrains.com/phpstorm/download/) - State of the art PHP IDE (we will be providing everyone student licenses)
 - [git](http://git-scm.com/) - Version control system
 - [SourceTree](http://www.sourcetreeapp.com/) - Free git GUI client
+
+**Virtual Machine**
+Once all the aforementioned applications have been installed, run the following commands to create a virtual machine. 
+
 
 #### Book
 [The Symfony Book](http://symfony.com/doc/current/book/index.html) - The Symfony bible, written and maintained by the core team
