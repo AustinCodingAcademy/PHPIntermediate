@@ -28,10 +28,7 @@ Week 9 - In class coding and project completion
 
 Week 10 - Continue in class coding for ACAShop, Student Q&A, the state of PHP and the job market.
 
-#### Developer Environment
-Prior to class, we will host workshops to help students setup their machines.
-
-**Required Software**
+#### Required Software
 Here are some applications you will need installed.
 
 - [VirtualBox](https://www.virtualbox.org/) - Create and run a virtual development environment
@@ -41,8 +38,12 @@ Here are some applications you will need installed.
 - [git](http://git-scm.com/) - Version control system
 - [SourceTree](http://www.sourcetreeapp.com/) - Free git GUI client
 
-**Virtual Machine**
-Once all the aforementioned applications have been installed, run the following commands to create a virtual machine. 
+#### Developer Environment
+Prior to class, we will host workshops to help students setup their machines.
+
+#### Virtual Machine
+We have created a seperate repository that contains instructions on how to setup and configure your VM.
+Clone [VirtualMachines](https://github.com/AustinCodingAcademy/VirtualMachines) and follow the instructions.
 
 
 #### Book
