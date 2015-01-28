@@ -39,11 +39,12 @@ Here are some applications you will need installed.
 - [SourceTree](http://www.sourcetreeapp.com/) - Free git GUI client
 
 #### Developer Environment
-Prior to class, we will host workshops to help students setup their machines.
+
 
 #### Virtual Machine
 We have created a seperate repository that contains instructions on how to setup and configure your VM.
 Clone [VirtualMachines](https://github.com/AustinCodingAcademy/VirtualMachines) and follow the instructions.
+*Note: We will host workshops, prior to class, to help students setup their machines.*
 
 
 #### Book
