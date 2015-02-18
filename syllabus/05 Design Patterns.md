@@ -353,7 +353,7 @@ the living room would be built without a window!
 
 We have been asked to create a basic ordering system to allow our employer to accept orders online. 
 
-In order to achieve this effect, we will need to create an ```AbstractOrder`` class, with two children viz. ```Order``` and ```OrderComplete``` respectively.
+In order to achieve this effect, we will need to create an ```AbstractOrder``` class, with two children viz. ```Order``` and ```OrderComplete``` respectively.
 
 ```AbstractOrder``` will contain all common functionality to an order. 
 ```Order``` will contain all data and functionality necessary for an *active* or *ongoing* order.   
