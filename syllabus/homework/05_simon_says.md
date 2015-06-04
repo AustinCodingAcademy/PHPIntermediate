@@ -39,7 +39,9 @@ If the user makes a mistake in the sequence, display the number of rounds they w
 
     <div class="container">
 
+        <!-- Div containing table of buttons and lights -->
         <div style="float:left;">
+        
             <table cellpadding="10">
 
                 <!-- Row for buttons -->
@@ -74,10 +76,11 @@ If the user makes a mistake in the sequence, display the number of rounds they w
                     </td>
                 </tr>
             </table>
+            
         </div>
 
+        <!-- Div containing the giant start button -->
         <div style="float:left; padding-left:20px;">
-
             <button class="btn-start">Start</button>
         </div>
 
@@ -127,11 +130,14 @@ Here is an example of what your ```record.php``` script would look like.
  
 ```php
 <?php
+
+// Allow PHP to use sessions with this script
 session_start();
 
+// Acquire the buttonId from the AJAX call made using JS
 $buttonId = $_POST['buttonId'];
 
-// We have existing responses
+// Do we have existing responses?
 if(isset($_SESSION['responses']) && !empty($_SESSION['responses'])){
 
     // Push the new response to the end of responses
