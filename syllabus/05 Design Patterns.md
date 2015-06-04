@@ -349,18 +349,4 @@ the living room would be built without a window!
 
 #### Homework 05 - Simon Says Sequences
 
-[Starter Code](homework/05_simon_says.md)
-
-We have been asked to create a web based implementation of simon says. We will be creating 4 buttons on a web page, numbered 1-4. 
-Each button will have a different colored div underneath it.
-
-![Simon Says UI](../images/simon_says.png "Simon Says UI")
-
-Here is a scenario on how the game will be played:
-
- - In the beginning, the user will click on one button, and the first light will flash
- - The user then clicks on third button, and the first and third light will flash
- - The user then clicks on the second button and the first, third and second lights flash....
- 
-In short, each successive round will play back the results from the prior round, until the user makes a mistake in the sequence. 
-If the user makes a mistake in the sequence, display the number of rounds they were able to play and the total time they took to play the game.
+[Instructions & Starter Code](homework/05_simon_says.md)
