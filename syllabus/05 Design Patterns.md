@@ -347,34 +347,17 @@ the living room would be built without a window!
 
 ***
 
-#### Homework 05 - Ordering System
+#### Homework 06 - Simon Says Sequences
 
-[Starter Code](homework/05_ordering_system.md)
+[Starter Code](homework/05_simon_says.md)
 
-We have been asked to create a basic ordering system to allow our employer to accept orders online. 
+We have been asked to create a web based implementation of simon says. We will be creating 4 buttons on a web page, numbered 1-4. 
+Each button will have a different colored div underneath it.
+Here is a scenario on how the game will be played:
 
-In order to achieve this effect, we will need to create an ```AbstractOrder``` class, with two children viz. ```Order``` and ```OrderComplete``` respectively.
-
-```AbstractOrder``` will contain all common functionality to an order. 
-```Order``` will contain all data and functionality necessary for an *active* or *ongoing* order.   
-```OrderComplete``` is the object that gets instantiated once we have a completed order. 
+ - In the beginning, the user will click on one button, and the first light will flash
+ - The user then clicks on third button, and the first and third light will flash
+ - The user then clicks on the second button and the first, third and second lights flash....
  
-In the real world, this data will come from the database, a topic which we will be covering next week.  
-For now, your newly created order will be held in session. 
-
-Each order will contain
-- A ```Person``` object, that represents a person placing the order
-- An array of ```Product``` objects as a protected property
-
-The specific instructions for this system are provided in the starter code.  
-Detailed instructions on how to implement this example have been excluded on purpose.
-
-Project Notes:
-- This project has a sparse amount of written direction to model a real development request
-- Starter code contains class bare-bones class implementation 
-- You will be using inheritance, and abstraction for the ```Order``` family of classes
-- Factory will be leveraged to gather the appropriate order, depending on the state ie. *in progress* or *complete*
-- When you place your order, assign it a unique orderId and hold on to that value in session
-- The sytem should allow us to place multiple orders, all containing a unique number of products. 
-
-
+In short, each successive round will play back the results from the prior round, until the user makes a mistake in the sequence. 
+If the user makes a mistake in the sequence, display the number of rounds they were able to play and the total time they took to play the game.
