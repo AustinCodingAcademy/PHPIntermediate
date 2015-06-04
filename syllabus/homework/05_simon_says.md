@@ -129,7 +129,7 @@ Here is an example of what your ```record.php``` script would look like.
 <?php
 session_start();
 
-$buttonId = $_REQUEST['buttonId'];
+$buttonId = $_POST['buttonId'];
 
 // We have existing responses
 if(isset($_SESSION['responses']) && !empty($_SESSION['responses'])){
