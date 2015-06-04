@@ -1,3 +1,5 @@
+#### Homework 05 - Simon Says Game
+
 We have been asked to create a web based implementation of simon says. We will be creating 4 buttons on a web page, numbered 1-4. 
 Each button will have a different colored div underneath it.
 
