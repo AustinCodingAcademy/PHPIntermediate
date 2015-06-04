@@ -353,6 +353,9 @@ the living room would be built without a window!
 
 We have been asked to create a web based implementation of simon says. We will be creating 4 buttons on a web page, numbered 1-4. 
 Each button will have a different colored div underneath it.
+
+![Simon Says UI](images/simon_says.png "Simon Says UI")
+
 Here is a scenario on how the game will be played:
 
  - In the beginning, the user will click on one button, and the first light will flash
