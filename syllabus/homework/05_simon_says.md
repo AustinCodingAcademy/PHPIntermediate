@@ -86,3 +86,60 @@ If the user makes a mistake in the sequence, display the number of rounds they w
 </body>
 </html>
 ```
+
+##### Thinking about the problem
+Firstly, you will need to acquire user input from each of the button clicks using jQuery. 
+
+Using javascript, you can select all the buttons that have the class ```btn-simon``` and attach a ```click``` event handler to them.
+```javascript
+$('.btn-simon').on('click', function(){
+    var id = $(this).attr('id');
+    console.log('The button you clicked is: ' + id);
+});
+```
+
+Now that you know which button was fired, you need to send the data off to a server side PHP script that will record the results. 
+Lets assume that you have two PHP scripts, one called ```record.php``` and the other called ```playback.php```. 
+```record.php``` will record the button that the user pressed, and add it to the end of an array that contains all the answers thus far. 
+The answers array can be stored in a PHP session using the ```$_SESSION``` superglobal.
+ 
+Here is an example of a javascript function that makes an AJAX call to a remote PHP script, and record which button was pressed. 
+```javascript
+/**
+ * Record which button was pressed
+ * @param id {String} HTML Id for the button that was pressed
+ */
+function recordButtonPress(id) {
+    $.post('record.php',
+            {
+                buttonId: id
+            },
+            function (jsonResponse) {
+                console.log('Response from server...');
+                console.log(jsonResponse);
+            }, "json"
+    );
+}
+```
+
+So far most of the work we have done is on the client side. On the server side, we will be using the current session to record user input.
+Here is an example of what your ```record.php``` script would look like.
+ 
+```php
+<?php
+session_start();
+
+$buttonId = $_REQUEST['buttonId'];
+
+// We have existing responses
+if(isset($_SESSION['responses']) && !empty($_SESSION['responses'])){
+
+    // Push the new response to the end of responses
+    array_push($_SESSION['responses'], $buttonId);
+
+}else{
+
+    // We don't have any responses, let's create the first one
+    $_SESSION['responses'] = array($buttonId);
+}
+```
