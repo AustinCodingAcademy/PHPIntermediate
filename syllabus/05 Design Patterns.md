@@ -347,7 +347,7 @@ the living room would be built without a window!
 
 ***
 
-#### Homework 06 - Simon Says Sequences
+#### Homework 05 - Simon Says Sequences
 
 [Starter Code](homework/05_simon_says.md)
 
