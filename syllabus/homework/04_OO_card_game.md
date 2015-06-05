@@ -14,15 +14,18 @@ Here are the classes you are being asked to create:
 
 ##### Card
 This class represents a single playing card
+
 ![Card](../../images/Card.png "Card")
 
 ##### Deck
 This class represents a deck of cards. 
 You should be able to shuffle the deck, get a card from the deck and count the number of remaining cards, once some have been dealt.
+
 ![Deck](../../images/Deck.png "Deck")
 
 ##### Player
 This class represents a player playing this game. The player should have a name, and a hand of cards
+
 ![Player](../../images/Player.png "Player")
 
 The starter code provides an example of an ```index.php``` file that instantiates the classes into objects and calls the appropriate methods. 
