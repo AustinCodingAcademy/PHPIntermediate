@@ -1,3 +1,33 @@
+In the second week of class, we wrote some helper functions for our teammates, who were working on a card game.
+ 
+We created the following functions:
+- ```getDeck()``` - Returns an array of cards in a deck
+- ```shuffleDeck(&$deck)``` - Shuffle a deck of cards
+- ```deal($players, $numCards, &$shuffledDeck)``` - Deal a certain number of cards out to each player from the given deck
+
+Now that we have a solid understanding of how classes and objects work, we are being asked to create classes out of this functionality. 
+
+By creating classes, we will allow for this functionality to be dropped into a wider system with ease,  
+make it flexible to test and make it perfectly clear to our colleagues how our classes are supposed to work.
+
+Here are the classes you are being asked to create:
+
+##### Card
+This class represents a single playing card
+![Card](../../images/Card.png "Card")
+
+##### Deck
+This class represents a deck of cards. 
+You should be able to shuffle the deck, get a card from the deck and count the number of remaining cards, once some have been dealt.
+![Deck](../../images/Deck.png "Deck")
+
+##### Player
+This class represents a player playing this game. The player should have a name, and a hand of cards
+![Player](../../images/Player.png "Player")
+
+The starter code provides an example of an ```index.php``` file that instantiates the classes into objects and calls the appropriate methods. 
+Please use this code as your guide and breathe life into the empty methods
+
 #### Card.php
 ```php
 <?php
