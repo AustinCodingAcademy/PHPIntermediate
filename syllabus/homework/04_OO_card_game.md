@@ -1,3 +1,5 @@
+#### Homework 04 - Object Oriented Card Game
+
 In the second week of class, we wrote some helper functions for our teammates, who were working on a card game.
  
 We created the following functions:
