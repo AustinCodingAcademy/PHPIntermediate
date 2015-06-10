@@ -1,13 +1,11 @@
 <?php
 
-// Declaring the function
-
 /**
  * I want the first character of each animal to be uppercase
  * @param array $pieces Pieces
  * @return array
  */
-function capitalizeAnimals(&$pieces)
+function capitalizeAnimals($pieces)
 {
     if (!empty($pieces)) {
 
@@ -19,14 +17,15 @@ function capitalizeAnimals(&$pieces)
             ++$counter;
         }
     }
+
+    return $pieces;
 }
 
 // Calling the function
+$animals = ['cat', 'dog', 'cow', 'snail'];
 
-$foo = ['cat', 'dog', 'cow', 'snail'];
-
-capitalizeAnimals($foo);
+$animals = capitalizeAnimals($animals);
 
 echo '<pre>';
-print_r($foo);
+print_r($animals);
 
