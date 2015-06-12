@@ -1,0 +1,56 @@
+<html>
+
+<head>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+    <script>
+
+
+        $(document).ready(function () {
+
+            // Figure out when they click the button?
+            // Bind an event handler to a button or any other element
+            $('#submitButton').on('click', function () {
+
+                // How do i get user input from the text box?
+
+                var emailAddress = $("#emailAddress").val();
+
+                // Make an ajax call.
+                $.post(
+                        'process_email.php',
+                        {
+                            email : emailAddress,
+                            location: "Austin"
+                        },
+                        function(response){
+
+                            $("#resultsDiv").html(response);
+                        }
+                );
+
+            });
+
+
+
+
+
+        });
+
+
+    </script>
+
+</head>
+
+<body>
+<h3>jQuery example</h3>
+
+
+Enter Email: <input type="text" id="emailAddress" size="30"/>
+
+<input type="button" id="submitButton" value="Submit"/>
+
+<div id="resultsDiv"></div>
+
+</body>
+</html>
