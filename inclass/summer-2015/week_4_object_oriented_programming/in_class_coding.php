@@ -19,6 +19,9 @@ class Person
         $this->name = $name;
         $this->age = $age;
         $this->location = $location;
+
+
+        // Other business logic
     }
 
     /**
@@ -77,12 +80,12 @@ class Person
 
 class Texan extends Person
 {
-    protected $location = 'texas';
+    protected $location;
 
     // Overriding the constructor
-    public function __construct($name, $age)
+    public function __construct($name, $age, $location = 'Texas')
     {
-        parent::__construct($name, $age, $this->location);
+        parent::__construct($name, $age, $location);
 
 //        $this->name = $name;
 //        $this->age = $age;
