@@ -51,16 +51,121 @@ class CountryInformation
      * Assign values from the data array to each of the corresponding properties
      * on this object
      * @param array $dataArray Converted array data from API
+     * @throws UserException
      * @return void
      */
     public function populateProperties($dataArray)
     {
+        if (empty($dataArray)) {
+            throw new UserException('No data found for country ' . $this->countryName);
+        }
 
+        $this->capital = $dataArray['capital'];
+        $this->region = $dataArray['region'];
+        $this->population = number_format($dataArray['population']);
+        $this->languages = $dataArray['languages'];
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCountryName()
+    {
+        return $this->countryName;
+    }
+
+    /**
+     * @param mixed $countryName
+     */
+    public function setCountryName($countryName)
+    {
+        $this->countryName = $countryName;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCapital()
+    {
+        return $this->capital;
+    }
+
+    /**
+     * @param mixed $capital
+     */
+    public function setCapital($capital)
+    {
+        $this->capital = $capital;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRegion()
+    {
+        return $this->region;
+    }
+
+    /**
+     * @param mixed $region
+     */
+    public function setRegion($region)
+    {
+        $this->region = $region;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPopulation()
+    {
+        return $this->population;
+    }
+
+    /**
+     * @param mixed $population
+     */
+    public function setPopulation($population)
+    {
+        $this->population = $population;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLanguages()
+    {
+        return $this->languages;
+    }
+
+    /**
+     * @param mixed $languages
+     */
+    public function setLanguages($languages)
+    {
+        $this->languages = $languages;
     }
 }
 
 
+class UserException extends Exception{}
+
+
 // Create a method that will get the data from the endpoint API_URL
-$countryInfo = new CountryInformation('Mongolia');
-echo '<pre>';
-print_r($countryInfo);
+try{
+
+    $russia = new CountryInformation('Russia');
+    $thailand = new CountryInformation('Thailand');
+
+    echo '<pre>';
+    print_r($russia);
+
+    echo '<pre>';
+    print_r($thailand);
+
+}catch(UserException $e){
+
+    //echo 'Country is invalid';
+    echo '<pre>';
+    print_r($e);
+}
