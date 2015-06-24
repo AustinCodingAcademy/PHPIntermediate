@@ -62,7 +62,7 @@ class CountryInformation
 
         $this->capital = $dataArray['capital'];
         $this->region = $dataArray['region'];
-        $this->population = number_format($dataArray['population']);
+        $this->population = $dataArray['population'];
         $this->languages = $dataArray['languages'];
     }
 
@@ -75,27 +75,11 @@ class CountryInformation
     }
 
     /**
-     * @param mixed $countryName
-     */
-    public function setCountryName($countryName)
-    {
-        $this->countryName = $countryName;
-    }
-
-    /**
      * @return mixed
      */
     public function getCapital()
     {
         return $this->capital;
-    }
-
-    /**
-     * @param mixed $capital
-     */
-    public function setCapital($capital)
-    {
-        $this->capital = $capital;
     }
 
     /**
@@ -107,27 +91,11 @@ class CountryInformation
     }
 
     /**
-     * @param mixed $region
-     */
-    public function setRegion($region)
-    {
-        $this->region = $region;
-    }
-
-    /**
      * @return mixed
      */
     public function getPopulation()
     {
-        return $this->population;
-    }
-
-    /**
-     * @param mixed $population
-     */
-    public function setPopulation($population)
-    {
-        $this->population = $population;
+        return number_format($this->population);
     }
 
     /**
@@ -135,37 +103,56 @@ class CountryInformation
      */
     public function getLanguages()
     {
-        return $this->languages;
-    }
-
-    /**
-     * @param mixed $languages
-     */
-    public function setLanguages($languages)
-    {
-        $this->languages = $languages;
+        return implode(', ', $this->languages);
     }
 }
 
 
-class UserException extends Exception{}
-
-
-// Create a method that will get the data from the endpoint API_URL
-try{
-
-    $russia = new CountryInformation('Russia');
-    $thailand = new CountryInformation('Thailand');
-
-    echo '<pre>';
-    print_r($russia);
-
-    echo '<pre>';
-    print_r($thailand);
-
-}catch(UserException $e){
-
-    //echo 'Country is invalid';
-    echo '<pre>';
-    print_r($e);
+class UserException extends Exception
+{
 }
+
+?>
+<pre>
+// Create a form that accepts a country name, and feed that into the object we just
+// Created and display the country information
+
+
+Your output should look like this
+
+-----------------------
+Capital: Moscow
+Region: EU
+Population: 1234
+Languages: en, ru
+-----------------------
+
+<form name="countryForm" action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post">
+    Enter Country: <input type="text" name="countryName" size="30"/>
+    <input type="submit"/>
+</form>
+
+<hr/>
+
+    <?php
+    if ($_POST) {
+
+        try {
+
+            $countryName = $_POST['countryName'];
+            $info = new CountryInformation($countryName);
+            print_r($info);
+
+            echo 'Capital: ' . $info->getCapital() . '<br/>';
+            echo 'Region: ' . $info->getRegion() . '<br/>';
+            echo 'Population: ' . $info->getPopulation() . '<br/>';
+            echo 'Languages: ' . $info->getLanguages() . '<br/>';
+
+        } catch (UserException $ue) {
+
+            echo '<p style="color:red;">' . $ue->getMessage() . '</p>';
+        }
+    }
+    ?>
+
+</pre>
