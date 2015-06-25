@@ -148,9 +148,9 @@ Languages: en, ru
             echo 'Population: ' . $info->getPopulation() . '<br/>';
             echo 'Languages: ' . $info->getLanguages() . '<br/>';
 
-        } catch (UserException $ue) {
+        } catch (UserException $samir) {
 
-            echo '<p style="color:red;">' . $ue->getMessage() . '</p>';
+            echo '<p style="color:red;">' . $samir->getMessage() . '</p>';
         }
     }
     ?>
