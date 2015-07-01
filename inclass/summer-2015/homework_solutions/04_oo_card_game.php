@@ -190,28 +190,123 @@ class Deck
     {
         return $this->cards;
     }
+
+    /**
+     * Get one card from the Deck.
+     * Also ensure that the Deck decrements appropriately
+     * @throws Exception
+     * @return Card
+     */
+    public function getCard()
+    {
+        $this->shuffle();
+
+        // take it off the end, array_shift() takes it off the
+        $card = array_pop($this->cards);
+
+        if (empty($card)) {
+            throw new \Exception('I ran out of cards!');
+        }
+
+        return $card;
+    }
+
+    /**
+     * How many cards do I have left?
+     * @return int
+     */
+    public function getNumCards()
+    {
+        return count($this->cards);
+    }
 }
 
+class Person
+{
+    /**
+     * @var Card[]
+     */
+    protected $hand = [];
+
+    /**
+     * Player's name
+     * @var string
+     */
+    protected $name;
+
+    public function __construct($name)
+    {
+        $this->name = $name;
+    }
+
+    public function giveCard(Card $card)
+    {
+        $this->hand[] = $card;
+    }
+}
+
+/**
+ * Class Game: The purpose is to get a deck, and deal cards out to players
+ */
+class Game
+{
+    protected $players = array('Bob', 'Cindy', 'Maxx');
+
+    public function __construct($numCardsPerPlayer)
+    {
+
+    }
+}
+
+
+$deck = new Deck();
+$cards = [];
+for ($i = 0; $i < 60; $i++) {
+
+    $cards[] = $deck->getCard(); //on Card 53, this is going to fail!
+}
 
 echo '<pre>';
-$deck = new Deck();
-
-/** @var Card[] $cards */
-$cards = $deck->getCards();
-
-echo 'This is my deck before shuffling';
-foreach ($cards as $card) {
-    echo $card->render() . ' ';
-}
-
-$deck->shuffle();
+print_r($cards);
 
 
-echo '<br/>';
-/** @var Card[] $cards */
-$cards = $deck->getCards();
+//echo '<pre>';
+//$deck = new Deck();
+//
+//echo 'Num cards in pristine deck:' . $deck->getNumCards();
+//
+//echo '<br/>';
+//
+//echo $deck->getCard()->render();
+//
+//$card2 = $deck->getCard();
+//echo $card2->render();
+//
+//echo $deck->getCard()->render();
+//
+//echo '<br/>';
+//
+//echo 'Num cards after dealing a few: ' . $deck->getNumCards();
+//
+//echo '<br/>';
 
-echo 'This is my deck AFTER shuffling';
-foreach ($cards as $card) {
-    echo $card->render() . ' ';
-}
+//
+///** @var Card[] $cards */
+//$cards = $deck->getCards();
+//
+//echo 'This is my deck before shuffling';
+//foreach ($cards as $card) {
+//    echo $card->render() . ' ';
+//}
+//
+//$deck->shuffle();
+//
+//
+//echo '<br/>';
+///** @var Card[] $cards */
+//$cards = $deck->getCards();
+//
+//echo 'This is my deck AFTER shuffling';
+//foreach ($cards as $card) {
+//    echo $card->render() . ' ';
+//}
