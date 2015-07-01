@@ -1,7 +1,7 @@
 <?php
 
 
-
+// Code has been moved to CardGameOO folder
 
 //$players = $dealer->getPlayersAndTheirHands();
 //echo '<pre>';
