@@ -248,26 +248,83 @@ class Person
 /**
  * Class Game: The purpose is to get a deck, and deal cards out to players
  */
-class Game
+class Dealer
 {
-    protected $players = array('Bob', 'Cindy', 'Maxx');
+    /**
+     * Names of players
+     * @var array
+     */
+    protected $playerNames;
+
+    /**
+     * @var Person[]
+     */
+    protected $players;
+
+    /**
+     * How many cards each player should get?
+     * @var int
+     */
+    protected $numCardsPerPlayer;
+
+    /**
+     * @var Deck
+     */
+    protected $deck;
 
     public function __construct($numCardsPerPlayer)
     {
-
+        $this->numCardsPerPlayer = $numCardsPerPlayer;
+        $this->deck = new Deck();
+        $this->deck->shuffle();
     }
+
+    public function addPlayer($playerName)
+    {
+        $this->playerNames[] = $playerName;
+    }
+
+    public function deal()
+    {
+        // Need to populate an array of Person[] and assign to the $players property
+        foreach($this->playerNames as $playerName){
+
+        }
+
+
+        // Then we need to give each person some cards
+    }
+
+    /**
+     * Return an array, whose key is the player name, and whose value is a Card[]
+     * @return array
+     */
+    public function getPlayersAndTheirHands()
+    {
+        return $this->players;
+    }
+
 }
 
+$dealer = new Dealer(3);
+$dealer->addPlayer('Bob');
+$dealer->addPlayer('Cindy');
+$dealer->addPlayer('Maxx');
 
-$deck = new Deck();
-$cards = [];
-for ($i = 0; $i < 60; $i++) {
-
-    $cards[] = $deck->getCard(); //on Card 53, this is going to fail!
-}
-
+//$players = $dealer->getPlayersAndTheirHands();
 echo '<pre>';
-print_r($cards);
+print_r($dealer);
+
+
+//$deck = new Deck();
+//$cards = [];
+//for ($i = 0; $i < 60; $i++) {
+//
+//    $cards[] = $deck->getCard(); //on Card 53, this is going to fail!
+//}
+//
+//echo '<pre>';
+//print_r($cards);/
 
 
 //echo '<pre>';
