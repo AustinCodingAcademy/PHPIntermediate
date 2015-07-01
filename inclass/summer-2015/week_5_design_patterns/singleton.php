@@ -27,23 +27,6 @@ class MySqlDatabase
     }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // Make this one a singleton i.e. I only want one socket connection to be made, ever!
 class RedisDatabase
 {
@@ -56,7 +39,7 @@ class RedisDatabase
 
     public static function getInstance()
     {
-        if(!isset(self::$instance)){
+        if (!isset(self::$instance)) {
             self::$instance = new RedisDatabase();
         }
 
