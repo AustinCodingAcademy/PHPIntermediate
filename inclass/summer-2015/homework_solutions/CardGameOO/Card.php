@@ -47,16 +47,16 @@ class Card
      */
     public function __construct($rank, $suite)
     {
-// Assign them to the local object properties
+        // Assign them to the local object properties
         $this->rank = $rank;
         $this->suite = $suite;
 
         $this->validateData();
 
-// Color this card
+        // Color this card
         $this->assignColor();
 
-// Give it an icon
+        // Give it an icon
         $this->assignIcon();
     }
 
@@ -67,7 +67,7 @@ class Card
      */
     protected function validateData()
     {
-// Ensure that the suite the client passed in is a valid one
+        // Ensure that the suite the client passed in is a valid one
         if (!in_array($this->suite, $this->allowedSuites)) {
             throw new Exception('Cannot create a card because suite, ' . $this->suite . ', is invalid!');
         }
@@ -94,17 +94,17 @@ class Card
 // If the Suite is Diamond or a Heart the color is red
 // Otherwise the color is black
 
-        if ($this->suite == 'D' || $this->suite == 'H') {
-            $this->color = "Red";
-        } else {
-            $this->color = 'Black';
-        }
-
-        if (in_array($this->suite, array('D', 'H'))) {
-            $this->color = "Red";
-        } else {
-            $this->color = "Black";
-        }
+//        if ($this->suite == 'D' || $this->suite == 'H') {
+//            $this->color = "Red";
+//        } else {
+//            $this->color = 'Black';
+//        }
+//
+//        if (in_array($this->suite, array('D', 'H'))) {
+//            $this->color = "Red";
+//        } else {
+//            $this->color = "Black";
+//        }
 
         $this->color = in_array($this->suite, array('D', 'H')) ? "Red" : "Black";
     }
@@ -135,3 +135,10 @@ class Card
         }
     }
 }
+
+
+$card = new Card(10, 'D');
+echo $card->render();
+
+$card = new Card(3, 'S');
+echo $card->render();
