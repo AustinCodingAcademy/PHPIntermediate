@@ -103,9 +103,7 @@ $house->setWindow($microsoftWindow);
 
 echo $house->buildHouse();
 
-
 $string = 'This is a super long string with nothing to do...';
 $len = strlen($string);
-//echo '$len='.$len;
 echo substr($string, 0, $len - 3);
 
