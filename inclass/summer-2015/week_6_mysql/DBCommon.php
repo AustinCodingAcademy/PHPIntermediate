@@ -161,7 +161,7 @@ class DBCommon
     }
 
     /**
-     * Escape a string safetly
+     * Escape a string safely
      * @param string $string String to quote
      *
      * @return string
