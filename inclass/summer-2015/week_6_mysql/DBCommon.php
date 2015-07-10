@@ -1,14 +1,4 @@
 <?php
-
-namespace TIB\CoreBundle\Db;
-
-use TIB\CoreBundle\Exception\DatabaseException;
-
-use \mysqli as mysqli;
-use \stdClass as stdClass;
-use \mysqli_result as mysqli_result;
-
-
 /**
  * Class DBCommon contains functionality for us to interact with the database
  *
@@ -51,20 +41,20 @@ class DBCommon
      * @param string $database What is the name of the database that we want to query
      * @param int $port What port should we connect to
      *
-     * @throws DatabaseException
+     * @throws Exception
      */
     public function __construct($host, $user, $pass, $database, $port = 3306)
     {
         $this->mysqli = new mysqli($host, $user, $pass, $database, $port);
         $this->mysqli->set_charset("utf8");
         if ($this->mysqli->connect_errno) {
-            throw new DatabaseException("Failed to connect to MySQL: (" . $this->mysqli->connect_errno . ") " . $this->mysqli->connect_error);
+            throw new Exception("Failed to connect to MySQL: (" . $this->mysqli->connect_errno . ") " . $this->mysqli->connect_error);
         }
     }
 
     /**
      * Run a query like an insert or an update
-     * @throws DatabaseException
+     * @throws Exception
      * @return mysqli_result
      */
     public function query()
@@ -74,7 +64,7 @@ class DBCommon
             $this->numRows = $result->num_rows;
         }
         if (!$result && $this->mysqli->error) {
-            throw new DatabaseException($this->mysqli->error);
+            throw new Exception($this->mysqli->error);
         }
 
         return $result;
