@@ -347,6 +347,10 @@ the living room would be built without a window!
 
 ***
 
-#### Homework 05 - Simon Says Game
+#### Homework 05 - Neflix movie search engine
 
-[Instructions & Starter Code](homework/05_simon_says.md)
+For our final homework problem, we will be creating a standalone web app that will allow our users to search movies on netflix.  
+We will be using a third party API that accepts a certain set of default options that we can search on. 
+Please follow the link for more details. 
+
+[Instructions & Starter Code](homework/05_netflix_search.md)
