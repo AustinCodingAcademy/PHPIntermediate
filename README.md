@@ -5,8 +5,12 @@ Intermediate PHP & MySQL
 > This course is designed for students with a fundamental understanding of programming. 
 > We will spend some time reviewing PHP basics, for students who are familiar with another language.
 > We will then move on to commonly used linguistic constructs, talk about the web, learn Object Oriented principles,
-apply some of the most commonly used design patterns, learn about the MySQL database server and learn Symfony.
+apply some commonly used design patterns, learn about the MySQL database server and learn the Symfony Full 
 > We will then spend the rest of the class working on a project, which will ultimately become a part of our portfolio.
+
+[] Module 1 - [Language Review - Switches, Conditionals, Functions, Arrays]
+
+Module 2 - [Web Fundamentals - ]
 
 Week 1 - [PHP Basics](syllabus/01 PHP Basics.md) [:notebook_with_decorative_cover:](syllabus/homework/01_count_types.md)
 
