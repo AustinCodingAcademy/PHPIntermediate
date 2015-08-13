@@ -8,29 +8,25 @@ Intermediate PHP & MySQL
 apply some commonly used design patterns, learn about the MySQL database server and learn the Symfony Full 
 > We will then spend the rest of the class working on a project, which will ultimately become a part of our portfolio.
 
-[] Module 1 - [Language Review - Switches, Conditionals, Functions, Arrays]
+Module 1 - [PHP Basics](syllabus/01 PHP Basics.md) [:notebook_with_decorative_cover:](syllabus/homework/01_count_types.md)
 
-Module 2 - [Web Fundamentals - ]
+Module 2 - [Functions, Arrays & Strings](syllabus/02 Strings Functions Arrays.md) [:notebook_with_decorative_cover:](syllabus/homework/02_card_game.md)
 
-Week 1 - [PHP Basics](syllabus/01 PHP Basics.md) [:notebook_with_decorative_cover:](syllabus/homework/01_count_types.md)
+Module 3 - [Web Programming](syllabus/03 Web Programming.md) [:notebook_with_decorative_cover:](syllabus/homework/03_countries_on_earth.md)
 
-Week 2 - [Functions, Arrays & Strings](syllabus/02 Strings Functions Arrays.md) [:notebook_with_decorative_cover:](syllabus/homework/02_card_game.md)
+Module 4 - [Object Oriented Programming](syllabus/04 Object Oriented Programming.md) [:notebook_with_decorative_cover:](syllabus/homework/04_OO_card_game.md)
 
-Week 3 - [Web Programming](syllabus/03 Web Programming.md) [:notebook_with_decorative_cover:](syllabus/homework/03_countries_on_earth.md)
+Module 5 - [Design Patterns](syllabus/05 Design Patterns.md) [:notebook_with_decorative_cover:](syllabus/homework/05_simon_says.md)
 
-Week 4 - [Object Oriented Programming](syllabus/04 Object Oriented Programming.md) [:notebook_with_decorative_cover:](syllabus/homework/04_OO_card_game.md)
+Module 6 - [MySQL Fundamentals](syllabus/06 MySQL Fundamentals.md)
 
-Week 5 - [Design Patterns](syllabus/05 Design Patterns.md) [:notebook_with_decorative_cover:](syllabus/homework/05_simon_says.md)
+Module 7 - [Introduction to Symfony](syllabus/07 Introduction to Symfony.md)
 
-Week 6 - [MySQL Fundamentals](syllabus/06 MySQL Fundamentals.md)
+Module 8 - [ACAShop Capstone Project Kickoff](syllabus/08 ACAShop Capstone Project Kickoff.md)
 
-Week 7 - [Introduction to Symfony](syllabus/07 Introduction to Symfony.md)
+Module 9 - In class coding and project completion
 
-Week 8 - [ACAShop - Capstone Project Kickoff](syllabus/08 ACAShop Capstone Project Kickoff.md)
-
-Week 9 - In class coding and project completion
-
-Week 10 - Continue in class coding for ACAShop, Student Q&A, the state of PHP and the job market.
+Module 10 - Continue in class coding for ACAShop, Student Q&A, the state of PHP and the job market.
 
 #### Required Software
 Here are some applications you will need installed.
