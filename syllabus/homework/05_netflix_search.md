@@ -1,6 +1,9 @@
 #### Homework 05 - Neflix movie search engine
 
-In this fun homework example, we are going to create an app that will allow our uses to search movies on netflix. 
+In this fun homework example, we are going to create an app that will allow our uses to search movies on Netflix. 
+This is how it could end up looking...
+![Netflix search UI](../../images/netflix_search_app.png "Netflix search UI")
+ 
 The goal is to create a class called ```NetflixSearch``` that will perform this task. 
 
 This is the API URL you will be using
