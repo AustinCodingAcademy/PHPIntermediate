@@ -16,10 +16,12 @@ Following are currently supported search parameters. Be sure to create getters/s
 - director (string)
 - actor (string)
 
-##### Validation
+##### Validation and Hints
 - Make sure at least one of these parameters have been provided by the user 
 - Ensure that year, if provided, is numeric 
 - Throw an ```Exception``` if an error is encountered with validation
+- Investigate the use of ```http_build_query()``` and think about how and why you would want to use it
+- You will also need to acquire a package to make HTTP requests and process responses, guzzle is a great tool for this job
  
 ##### Client
 The client is typically the consumer of your class, a.k.a the code that will use the code that you have written. 
@@ -28,8 +30,6 @@ The client is typically the consumer of your class, a.k.a the code that will use
 - You will then need some HTML to render the results in a tabular fashion
 - It is the client's responsibility to catch and handle any errors that may occur
 - Make sure that you encode user input correctly using ```urlencode()```
-- Investigate the use of ```http_build_query()``` and think about how and why you would want to use it
-- You will also need to acquire a package to make HTTP requests and process responses, guzzle is a great tool for this job
 
 ##### Example usage
 ```php
@@ -47,4 +47,3 @@ $results = $search->performSearch();
 - Indicate guzzle as a dependency
 - Install packages
 - Reference vendor/autoload.php file in your client code
-
