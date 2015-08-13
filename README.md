@@ -16,7 +16,7 @@ Module 3 - [Web Programming](syllabus/03 Web Programming.md) [:notebook_with_dec
 
 Module 4 - [Object Oriented Programming](syllabus/04 Object Oriented Programming.md) [:notebook_with_decorative_cover:](syllabus/homework/04_OO_card_game.md)
 
-Module 5 - [Design Patterns](syllabus/05 Design Patterns.md) [:notebook_with_decorative_cover:](syllabus/homework/05_simon_says.md)
+Module 5 - [Design Patterns](syllabus/05 Design Patterns.md) [:notebook_with_decorative_cover:](syllabus/homework/05_simon_says.md)}}}
 
 Module 6 - [MySQL Fundamentals](syllabus/06 MySQL Fundamentals.md)
 

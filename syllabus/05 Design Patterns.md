@@ -1,4 +1,4 @@
-05 - Design Patterns
+05 - Design Patterns & Concepts
 =======================
 > Now that we are comfortable with Object Oriented Programming, we will take a look at Design Patterns.
 > Every piece of software is unique in what it does, there are however,  
