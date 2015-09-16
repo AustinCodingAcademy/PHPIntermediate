@@ -5,8 +5,8 @@ Intermediate PHP & MySQL
 > This course is designed for students with a fundamental understanding of programming. 
 > We will spend some time reviewing PHP basics, for students who are familiar with another language.
 > We will then move on to commonly used linguistic constructs, talk about the web, learn Object Oriented principles,
-apply some commonly used design patterns, learn about the MySQL database server and learn the Symfony Full 
-> We will then spend the rest of the class working on a project, which will ultimately become a part of our portfolio.
+apply some commonly used design patterns, write queries against a MySQL instance, configure apache and install Symfony 
+> We will then spend the rest of the class working on an e-commerce project, which will ultimately become a part of our portfolio.
 
 Module 1 - [PHP Basics](syllabus/01 PHP Basics.md) [:notebook_with_decorative_cover:](syllabus/homework/01_count_types.md)
 
@@ -26,7 +26,7 @@ Module 8 - [ACAShop Capstone Project Kickoff](syllabus/08 ACAShop Capstone Proje
 
 Module 9 - In class coding and project completion
 
-Module 10 - Continue in class coding for ACAShop, Student Q&A, the state of PHP and the job market.
+Module 10 - Continue in class coding for ACAShop, Student Q&A, the state of PHP and the job market
 
 #### Required Software
 Here are some applications you will need installed.
