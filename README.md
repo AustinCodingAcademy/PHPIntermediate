@@ -3,9 +3,9 @@ Intermediate PHP & MySQL
    ![PHP](images/php.png "PHP")       ![MySQL](images/mysql.png "MySQL")     ![Symfony](images/symfony.png "Symfony")      
 
 > This course is designed for students with a fundamental understanding of programming. 
-> We will spend some time reviewing PHP basics, for students who are familiar with another language.
-> We will then move on to commonly used linguistic constructs, talk about the web, learn Object Oriented principles,
-apply some commonly used design patterns, write queries against a MySQL instance, configure apache and install Symfony 
+> We will spend some time reviewing PHP basics for students who are familiar with another language.
+> We move on to commonly used linguistic constructs, talk about the web, learn Object Oriented principles,
+apply some commonly used design patterns, write queries against a MySQL instance, configure apache and install Symfony. 
 > We will then spend the rest of the class working on an e-commerce project, which will ultimately become a part of our portfolio.
 
 Module 1 - [PHP Basics](syllabus/01 PHP Basics.md) [:notebook_with_decorative_cover:](syllabus/homework/01_count_types.md)
