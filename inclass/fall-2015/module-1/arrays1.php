@@ -19,4 +19,6 @@ print_r($merged);
 // 3. Count the number of elements in the array
 echo 'The array has ' . count($merged) . ' elements' . PHP_EOL;
 
-// (optional) 4. Create a comma separated string from the arrays
+if (in_array('dog', $merged)) {
+    echo 'You have a dog';
+}
