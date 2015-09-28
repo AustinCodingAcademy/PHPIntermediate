@@ -1,9 +1,15 @@
 <?php
 
 $users = array(
+
     array(
         'id' => 123,
         'name' => 'Samir',
+        'location' => 'Austin'
+    ),
+    array(
+        'id' => 789,
+        'name' => 'Chris',
         'location' => 'Austin'
     ),
     array(
