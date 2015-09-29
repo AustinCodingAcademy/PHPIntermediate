@@ -8,6 +8,7 @@
 
 <?php
 $favoritePet = isset($_POST['favoritePet']) ? $_POST['favoritePet'] : null;
+// I was here
 ?>
 
 <form name="collectDataForm" action="<?php echo($_SERVER['PHP_SELF']); ?>" method="post">
