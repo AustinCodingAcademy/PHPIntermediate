@@ -15,7 +15,7 @@ class Card
      * Heart, Diamond, Spade or Club
      * @var string
      */
-    protected $suite;
+    protected $suit;
 
     /**
      * A, 2-10, J, Q, K
@@ -36,13 +36,13 @@ class Card
     protected $icon;
 
     /**
-     * @param string $suite
+     * @param string $suit
      * @param string $rank
      * @throws Exception
      */
-    public function __construct($suite, $rank)
+    public function __construct($suit, $rank)
     {
-        $this->suite = $suite;
+        $this->suit = $suit;
         $this->rank = $rank;
 
         $this->checkSuite();
@@ -62,16 +62,16 @@ class Card
     }
 
     /**
-     * Check to see if the suite is valid?
+     * Check to see if the suit is valid?
      * @throws Exception
      * @return void
      */
     protected function checkSuite()
     {
-        if (!in_array($this->suite, $this->allowedSuites)) {
+        if (!in_array($this->suit, $this->allowedSuites)) {
 
             throw new Exception(
-                $this->suite . ' is not allowed! You can pass: ' .
+                $this->suit . ' is not allowed! You can pass: ' .
                 implode(', ', $this->allowedSuites)
             );
         }
@@ -83,7 +83,7 @@ class Card
      */
     protected function colorCard()
     {
-        if ($this->suite == 'Heart' || $this->suite == 'Diamond') {
+        if ($this->suit == 'Heart' || $this->suit == 'Diamond') {
             $this->color = 'red';
         } else {
             $this->color = 'black';
