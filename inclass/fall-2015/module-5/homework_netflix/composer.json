@@ -1,0 +1,12 @@
+{
+  "name": "aca/netflix-search",
+  "require": {
+    "guzzlehttp/guzzle": "6.0.0"
+  },
+  "authors": [
+    {
+      "name": "Samir Patel",
+      "email": "samir@austincodingacademy.com"
+    }
+  ]
+}
