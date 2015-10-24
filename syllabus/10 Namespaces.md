@@ -4,7 +4,7 @@
 > Namespaces are a very important concept and you should master them. All modern object oriented PHP applications leverage namespaces.
 
 Suppose you are building an social network. In order to represent a user you create a class called `User`. 
-This seems like a perfectly reasonable thing to do until you use someone else's package that has also defined a class called `User`. 
+This seems like a perfectly reasonable thing to do until you use a vendor package that has also defined a class called `User`. 
 Now there is no clear way for you to know which `User` class to instantiate.
  
 Furthermore, two classes with the same name are not allowed in PHP and will result in a fatal error that looks like this
@@ -16,7 +16,7 @@ In order to instantiate the user object from the `User` class we would need to `
 This is traditionally done as follows. 
 ```php
 <?php
-require('User.php');
+require("User.php");
 
 $userObj = new User();
 ```
@@ -145,4 +145,4 @@ class Database
 But whence the values? You will likely have a certain set of credentials on the development environment and another set of credentials for production. 
 It is not uncommon for big projects to have several environments viz. `dev`, `qa`, `uat`, `test`, `production` etc...
 
-The subject of discussion in the next module is the way parameters work and how they relate to the service container. 
+The subject of discussion in the next module is the way parameters work and, subsequently, how they relate to the service container. 
