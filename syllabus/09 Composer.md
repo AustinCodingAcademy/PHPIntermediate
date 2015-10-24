@@ -1,5 +1,5 @@
 09 - Composer
-===============
+=============
 > Composer is a popular and widely used package manager for PHP
 
 In order to use composer you will require a composer.json file in the directory you would like to install packages in.
