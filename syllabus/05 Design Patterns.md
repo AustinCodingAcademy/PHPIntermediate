@@ -1,8 +1,10 @@
-05 - Design Patterns
+05 - Design Patterns & Concepts
 =======================
 > Now that we are comfortable with Object Oriented Programming, we will take a look at Design Patterns.
-> Every piece of software is unique in what it does, there are however, some common patterns that have arisen that aim to solve recurring problems.
-> "In software engineering, a design pattern is a general reusable solution to a commonly occurring problem within a given context in software design." -[google](https://www.google.com/#q=design+patterns)-
+> Every piece of software is unique in what it does, there are however,  
+some common patterns that have arisen that aim to solve recurring problems.
+> "In software engineering, a design pattern is a general reusable solution to 
+a commonly occurring problem within a given context in software design." -[google](https://www.google.com/#q=design+patterns)-
 
 ***
 
@@ -26,8 +28,10 @@ $ToyotaCorolla->setSpeed(65)->setDestination->('Austin')->setDriver('autopilot')
 ```
 
 #### Singleton
-A Singleton is a pattern that we should use when we want to ensure that there is only one instance of our class instantiated during the entire request cycle.
-A great example of singleton in action is a DB class that connects a database and contains functionality to perform [CRUD](http://en.wikipedia.org/wiki/Create,_read,_update_and_delete) operations.
+A Singleton is a pattern that we should use when we want to ensure that there is only  
+one instance of our class instantiated during the entire request cycle.
+A great example of singleton in action is a DB class that connects a database  
+and contains functionality to perform [CRUD](http://en.wikipedia.org/wiki/Create,_read,_update_and_delete) operations.
 
 Lets create such a class.
 ```php
@@ -39,14 +43,14 @@ class DBCommon
     /**
      * Database connection
      *
-     * @var resource
+     * @var mysqli
      */
     protected $db;
 
     public function __construct()
     {
         $this->db = new mysqli(
-            $host = 'localhost', $username = 'user', $password = 'pass123',
+            $host = 'localhost', $username = 'root', $password = 'root',
             $databaseName = 'acadb', $port = 3306
         );
     }
@@ -64,15 +68,22 @@ Here is how client code will use our class
 
 $DB = new DBCommon();
 $DB->query('select * from user');
+```
 
-// If I wanted to run another query in some other method, I would have to instantiate the class again
+If I wanted to run another query in some other method, I would have to instantiate the class again
+```php
+<?php
+
 $DB = new DBCommon();
 $DB->query('select * from order');
 ```
+
 As you can see, we will have to instantiate the DBCommon class every single time we need to run a query.
-Every time we do that, the ```mysqli()``` class that we are assigning to the local protected property ```$db```, makes a socket connection to the MySQL database server.
+Every time we do that, the ```mysqli()``` class that we are assigning to the local protected property ```$db```,  
+makes a socket connection to the MySQL database server.
 This can quickly become resource intensive and is a very inefficient way to design an application.
-A superior approach would be to make one connection to MySQL and reuse that connection for all queries we issue during the lifecycle of the request.
+A superior approach would be to make one connection to MySQL and reuse that connection for  
+all queries we issue during the lifecycle of the request.
 
 Let's take a look at how we can use Singleton to solve this particular problem.
 ```php
@@ -117,12 +128,14 @@ class DBCommon
     }
 }
 ```
+
 We have a new ```private static``` variable called ```$instance```.
 We made the constructor private, i.e. nobody should be able to instantiate this class directly.
 If client code tries to instantiate the class directly, they would get an error that looks like this
 ```php
 PHP Fatal error:  Call to private DBCommon::__construct() from invalid context in /DBCommon.php on line xxx
 ```
+
 The only way to instantiate the class, is via a ```public static``` method called ```getInstance()```.
 When ```getInstance()``` is called, we check if the local static property ```$instance``` has been previously set.
 If the instance property has not been set, then we instantiate the class, set the static property and return it.
@@ -145,13 +158,16 @@ $DB2->query('select foo from bar');
 ### Front Controller
 A front controller is a pattern that enables your application to have a single point of entry.
 All the URLs and their associated parameters are rewritten by the webserver and handed off to one .php file for processing.
+
 For example:
 ```
 Url with no rewriting: http://foo.com/bar.php
 Url with rewriting: http://foo.com/bar
 ```
+
 Notice in the second example, we have no .php because /bar is an alias we generated.
-[Apache](http://httpd.apache.org/) has a module called [mod_rewrite](http://httpd.apache.org/docs/current/mod/mod_rewrite.html) that allows you to perform this neat trick.
+[Apache](http://httpd.apache.org/) has a module called [mod_rewrite](http://httpd.apache.org/docs/current/mod/mod_rewrite.html)  
+that allows you to perform this neat trick.
 
 This is an example of an apache configuration snippet that redirects all URL patterns on your domain to ```index.php```
 ```bash
@@ -198,14 +214,143 @@ MVC is one of the most widely accepted ways of separating our application.
 * V - View
 * C - Controller
 
-A request comes in from the web, probably using front controller and hits a PHP class called a controller.
+A request comes in from the web, using front controller, and hits a controller that executes code specific to the route.
 
-The controller's sole responsibility is to acquire data from the request via ```$_GET``` or ```$_POST``` parameters
+The controller's sole responsibility is to acquire data from the request via the URL, ```$_GET``` or ```$_POST``` parameters 
 and to instantiate any classes that are responsible for responding to that request.
-The controller also calls methods on model classes to get data, that handler objects will need to fulfill the request.
+The controller also calls methods on model classes to get data, that handler objects will need to fulfill the request. 
 Finally, the controller will hand off or assign the data returned from handler classes to a view class for rendering.
 
 View classes simply take data from the controller, figure out which template to render, assign the data to the template and generate some HTML.
 
 Model classes are responsible for modelling your database and all the relationships contained therein.
 Models should not contain any kind of business logic, and should only retrieve and persist data from and to the database respectively.
+
+### Dependency Injection
+Dependency Injection is a commonly used design pattern that allows us to build a decoupled architecture that promotes  reusable, testable code. 
+Most objects have dependencies, a class you write may depend on other classes. Instead of instantiating those classes within the class, 
+you should instead instantiate them outside the class, and **inject** them in. You can do this via *constructor injection* or via *setter injection*.
+
+Define a few objects we need to build a house.
+```php
+<?php
+
+class Door
+{
+    // Define properties and methods that define a door
+}
+
+class Window
+{
+    // Define properties and methods that define a window
+}
+
+class Floor
+{
+    // Define properties and methods that define floors
+}
+```
+
+This is an example of how we would build a house **without** DI.
+```php
+<?php
+
+/**
+ * Class House does NOT use Dependency Injection
+ */
+class House
+{
+    public function __construct()
+    {
+        $Door = new Door();
+        $Window = new Window();
+        $Floor = new Floor();
+
+        // Now use these objects to build your house
+    }
+}
+```
+
+As you can clearly see, the dependencies for building a house, among other things, are ```Door```, ```Window``` and ```Floor```. 
+What we have done here is we instantiated the objects we needed for building a house in the ```House::__construct()```. 
+This is not optimal, because if we needed to write a test case around this, 
+we would somehow need to figure out how to make sure this ```House``` got the right kind of door, window and floor.
+
+Let's take a look at the preferred way of solving this problem using Dependency Injection.
+```php
+<?php
+
+/**
+ * Class House that does use Dependency Injection
+ */
+class House
+{
+    /**
+     * @param Door   $Door   Main door
+     * @param Window $Window Living room window
+     * @param Floor  $Floor  Bathroom floor
+     */
+    public function __construct(Door $Door, Window $Window, Floor $Floor)
+    {
+        // Now build your house with the objects that we injected in the constructor
+    }
+}
+```
+
+Notice that we type hinted the objects in the constructor to ensure that the objects that are being  
+injected are of the type ```Door```, ```Window``` and ```Floor``` respectively. You don't have to do this,  
+it just makes for self documenting, robust, readable code.
+
+Setter injection is the same concept, but instead of passing in the dependency via the constructor,  
+we pass it in via a setter. 
+```php
+<?php
+
+/**
+ * Class House that uses Setter Injection
+ */
+class House
+{
+    public function __construct()
+    {
+        // We are not injecting anything into the constructor
+    }
+
+    /**
+     * @param Door $Door Main door
+     */
+    public function setDoor(Door $Door)
+    {
+        // Do something with the door
+    }
+
+    /**
+     * @param Window $Window Living room window
+     */
+    public function setWindow(Window $Window)
+    {
+        // Do something with the window
+    }
+
+    /**
+     * @param Floor $Floor Bathroom floor
+     */
+    public function setFloor(Floor $Floor)
+    {
+        // Do something with the floor
+    }
+}
+```
+
+Setter injection is typically used for optional dependencies. In our example if we didn't call ```setWindow($Window)```,  
+the living room would be built without a window! 
+
+***
+
+#### Homework 05 - Neflix movie search engine
+
+For our final homework problem, we will be creating a standalone web app that will allow our users to search movies on netflix.  
+We will be using a third party API that accepts a certain set of default options that we can search on. 
+Please follow the link for more details. 
+
+[Instructions & Starter Code](homework/05_netflix_search.md)

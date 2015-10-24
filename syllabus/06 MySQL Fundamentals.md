@@ -2,7 +2,7 @@ MySQL Fundamentals
 ==================
 >[MySQL](http://www.mysql.com/) is "The world's most popular open source database".
 It's fast, secure, scalable, ACID compliant and built to handle high intensity web workloads.
-The language of MysQL, and most other relational databases, is SQL.
+The language of MySQL, and most other relational databases, is SQL.
 SQL is an expressive language that we will use to ask the database questions about our data.
 Our question is known as a query, and the data we get back is called a result set.
 
@@ -10,10 +10,11 @@ Our question is known as a query, and the data we get back is called a result se
 
 ### Terminology
 A database is a collection of tables. A table is a collection of fields that can hold certain kinds of data.
-Think of a table as an excel spreadsheet. Each column has a heading, and each row are values for each of those headings.
+Think of a table as an excel spreadsheet. Each column has a heading, and each row contains values for each of those headings.
 A table in MySQL has different data types.
-Setting the data type and data length on fields will ensure the type data the field can contain.
+Setting the data type and data length on fields dictates the type data the field can contain.
 
+#### Create a new table
 Here is an example of using ```CREATE TABLE``` to create a new table, if one with the same name doesn't already exist.
 ```sql
 CREATE TABLE IF NOT EXISTS `product` (
@@ -28,6 +29,7 @@ CREATE TABLE IF NOT EXISTS `product` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8
 ```
 
+#### Inserting records
 Once we have created a table, we can ```INSERT``` some data into it.
 ```sql
 INSERT INTO `product`
@@ -44,8 +46,8 @@ VALUES
     ("Nike Elite Crew", "Really comfortable socks", 7.97, "Athletic Socks", "socks, running, footwear", NOW());
 ```
 
+#### Selecting records
 Our product table now contains two records that we can retrieve by issuing a ```SELECT```
-
 ```sql
 SELECT * FROM product;
 ```
@@ -68,6 +70,7 @@ which is the practice of horizontally scaling the table out to multiple servers 
 
 ```SELECT``` statements can also filter data using the ```WHERE``` clause.
 
+#### Simple queries
  Find all products that are in the "Running Shoes" category
  ```sql
  SELECT * FROM product WHERE category = "Running Shoes";
@@ -88,6 +91,27 @@ Find all products that were added on 09/10/2014
 SELECT * FROM product WHERE DATE(date_time_added) = "2014-10-09";
 ```
 
+Create a list of just product names and prices with the $ symbol added to the price. Also sort by product name in ascending order.
+```sql
+SELECT
+    product_name as name,
+    CONCAT('$', '', product_price) as price
+FROM
+    product
+ORDER BY
+    product_name ASC
+```
+
+```
++-----------------+--------+
+| name            | price  |
++-----------------+--------+
+| Nike Elite Crew | $7.97  |
+| Nike Shox       | $56.99 |
++-----------------+--------+
+```
+
+#### Aggregate queries
 Count the number of products we sell
 ```sql
 SELECT COUNT(*) as num_products FROM product;
@@ -111,22 +135,125 @@ FROM
 +-----------+-----------+-----------+
 ```
 
-Create a list of just product names and prices with the $ symbol added to the price. Also sort by product name in ascending order.
+### Joins
+Joining tables involves merging two or more data sets on a certain criteria to produce a result. 
+The best way to explain this idea is with an example. Consider the ```product``` table that we just created. 
+This table has a field called ```category``` 
 ```sql
-SELECT
-    product_name as name,
-    CONCAT('$', '', product_price) as price
-FROM
-    product
-ORDER BY
-    product_name ASC
+`category` varchar(50) DEFAULT NULL
+```
+As you can see, this field contains textual values. 
+As we continue to add more products, we would need to enter textual values for each new category. 
+In our current implementation, this is a perfectly valid solution, but as our table grows, it will soon become an inefficient strategy.
+
+#### Creating a category table
+A superior solution would be to create another table that contains all our product categories. 
+In this way, we can simply assign each product a category. This process is known as [normalization](http://en.wikipedia.org/wiki/Database_normalization).
+```sql
+CREATE TABLE `category` (
+  `category_id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `category_name` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`category_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+```
+
+Lets insert our product categories in our table.
+```sql
+INSERT INTO `category` (`category_name`) VALUES ('Running Shoes');
+INSERT INTO `category` (`category_name`) VALUES ('Athletic Socks');
+```
+
+Our category table now contains two records
+```sql
+SELECT * FROM category;
 ```
 
 ```
-+-----------------+--------+
-| name            | price  |
-+-----------------+--------+
-| Nike Elite Crew | $7.97  |
-| Nike Shox       | $56.99 |
-+-----------------+--------+
++-------------+----------------+
+| category_id | category_name  |
++-------------+----------------+
+|           1 | Running Shoes  |
+|           2 | Athletic Socks |
++-------------+----------------+
+```
+
+#### Modifying product table
+Lets modify our ```product``` table to use this new ```category_id``` in place of our old ```category``` name field.
+```sql
+ALTER TABLE `product` ADD `category_id` INT  NULL  DEFAULT NULL  AFTER `category`;
+```
+
+#### Update a value in the product table
+Update the ```product``` table with the appropriate ```category_id```s.
+```sql
+UPDATE `product` SET `category_id` = '1' WHERE `product_id` = '1';
+UPDATE `product` SET `category_id` = '2' WHERE `product_id` = '2';
+```
+
+#### Remove an existing field from the product table
+Get rid of, i.e. ```DROP```, the existing ```category``` field.
+```sql
+ALTER TABLE `product` DROP `category`;
+```
+
+Now lets take a look at the contents of our ```product``` table by issuing a ```SELECT```
+```sql
+SELECT * FROM product;
+```
+
+```
++------------+-----------------+--------------------------+---------------+-------------+--------------------------+---------------------+
+| product_id | product_name    | product_description      | product_price | category_id | tags                     | date_time_added     |
++------------+-----------------+--------------------------+---------------+-------------+--------------------------+---------------------+
+|          1 | Nike Shox       | Awesome running shoes    |         56.99 |           1 | shoes, running, footwear | 2014-11-12 17:12:54 |
+|          2 | Nike Elite Crew | Really comfortable socks |          7.97 |           2 | socks, running, footwear | 2014-11-12 17:13:00 |
++------------+-----------------+--------------------------+---------------+-------------+--------------------------+---------------------+
+```
+Notice how we now have a ```category_id``` in place of ```category```. 
+
+#### Select specific fields
+Let's issue a ```SELECT``` query to only show a subset of the fields in the ```product``` table
+```sql
+SELECT product_id, product_name, category_id FROM product;
+```
+
+```
++------------+-----------------+-------------+
+| product_id | product_name    | category_id |
++------------+-----------------+-------------+
+|          1 | Nike Shox       |           1 |
+|          2 | Nike Elite Crew |           2 |
++------------+-----------------+-------------+
+```
+
+#### Join category and product tables
+What we are interested in doing is getting the ```category_name``` that each product belongs to. 
+In order to do that, we will join in the ```category``` table on ```category_id```. 
+The ```ON``` clause refers to a **foreign** key in the table that you are joining in. 
+
+Here is how you would do it. 
+```sql
+SELECT 
+	p.product_id, 
+	p.product_name, 
+	p.category_id,
+	c.category_name
+FROM 
+	product AS p
+	LEFT JOIN category AS c ON (c.category_id = p.category_id);
+```
+
+The first thing to notice is that we aliased ```product``` and ```category``` as ```p``` and ```c``` respectively.
+This is because we need to let the database know, which data set the fields we are selecting come from. 
+Next up is the join. We are joining the ```category``` table ```ON``` the ```category_id``` field. 
+The ```category_id``` field is a *foreign key* on the ```product``` table and a *primary key* on the ```category``` table. 
+
+This is what your ouput looks like 
+```
++------------+-----------------+-------------+----------------+
+| product_id | product_name    | category_id | category_name  |
++------------+-----------------+-------------+----------------+
+|          1 | Nike Shox       |           1 | Running Shoes  |
+|          2 | Nike Elite Crew |           2 | Athletic Socks |
++------------+-----------------+-------------+----------------+
 ```

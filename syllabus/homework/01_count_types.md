@@ -1,18 +1,21 @@
+##### Homework 01 - Count Types
+
+We will be creating a simple program, that can be executed in the [CLI](http://en.wikipedia.org/wiki/Command-line_interface) or in the browser.
+
+Count the number of words, booleans and numbers in the provided input string.
+
+The input string contains formatted numbers, and numbers with other formatting characters like exclamation marks.
+
+Words like "true" and "false" are considered to be boolean. The sample code lays out the foundation for you to start work.
+
+If you are not happy with the layout of the sample code, feel free to extract the parts you are happy with and do it your way.
+
+Know that there are multiple ways to solve any given problem, and no two people will solve a problem in exactly the same way.
+
 ```php
 <?php
-/**
- * For a given input string, create a function that will return an array
- * indicating the number of words, integers and floats.
- *
- * @note   : Numbers that are formatted with commas are still numbers.
- * @author {name}
- * @since  {date mm/dd/yyyy}
- */
 
-#Define a constant, if true, run the program, otherwise do nothing.
-define('CAN_RUN', true);
-
-//Create an input string using heredoc syntax
+// Create an input string using heredoc syntax
 $inputString
     = <<<MYSTR
 Can you feel the pulse in your wrist? For humans the normal pulse is 70 heartbeats per minute.
@@ -33,28 +36,9 @@ land on all the surfaces in a room. You could say, “That’s me all over.”
 It takes food 7.64 seconds to go from the mouth to the stomach via the esophagus.
 MYSTR;
 
-/**
- * Count the number of int, float, bool and string data types in the given input string
- *
- * @param string $inputString Input string to analyze
- *
- * @return array
- */
-function countDataTypes($inputString)
-{
-    $countArray = array('num_int' => null, 'num_float' => null, 'num_bool' => null, 'num_string' => null);
+/** @var array $countArray Result array that contains the counts. You will populate this array with appropriate numbers */
+$countArray = array('num_numeric' => 0, 'num_string' => 0, 'num_bool' => 0);
 
-    //Evaluate this constant
-    if (!CAN_RUN) {
-        die('I cannot not run!');
-    }
-
-    return $countArray;
-}
-
-
-##############--==USAGE==--##############
-$returnedCountArray = countDataTypes($inputString);
-echo 'Here are your results:'.PHP_EOL;
-print_r($returnedCountArray);
+/** @var array $wordArray Array of every word in the input string */
+$wordArray = explode(" ", $inputString);
 ```

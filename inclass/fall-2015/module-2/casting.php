@@ -1,0 +1,4 @@
+<?php
+
+$boolVal = "true";
+

@@ -1,16 +1,16 @@
-02 - Strings, Functions & Arrays
+02 - Functions, Arrays & Strings
 ----------------------------
 >Now that we have the basics out of the way, we will be looking at functions in greater detail.
 >Encapsulating our procedural style code, into reusable units, is arguably one of the most important concepts in programming.
 >Arrays are one of the most useful and handy data structures that you will use almost every day in your life as a developer.
 >String manipulation is an important skill. We will become familiar with strings, searching through them, checking if a 
-value is in a string, replacing values, formatting etc... With over 90 native functions, we will have plenty to keep us busy!
+value is in a string, replacing values, formatting etc... With over 90 native string manipulation functions, we will have plenty to keep us busy!
 
 ***
 
 Strings
 -------
-Strings are very important in PHP. As a web developer you will find yourself using and manipulating strings more often than other tasks.
+Strings are very important in PHP. As a web developer you will find yourself using and manipulating strings more often than other task.
 It is quite important that you understand the difference between simple and complex strings, concatenating, escaping, referencing, searching and formatting strings.
 Lets take a look at each one of these **important** string topics individually.
 
@@ -35,14 +35,15 @@ $simpleString = 'My name is $myName'; // My name is $myName
 echo 'Simple String: ' . $simpleString . "\n";
 
 // Complex strings will replace the value of the variable in the string itself.
-$complexString = "My name is $myName" . "\n"; // My name is Samir
-echo 'Complex String: ' . $complexString . "\n";
+$complexString = "My name is $myName\n"; // My name is Samir
+echo 'Complex String: ' . $complexString;
 ```
 
 As you can see the simple string is enclosed in ```'``` and the value of the variable ```$myName``` is not printed.
 Instead the name of the variable is printed.
 In the case of a complex string, which is enclosed in ```"```, the value of the variable ```$myName``` is replaced with Samir.
-Also note that each of the lines is terminated with a ```"\n"```. This is a special character called a newline and is equivalent to hitting the enter key.
+Also note that each of the lines is terminated with a ```"\n"```. 
+This is a special character called a newline and is equivalent to hitting the enter key you may also use the PHP provided constant ```PHP_EOL``` to achieve the same effect.
 
 #### Concatenating two strings
 You can concatenate two strings, or a string and an int or float using the ```.``` character. For instance
@@ -89,16 +90,12 @@ $longString = 'This is a really long string';
 
 $howLong = strlen($longString);
 
-echo '$longString is '.$howLong.' characters long!'.PHP_EOL;
+echo '$longString is ' . $howLong . ' characters long!' . PHP_EOL;
 
-for($i = 0; $i < $howLong; $i ++){
-    echo $longString[$i]."\t";
+for ($i = 0; $i < $howLong; $i++) {
+    echo $longString[$i] . "\t";
 }
 ```
-
-#### Simple string search
-
-* Formatting strings and numbers
 
 Functions
 ---------
@@ -191,6 +188,8 @@ Any mutation to the variable within the function will affect the original variab
 
 Lets take an example of how this works.
 ```php
+<?php
+
 /**
  * Accept an argument by value
  *
@@ -238,7 +237,8 @@ echo '$wolverine after call: '.$wolverine."\n";
 
 #### Documenting functions using DocBlock
 Documenting a function is slightly time consuming and doesn't seem to provide any immediate benefit at first.
-However, documenting is more important than the actual code you will write. It is of paramount importance that code be readable.
+However, documenting is more important than the actual code you will write. 
+It is of paramount importance that code be of the highest quality, readily comprehensible, elegant, and visually pleasing.
 As a developer, you will end up reading lots of source code. Nobody likes reading badly formatted/undocumented code.
 Here are a few simple rules to follow:
 - Specify what your function does in plain english e.g. ```This method teaches you karate```
@@ -301,9 +301,67 @@ PHP has a global scope, a function scope and a class scope.
 Since global scope is really bad programming practice, we will not be discussing it.
 Scope is the ability for you to access certain variables.
 When inside a function, you have a blank slate.
-Any new variable you crate, even if it has the same name as a variable outside the function,
+Any new variable you create, even if it has the same name as a variable outside the function,
 will be new and independent from any other variable anywhere else.
 Class scope refers to your ability to access variables inside a class.
+
+Lets take a look at an example of function scope:
+```php
+<?php
+
+$outsideFunction = "This is a string defined outside the function";
+
+function myUsefulFunction() 
+{
+    // Cannot access the variable $outsideFunction here
+    // Notice: Undefined variable: outsideFunction
+    echo $outsideFunction;
+
+    $insideFunction = 'I am inside the function';
+
+    echo $insideFunction; // This is legal because this variable is scoped within this function
+}
+
+// Cannot access the variable we defined inside the function here
+// Notice: Undefined variable: insideFunction
+echo $insideFunction;
+
+// Call the function we just defined
+myUsefulFunction();
+```
+
+Lets take a look at an example of object properties and their scopes
+```php
+<?php
+
+class Father
+{
+    public $firstName = 'Samir';
+
+    protected $favoriteColor = 'Orange';
+
+    private $socialSecurityNumber = '325-34-8724';
+}
+
+class Child extends Father
+{
+    public function testAccess()
+    {
+        // public properties can be accessed from anywhere
+        echo "Father's First Name: " . $this->firstName . PHP_EOL;
+        
+        // Protected properties can be accessed by a child class only!
+        echo "Favorite Color: " . $this->favoriteColor . PHP_EOL;
+
+        // Private properties cannot be accessed by children
+        // Notice: Undefined property: Child::$socialSecurityNumber
+        echo 'SS Number: ' . $this->socialSecurityNumber . PHP_EOL;
+    }
+}
+
+$Child = new Child();
+$Child->testAccess();
+```
 
 
 Arrays
@@ -334,7 +392,7 @@ print_r($verboseShoppingList);
 
 echo PHP_EOL;
 
-// Create an array with keys using array(). Note: You can also make it lowercase
+// Create an associative array with keys using array()
 $businessCard = array(
     'name' => 'Samir',
     'phone' => '(512) 745-7846',
@@ -352,6 +410,10 @@ $verboseBusinessCard['email'] = 'samir@austincodingacademy.com';
 echo 'Array with keys and values using shorthand syntax:' . PHP_EOL;
 print_r($verboseBusinessCard);
 ```
+
+An array that has strings for keys is known as an **associative array**, as you are associating a key with a value. 
+In our example, ```$businessCard``` and ```$verboseBusinessCard``` are associative arrays, 
+while ```$shoppingList``` and ```$verboseShoppingList``` are not.
 
 #### Basic array operations i.e. referencing/adding/removing/replacing values
 You can manipulate values in an array by referencing the ```index``` i.e. the position of the data element you want to manipulate.
@@ -435,7 +497,7 @@ foreach($weeklyTemperatures as $dailyTemperature){
 echo 'The hottest day is: '.$hottestDay.PHP_EOL;
 ```
 
-PHP provides you with a number of helpful array functions.
+PHP provides you with a number of helpful [array functions](http://php.net/manual/en/ref.array.php) that allow us to solve the aforementioned problem more efficiently. 
 ```php
 <?php
 
@@ -444,7 +506,7 @@ echo 'The coldest day is: '.min($weeklyTemperatures).PHP_EOL;
 ```
 
 #### Creating a hash table for fast index lookups
-Think of a hash table as a dictionary, when you know the work you are looking for, you go right to it and lookup its definition.
+Think of a hash table as a dictionary, when you know the word you are looking for, you go right to it and lookup its definition.
 The reason why you can do that, is because the dictionary is sorted alphabetically. We can create a similar structure in PHP, using an array.
 ```php
 <?php
@@ -479,3 +541,10 @@ sort($randomArray);
 
 print_r($randomArray); // Sorted :)
 ```
+Notice how the sort function accepts an array by reference, mutates the array you pass in and doesn't return anything.
+
+***
+
+##### Homework 02 - Card Game
+
+[Instructions & Starter Code](homework/02_card_game.md)
