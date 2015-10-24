@@ -1,6 +1,7 @@
 10 - Namespaces
 ===============
 > Namespacing is a way for you to organize your code into packages for ease of distribution and reuse and to prevent name collisions. 
+> Namespaces are a very important concept and you should master them. All modern object oriented PHP applications leverage namespaces.
 
 Suppose you are building an social network. In order to represent a user you create a class called `User`. 
 This seems like a perfectly reasonable thing to do until you use someone else's package that has also defined a class called `User`. 
@@ -91,21 +92,57 @@ As we already discussed, when you try to instantiate a class into an object, PHP
 If the file is not required, PHP will check to see if any autoloaders are defined. If they are defined, PHP will try to execute them.
 Here is an example of this concept in action. 
 
-Coming back to the `User` class example. If you were not using symfony, or any other PSR-4 compatible framework for that matter, you would have to register an autoloader manually using the `spl_autoload_register()` function
-This function accepts a handler as an argument. The handler can either be a `closure` or a `named function` and will accept one argument `$class`
+Coming back to the `Database` class example. If you were not using symfony, or any other PSR-4 compatible framework for that matter, you would have to register an autoloader manually using the `spl_autoload_register()` function
+This function accepts a handler as an argument. The handler can either be a `closure` or a `named function` and will accept one argument `$class` which is the class name including any namespace declaration.
 
 ```php
 <?php
 
+// $class = 'Aca\Bundle\ShopBundle\Db\Database';
 spl_autoload_register(function($class){
-    if(file_exists($class)){
-        require($class);
+    
+    // Convert the \ to /
+    $class = str_replace('\\', '/', $class);
+    
+    // Append the .php extension and create a file path
+    $filePath = $class . '.php';
+    
+    if (file_exists($filePath)) {
+        require($filePath);
     }
 });
 
+use Aca\Bundle\ShopBundle\Db\Database;
+$db = new Database();
 ```
+
+So basically whats happening here is you try to instantiate the `Database` class into an object and you have specified that it lives in the following namespace `Aca\Bundle\ShopBundle\Db\Database` by the `use` statement prior to its instantiation.
+Since this file has not been required, the registered autloader(s) will be called upon to locate it. The logic within the autoloader can be as sophisticated as necessary to locate the missing class and finally `require()`ing it.
 
 The aforementioned code snippet highlights the necessity for your namespace declaration matching the physical location of your class in the file system. 
 If you had your files in a different location than the namespace declaration, your `require()` statement would not work as it stands and would need to be modified to reflect the new non-standard path you chose.
 
-As a rule of thumb your namespace *must* match the physical path of the class and each file *must* contain only one class declaration.
+As a rule of thumb your namespace *must* match the physical path of the class and each file *must* contain only one class declaration. The file name *must* be proper cased and *must* match the class name.
+
+Our `Database` class is not very useful at this point. In reality, it's sole purpose would be to talk to MySQL. In order to do that, it would need to know the credentials to the database server. 
+It would need to know the `username`, `password`, `host` and `port`. These values could just be hardcoded in the class itself, but that is far from ideal. 
+Not only is this bad practice, but it would also make the class unusable when you decide to communicate with different databases that are on different hosts with different credentials. 
+
+The proper way to do this would be to create a number of constructor arguments, for each of these properties, as such
+```php
+<?php
+
+class Database 
+{
+    public function __construct($username, $password, $host, $port) 
+    {
+        // ...
+    }
+
+}
+```
+
+But whence the values? You will likely have a certain set of credentials on the development environment and another set of credentials for production. 
+It is not uncommon for big projects to have several environments viz. `dev`, `qa`, `uat`, `test`, `production` etc...
+
+The subject of discussion in the next module is the way parameters work and how they relate to the service container. 
