@@ -35,14 +35,16 @@ namespace Aca\Bundle\ShopBundle\Controller;
 use Aca\Bundle\ShopBundle\Db\Database;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-/**
-@todo: add example of getting params directly from the params file in the controller
-**/
 class DefaultController extends Controller
 {
     public function indexAction($name)
     {
-        $db = new Database();
+        $username = $this->container->getParameter('database_user');
+        $password = $this->container->getParameter('database_password');
+        $host = $this->container->getParameter('database_host');
+        $port = $this->container->getParameter('database_port');
+        
+        $db = new Database($username, $password, $host, $port);
     }
 }
 ```
