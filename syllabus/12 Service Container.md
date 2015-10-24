@@ -160,11 +160,25 @@ class DefaultController extends Controller
 }
 ```
 
+#### Best practices and Guidelines
+
 It is best practice to create and manage all objects and their respective dependencies in the service container. 
 If you ever needed to add or remove a dependency, you would do it in the container and wouldn't have to worry about changing all the other code that would otherwise manually instantiate your class into an object.
 Furthermore, the container will return objects as singleton references which will give you a bit of a performance boost depending on your unique situation. 
 
-Now that you have understood the container, every class you write *must* be in the container, with a few exceptions. 
-In some situations you have have a utility class of some kind that has a bunch of static methods. 
+Now that you have understood the container, every class you write *must* be in the container, with a few exceptions.  
 If there is no real need to instantiate a class to use it's functionality, it doesn't belong in the container. 
-In all other cases, you should strongly consider creating an entry in the container for your specific class. 
+For instance if you created a utility class with several static methods, its ok to not define a class like this as a service.   
+In all other cases, you should strongly consider creating an entry in the container for your class, even if it doesnt have any additional dependencies. 
+
+The pattern to follow is to create a service and to inject all your dependencies, using the container, into your service. 
+The controller should contain no logic as it's sole responsibility is to map a route and any data that goes with it to a service. 
+All the business logic, including interactions with the data layer, should be done in the service itself. 
+
+It is bad practice to inject the entire container into your service. 
+This practice will allow you to solve any problem you can imagine but is very difficult to test and makes the purpose of your class unclear.  
+
+Always inject required dependencies using constructor injection and optional or lazy dependencies using setter injection. 
+
+If you are injecting objects, it is great practice to type hint the object being injected. 
+If the object is polymorphic, it should implement an interface. Using the interface as a type hint instead of the class is a great idea! 
