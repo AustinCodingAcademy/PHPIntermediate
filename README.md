@@ -24,9 +24,15 @@ Module 7 - [Introduction to Symfony](syllabus/07 Introduction to Symfony.md)
 
 Module 8 - [ACAShop Capstone Project Kickoff](syllabus/08 ACAShop Capstone Project Kickoff.md)
 
-Module 9 - In class coding and project completion
+Module 9 - [Composer](syllabus/09 Composer.md)
 
-Module 10 - Continue in class coding for ACAShop, Student Q&A, the state of PHP and the job market
+Module 10 - [Namespaces](syllabus/10 Namespaces.md)
+
+Module 11 - [Environments and Configuration](syllabus/11 Environments and Configuration.md)
+ 
+Module 12 - [Service Container](syllabus/12 Service Container.md)
+
+Module 13 - In class coding and ACAShop project completion, AWS deploy, Student Q&A, the state of PHP and the job market
 
 #### Required Software
 Here are some applications you will need installed.
