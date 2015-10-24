@@ -22,6 +22,7 @@ This is not PHP code, just plain old text.
 #### The use of comments
 ```php
 <?php
+
 // This is one way to define a comment
 
 # This is another way to do the same thing
@@ -39,9 +40,10 @@ This is not PHP code, just plain old text.
   */
 ```
 
-#### Debug using die; an alias to exit
+#### Halt script execution using die();
 ```php
 <?php
+
     echo 'I am about to run...';
     die('I am here! and I am dead. Nothing after this line will run...');
     echo 'I will not run, because I am after the die()';
@@ -50,11 +52,13 @@ This is not PHP code, just plain old text.
 
 Variables
 ---------
+
 Variables are containers for values.
 Values are assigned to variables at run-time.
 Values that don't change are known as constants.
 ```php
 <?php
+
 //Define some variables, and assign values to them
 $personName = 'Jane Doe';
 $personAddress = 'MugShots, 407 E 7th St. Austin, TX 78701';
@@ -89,10 +93,11 @@ if (!isset($personGender)) {
 Data types and loose typing
 ---------------------------
 
-PHP is a loosely typed language. This means you can create variables as you go, assign values to them
-and PHP will figure out what type of variable you intended to create. You also have access to a host of functions that start with is_*
-that you can use to determine the type of variable PHP thinks you wanted to make.
-Strongly typed languages expect the programmer to define the type of data they want the variable to hold before you can store anything in it.
+PHP is a loosely typed language. This means you can create variables as you go and assign values to them without
+specifying the type of value you want to store. PHP will figure out what type of variable you intended to create.
+You also have access to functions like ```is_int()```, ```is_bool()```, ```is_string()```, ```is_array()``` and ```is_object()```
+that allow you determine if a variable is an ```integer```, ```boolean```, ```string```, ```array```  or ```object``` respectively.
+
 
 ```php
 <?php
@@ -127,13 +132,15 @@ if (is_array($myArray)) {
 echo is_bool($myBool) ? '$myBool is a boolean value' : '$myBool is not a boolean value';
 ```
 
-Typecasting i.e. converting one type to another
------------------------------------------------
+Typecasting
+-----------
 
-Sometimes you may need to change the type of a variable from one type to another. This is known as typecasting.
-You may want to do this if you had a string, that was really a number, and you wanted to add something to it.
+Typecasting is the act of changing the type of a variable
+e.g. ```string``` to ```int```, ```boolean``` to ```string``` etc...
+
 ```php
 <?php
+
 $stringNumber = "15";
 echo 'Type of $stringNumber is: ';
 var_dump($stringNumber);
@@ -165,8 +172,9 @@ var_dump($castedArray);
 
 Operators
 ---------
-We use operators in PHP to combine, add, subtract and multiply. Arrays in PHP are first class citizens.
-Take a look at this list of [All Array functions](http://php.net/manual/en/ref.array.php) to get an idea of the things you can do with them.
+
+Operators are used to combine, add, subtract and multiply.
+
 ```php
 <?php
 

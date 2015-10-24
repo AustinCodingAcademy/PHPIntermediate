@@ -308,8 +308,10 @@ Class scope refers to your ability to access variables inside a class.
 
 Arrays
 ------
+
 An array is a the most commonly used data structure in PHP and is used to hold a contiguous collection of data.
 They are extremely flexible and can store just about anything you can think of.
+Take a look at this comprehensive list of [array functions](http://php.net/manual/en/ref.array.php) to get an idea of the things you can do with them.
 
 #### Creating an array
 ```php
