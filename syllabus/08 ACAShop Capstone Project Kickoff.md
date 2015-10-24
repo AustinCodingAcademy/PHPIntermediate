@@ -1,17 +1,80 @@
 ACAShop - Capstone Project Kickoff
 =======================
 For our capstone project, we will be building an online store called ACAShop.
-We have created an implementation, with instructions, in a separate git repo that can be found [here](https://github.com/AustinCodingAcademy/ACAShop).
+Before we start working on the code for this project, I would like to walk you through the process of setting up the VM.
 
-#### Checkout the code
-Execute the following commands on your local machine. These commands will checkout the code and update packages via [composer](https://getcomposer.org/doc/00-intro.md).
+#### Setup and Configure Infrastructure 
 
-- ```mkdir ~/Desktop/htdocs```
-- ```sudo ln -s ~/Desktop/htdocs /htdocs```
-- ```cd /htdocs```
-- ```git clone git@github.com:AustinCodingAcademy/ACAShop.git```
-- ```cd ACAShop```
-- ```./post_clone.sh```
+Currently you have been given a VM which responds to requests on `10.10.10.60` or `aca.vm`. 
+What we are going to do next is create another hosts entry on your local machine (mac, windows) to point to the same IP with a different alias.
+ 
+Edit the file `/etc/hosts` and add the following entry 
+```bash
+10.10.10.60     acashop.vm
+```
+
+What this is doing is simulating the way DNS works. When you enter in an actual domain name in your browser, a DNS lookup is made effectively translating 
+the name into a number. This number is the IP with points to the server of your choosing. In our case, the server happens to be a local virtual machine. 
+These instructions are valid for any kind of linux server, even one running on a hypervisor out in the cloud. Amazon's EC2 instances are a good example of a cloud based VM.
+
+The VM has a web server called apache2. When a web request hits your server, apache2 will respond as it is listening on port 80, or 443 if you're running a secure site. 
+If a configuration file matching the host header, aka. the domain name, is found, then the directives in said config file will be executed. 
+Apache configuration files are located under `/etc/apache2/sites-available/`.
+  
+SSH into your VM and run the following commands
+```bash
+cd /etc/apache2/sites-available
+```
+
+Create a file called `acashop.conf`
+```bash
+sudo touch acashop.conf
+```
+
+Start editing the file in vim
+```bash
+sudo vim acashop.conf
+```
+
+Paste in the following config
+```xml
+ServerName acashop.vm
+<VirtualHost *:80>
+        ServerAlias acashop.vm
+        ServerAdmin sameg14@gmail.com
+        DocumentRoot /var/www/acashop/web
+
+        <Directory /var/www/acashop/web>
+                DirectoryIndex app_dev.php
+                Options Indexes FollowSymLinks MultiViews
+                AllowOverride All
+                Order allow,deny
+                Allow from all
+        </Directory>
+        ErrorLog ${APACHE_LOG_DIR}/error-acashop.log
+        CustomLog ${APACHE_LOG_DIR}/access-acashop.log combined
+</VirtualHost>
+```
+
+In a nutshell this configuration file tells apache to respond to any requests that match the domain `acashop.vm`. 
+
+Now that you have created the config, you will need to activate the site by issuing the following command
+```bash
+sudo a2ensite acashop
+```
+
+This apache command allows you to enable a particular site's configuration. Restart the webserver to enable the new config
+```bash
+sudo service apache2 restart
+```
+
+Now you should be able to browse to [acashop.vm](http://acashop.vm) in your browser. Or you can issue this command to open the site if your default browser
+```bash
+open http://acashop.vm
+```
+
+#### Install Symfony
+
 
 #### SQL Schema Reference
 Our project will read and write from several different tables. 
