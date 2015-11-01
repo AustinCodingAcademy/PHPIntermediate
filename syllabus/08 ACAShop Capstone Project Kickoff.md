@@ -8,7 +8,7 @@ Before we start working on the code for this project, I would like to walk you t
 Currently you have been given a VM which responds to requests on `10.10.10.60` or `aca.vm`. 
 What we are going to do next is create another hosts entry on your local machine (mac, windows) to point to the same IP with a different alias.
  
-Edit the file `/etc/hosts` and add the following entry 
+Edit the file `/etc/hosts` and add the following entry (sudo vim /etc/hosts)
 ```bash
 10.10.10.60     acashop.vm
 ```
